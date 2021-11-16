@@ -1,0 +1,7 @@
+#!/bin/bash
+rm -r CMakeFiles
+rm web/WebCraft.data
+rm cmake_install.cmake
+rm WebCraft.cbp
+rm CMakeCache.txt 
+emcmake cmake . && emmake make

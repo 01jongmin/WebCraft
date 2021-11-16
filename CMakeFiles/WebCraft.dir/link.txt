@@ -1,0 +1,1 @@
+/usr/local/Cellar/emscripten/2.0.34/libexec/em++  -s ALLOW_MEMORY_GROWTH=1 -s USE_SDL=2 --preload-file shader -o index.js  -s ALLOW_MEMORY_GROWTH=1 -s USE_SDL=2 --preload-file shader -o index.js @CMakeFiles/WebCraft.dir/objects1.rsp -o web/WebCraft.js 

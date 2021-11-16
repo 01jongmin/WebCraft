@@ -1,0 +1,18 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE= -G "CodeBlocks - Unix Makefiles" /Users/jongmin/CLionProjects/webassembly_emcc
+-- EMCC ENABLED
+CMake Warning (dev) at lib/glm/CMakeLists.txt:7 (project):
+  Policy CMP0048 is not set: project() command manages VERSION variables.
+  Run "cmake --help-policy CMP0048" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  The following variable(s) would be set to empty:
+
+    PROJECT_VERSION
+    PROJECT_VERSION_MAJOR
+    PROJECT_VERSION_MINOR
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- GLM is a header only library, no need to build it. Set the option GLM_TEST_ENABLE with ON to build and run the test bench
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/jongmin/CLionProjects/webassembly_emcc
