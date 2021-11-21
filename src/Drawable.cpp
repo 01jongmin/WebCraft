@@ -6,7 +6,7 @@
 #include "Drawable.h"
 
 Drawable::Drawable()
-        : m_count(-1), m_bufIdx(), m_bufPos(), m_bufNor(), m_bufCol(),
+        : m_count(), m_bufIdx(), m_bufPos(), m_bufNor(), m_bufCol(),
           m_idxGenerated(false), m_posGenerated(false), m_norGenerated(false), m_colGenerated(false)
 {}
 

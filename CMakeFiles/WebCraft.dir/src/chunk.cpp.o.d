@@ -263,4 +263,21 @@ CMakeFiles/WebCraft.dir/src/chunk.cpp.o: \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/inttypes.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/GLES2/gl2.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/GLES2/gl2platform.h \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/KHR/khrplatform.h
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/KHR/khrplatform.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/iostream \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/ios \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__locale \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/mutex \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__mutex_base \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/system_error \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__errc \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cerrno \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/locale.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/locale.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/compat/xlocale.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/streambuf \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/istream \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/ostream \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/locale \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__bsd_locale_fallbacks.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/bitset

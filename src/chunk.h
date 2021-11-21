@@ -13,7 +13,12 @@
 // block types, but in the scope of this project we'll never get anywhere near that many.
 enum BlockType : unsigned char
 {
-    EMPTY, GRASS, DIRT, STONE, WATER, SNOW
+    EMPTY, GRASS, DIRT, STONE, WATER, SNOW, BEDROCK, LAVA, SAND
+};
+
+enum Corner : unsigned char
+{
+    BL, BR, TL, TR
 };
 
 // The six cardinal directions in 3D space
@@ -44,6 +49,7 @@ private:
     // All of the blocks contained within this Chunk
     std::array<BlockType, 65536> m_blocks;
     std::vector<glm::vec4> data {};
+    std::vector<glm::vec4> t_data {};
     std::vector<GLuint> idx {};
 
 public:
@@ -59,12 +65,14 @@ public:
     glm::vec4 chunkPos;
 
     void createVBOdata();
+    void setTVBOdata();
 
     BlockType getBlockAt(int x, int y, int z) const;
     void setBlockAt(unsigned int x, unsigned int y, unsigned int z, BlockType t);
     void linkNeighbor(uPtr<Chunk>& neighbor, Direction dir);
 
     void setVBOdata();
+    bool vboSet;
 
     // gets all the blocks adjacent to the input block
     uPtr<std::unordered_map<Direction, BlockType, EnumHash>> getLocalNeighbors(int x, int y, int z);
@@ -80,5 +88,5 @@ public:
             BlockType blockType);
 
     // gets a color for a block type will be removed when textures are added
-    glm::vec4 getColor(BlockType blockType);
+    glm::vec4 getUVCoord(BlockType blockType, Corner corner, bool isTop = 1, bool isBottom = 0);
 };

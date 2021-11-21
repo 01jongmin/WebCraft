@@ -6,9 +6,12 @@
 
 #include <emscripten.h>
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_opengles2.h>
+#include <GLES2/gl2.h>
 #include "MyGL.h"
-
+#include <thread>
+#include <mutex>
+#include <vector>
+#include <array>
 
 #else
 
@@ -44,18 +47,23 @@ int main(int argc, char **argv)
 
     SDL_GLContext glContext = SDL_GL_CreateContext(window);
 
-    printf("%s\n", glGetString(GL_VERSION));
+//    printf("%s\n", glGetString(GL_VERSION));
 
-    MyGL myGL = MyGL(window);
+    std::vector<std::thread> spawned_threads;
 
-//    ShaderProgram p = ShaderProgram();
-//    p.create("../shader/flat.vert", "../shader/flat.frag");
-//
+    std::mutex blockWorkerMutex;
+    std::deque<std::pair<int, int>> blockWorkerCoordVectorArray;
+
+    std::mutex vboWorkerMutex;
+    std::deque<Chunk*> vboChunkVectorArray;
+
+    std::mutex drawChunkMutex;
+    std::deque<Chunk*> drawChunkVector;
+
+    MyGL myGL = MyGL(window, spawned_threads, blockWorkerMutex, blockWorkerCoordVectorArray, vboWorkerMutex, vboChunkVectorArray,
+            drawChunkMutex, drawChunkVector);
+
     loop = [&] {
-        int i;
-        int j;
-        SDL_GetMouseState(&i, &j);
-        SDL_WarpMouseInWindow(window, 0, 0);
         myGL.tick();
     };
 

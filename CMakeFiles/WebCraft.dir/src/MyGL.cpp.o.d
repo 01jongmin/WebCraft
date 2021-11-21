@@ -67,32 +67,28 @@ CMakeFiles/WebCraft.dir/src/MyGL.cpp.o: \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_quit.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_gesture.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_touch.h \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/GLES2/gl2.h \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/GLES2/gl2platform.h \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/KHR/khrplatform.h \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/vector \
+  /Users/jongmin/CLionProjects/webassembly_emcc/src/MyGL.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/thread \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/iosfwd \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/compat/wchar.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/wchar.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/wchar.h \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__bit_reference \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__bits \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/algorithm \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/initializer_list \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cstring \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/utility \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__tuple \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cstdint \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__debug \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/memory \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__availability \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__functional_base \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/typeinfo \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__availability \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/exception \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__memory/base.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__debug \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cstdlib \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cstdint \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/new \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/utility \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__tuple \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/initializer_list \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cstring \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/functional \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/memory \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/iterator \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__functional_base \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/tuple \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/stdexcept \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__memory/allocator_traits.h \
@@ -117,11 +113,28 @@ CMakeFiles/WebCraft.dir/src/MyGL.cpp.o: \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/semaphore.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/fcntl.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/bits/fcntl.h \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/functional \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/system_error \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__errc \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cerrno \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/string \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/string_view \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__string \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/algorithm \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/bit \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__split_buffer \
-  /Users/jongmin/CLionProjects/webassembly_emcc/src/MyGL.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__bits \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cstdio \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cwchar \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cwctype \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cctype \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/compat/wctype.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/wctype.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/wctype.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__mutex_base \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/mutex \
   /Users/jongmin/CLionProjects/webassembly_emcc/src/ShaderProgram.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/GLES2/gl2.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/GLES2/gl2platform.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/KHR/khrplatform.h \
   /Users/jongmin/CLionProjects/webassembly_emcc/src/glm_includes.h \
   /Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/glm.hpp \
   /Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/detail/_fixes.hpp \
@@ -258,16 +271,6 @@ CMakeFiles/WebCraft.dir/src/MyGL.cpp.o: \
   /Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/gtx/../gtc/constants.hpp \
   /Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/gtx/dual_quaternion.inl \
   /Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/gtx/../geometric.hpp \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/string \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/string_view \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__string \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cstdio \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cwchar \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cwctype \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cctype \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/compat/wctype.h \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/wctype.h \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/wctype.h \
   /Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/gtx/string_cast.inl \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cstdarg \
   /Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/gtc/type_ptr.hpp \
@@ -282,6 +285,9 @@ CMakeFiles/WebCraft.dir/src/MyGL.cpp.o: \
   /Users/jongmin/CLionProjects/webassembly_emcc/src/Drawable.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_opengl.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_opengl_glext.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/vector \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__bit_reference \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__split_buffer \
   /Users/jongmin/CLionProjects/webassembly_emcc/src/WorldAxes.h \
   /Users/jongmin/CLionProjects/webassembly_emcc/src/Camera.h \
   /Users/jongmin/CLionProjects/webassembly_emcc/src/Entity.h \
@@ -298,11 +304,6 @@ CMakeFiles/WebCraft.dir/src/MyGL.cpp.o: \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/iostream \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/ios \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__locale \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/mutex \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__mutex_base \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/system_error \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__errc \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cerrno \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/locale.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/locale.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/compat/xlocale.h \
@@ -315,6 +316,31 @@ CMakeFiles/WebCraft.dir/src/MyGL.cpp.o: \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/queue \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/deque \
   /Users/jongmin/CLionProjects/webassembly_emcc/src/player.h \
+  /Users/jongmin/CLionProjects/webassembly_emcc/src/Texture.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_image.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_main.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_assert.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/signal.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/bits/signal.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_atomic.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_audio.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_mutex.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_thread.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_clipboard.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_cpuinfo.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_filesystem.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_haptic.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_hints.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_loadso.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_log.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_messagebox.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_power.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_render.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_sensor.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_shape.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_system.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_version.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/emscripten.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/emscripten/emscripten.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/emscripten/em_asm.h \

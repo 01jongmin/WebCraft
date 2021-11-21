@@ -6,7 +6,7 @@
 #include "glm_includes.h"
 
 Camera::Camera(glm::vec3 pos)
-        : Camera(400, 400, pos)
+        : Camera(1280, 720, pos)
 {}
 
 Camera::Camera(unsigned int w, unsigned int h, glm::vec3 pos)

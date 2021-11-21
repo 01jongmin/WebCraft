@@ -42,7 +42,6 @@ private:
 //    // surrounding the Player should be rendered, the Chunks
 //    // in the Terrain will never be deleted until the program is terminated.
     std::unordered_set<int64_t> m_generatedTerrain;
-    std::unordered_set<int64_t> testing;
 //
 //    // TODO: DELETE ALL REFERENCES TO m_geomCube AS YOU WILL NOT USE
 //    // IT IN YOUR FINAL PROGRAM!

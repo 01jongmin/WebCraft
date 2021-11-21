@@ -5,17 +5,23 @@
 #ifndef WEBCRAFT_MYGL_H
 #define WEBCRAFT_MYGL_H
 
-
+#include <thread>
+#include <mutex>
 #include "ShaderProgram.h"
 #include "WorldAxes.h"
 #include "Camera.h"
 #include "terrain.h"
 #include "player.h"
+#include "Texture.h"
+
 
 class MyGL {
 
 public:
-    MyGL(SDL_Window *pWindow);
+    MyGL(SDL_Window *pWindow, std::vector<std::thread> &spawned_threads,
+         std::mutex& blockWorkerMutex, std::deque<std::pair<int, int>>& blockWorkerCoordVector,
+         std::mutex& vboWorkerMutex, std::deque<Chunk*>& vboChunkVector, std::mutex &drawChunkMutexes,
+         std::deque<Chunk*> &drawChunkVector);
 
     void tick();
 
@@ -32,10 +38,28 @@ private:
 
     Terrain m_terrain; // All of the Chunks that currently comprise the world.
     Player m_player; // The entity controlled by the user. Contains a camera to display what it sees as well.
+    InputBundle bundle;
+    int lastTick;
+
+    std::unique_ptr<Texture> mp_texture;
+
+    int m_time;
+
+    std::vector<std::thread>& spawned_threads;
+
+    std::mutex &blockWorkerMutex;
+    std::deque<std::pair<int, int>> &blockWorkerCoordVector;
+
+    std::mutex &vboWorkerMutex;
+    std::deque<Chunk*> &vboChunkVector;
+
+    std::mutex& drawChunkMutex;
+    std::deque<Chunk*>& drawChunkVector;
 
     void renderTerrain();
 
     void handleKeyPressDown(SDL_Keycode);
+    void handleKeyPressUp(SDL_Keycode);
 };
 
 

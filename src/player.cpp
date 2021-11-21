@@ -33,12 +33,10 @@ void Player::processInputs(InputBundle &inputs) {
         m_acceleration += m_up * (float) inputs.ePressed;
         m_acceleration -= m_up * (float) inputs.qPressed;
     } else {
-        m_acceleration += glm::vec3(0, -2, 0);
+        m_acceleration += glm::vec3(0, -1, 0);
 
-        if (isStanding && inputs.spacePressed) m_velocity = glm::vec3(0, 0.02, 0);
+        if (isStanding && inputs.spacePressed) m_velocity += glm::vec3(0, 2, 0);
     }
-
-    m_acceleration *= 0.00002f;
 }
 
 bool gridMarch(glm::vec3 rayOrigin, glm::vec3 rayDirection, const Terrain &terrain, float *out_dist, glm::ivec3 *out_blockHit, float *interfaceAxis) { // , glm::ivec3 *outBlockNeighbor) {
@@ -131,42 +129,16 @@ void Player::addBlock(Terrain *terrain) {
 }
 
 void Player::computePhysics(float dT, const Terrain &terrain) {
-    m_velocity *= 0.65;
-
-    for (int i = 0; i < 3; i++) {
-        if (abs(m_velocity[i]) < 0.0000001) m_velocity[i] = 0;
-    }
+    std::cout << "dT: " << dT << " Velocity: " << glm::to_string(m_velocity) << " Acceleration: " << glm::to_string(m_acceleration) << std::endl;
+    std::cout << glm::to_string(m_camera.mcr_position) << std::endl;
+    m_velocity *= glm::vec3(0.65, 0.99, 0.65);
 
     m_velocity += m_acceleration * dT;
 
     if (superMode) {
         moveAlongVector(m_velocity * dT);
     } else {
-
-//        float clampedDistance = glm::length(m_velocity * dT);
-//        std::cout << "clamped!!" << clampedDistance << std::endl;
-//        std::cout << "Position: " << glm::to_string(m_position) << std::endl;
-//        std::cout << "Velocity: " << glm::to_string(m_velocity * dT) << std::endl;
-//        glm::vec3 cornerLoc = glm::normalize(m_velocity) * clampedDistance;
-//        std::cout << "-----------" << std::endl;
-//        std::cout << cornerLoc.x << ", " << cornerLoc.y << ", " << cornerLoc.z << std::endl;
-
-//        int level = 0;
-//        float d[] = {0.4999, -0.49999};
-
-
-        // Manual Testing
-//        float k;
-//        glm::ivec3 iv;
-//        if (gridMarch(glm::vec3(32.f, 129, 33), glm::vec3(1.000000, 0.00, 0.0), terrain, &k, &iv)) {
-//            std::cout << "Testing Collision" << std::endl;
-//            std::cout << k << std::endl;
-//            std::cout << glm::to_string(iv) << std::endl;
-//        }
-
-//        float delta[4][2] = {{0.49, 0.49}, {-0.49, 0.49}, {-0.49, -0.49}, {0.49, -0.49}};
         float delta[4][2] = {{0.5, 0.5}, {-0.5, 0.5}, {-0.5, -0.5}, {0.5, -0.5}};
-//        float delta[1][2] = {{0.5, 0.5}};
         glm::vec3 ray = m_velocity * dT;
 
         for (int axis = 0; axis < 3; axis++) {
@@ -183,16 +155,19 @@ void Player::computePhysics(float dT, const Terrain &terrain) {
                     float axis = -1;
 
                     if (gridMarch(cornerLoc, segmentedVelocity, terrain, &distance, &out_block, &axis)) {
-//                        std::cout << "Position: " << glm::to_string(m_position) << std::endl;
-//                        std::cout << "CORNER LOC: " << glm::to_string(cornerLoc) << std::endl;
-//                        std::cout << "RAY " << ray[axis] << std::endl;
-//                        std::cout << "DISTANCE " << distance << std::endl;
                         ray[axis] = glm::sign(ray[axis]) * glm::min((std::abs(distance) - 0.01f), std::abs(ray[axis]));
-                        if (ray[axis] < 0.01) m_velocity[axis] = 0;
+
+                        if (std::abs(ray[axis]) < 0.05) {
+                            m_velocity[axis] = 0;
+                            ray[axis] = 0;
+                        }
+
+
                     }
                 }
             }
         }
+
 
         isStanding = (m_velocity[1] == 0);
 

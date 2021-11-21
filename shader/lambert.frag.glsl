@@ -7,6 +7,9 @@ varying vec4 fs_Nor;
 varying vec4 fs_LightVec;
 varying vec4 fs_Col;
 
+uniform sampler2D u_Texture;
+uniform int u_Time;
+
 float random1(vec3 p) {
     return fract(sin(dot(p,vec3(127.1, 311.7, 191.999)))
     *43758.5453);
@@ -72,8 +75,21 @@ float fbm(vec3 p) {
 }
 
 void main() {
-    vec4 diffuseColor = fs_Col;
-    diffuseColor = diffuseColor * (0.5 * fbm(fs_Pos.xyz) + 0.5);
+
+    float offset = float(u_Time) * 0.01;
+    offset += fs_Col.x * 16.0;
+    offset += floor(fs_Pos.x);
+    offset -= fs_Col.w * 16.0;
+    offset = mod(offset, 3.0);
+    offset += fs_Col.w * 16.0;
+    offset /= 16.0;
+
+    vec4 diffuseColor;
+    if (fs_Col.z == 1.0) {
+        diffuseColor = texture2D(u_Texture, vec2(offset, fs_Col.y));
+    } else {
+        diffuseColor = texture2D(u_Texture, vec2(fs_Col));
+    }
 
     // Calculate the diffuse term for Lambert shading
     float diffuseTerm = dot(normalize(fs_Nor), normalize(fs_LightVec));
@@ -86,9 +102,26 @@ void main() {
     //to simulate ambient lighting. This ensures that faces that are not
     //lit by our point light are not completely black.
 
-    // Compute final shaded color
-    gl_FragColor = vec4(diffuseColor.rgb * lightIntensity, diffuseColor.a);
-//    gl_FragColor = fs_col;
+    gl_FragColor = vec4(vec3(diffuseColor) * lightIntensity, diffuseColor.a);
+//    gl_FragColor = vec4(vec3(normalize(diffuseColor)) * lightIntensity, 1);
+//
+//
+//    vec4 diffuseColor = fs_Col;
+//    diffuseColor = diffuseColor * (0.5 * fbm(fs_Pos.xyz) + 0.5);
+//
+//    // Calculate the diffuse term for Lambert shading
+//    float diffuseTerm = dot(normalize(fs_Nor), normalize(fs_LightVec));
+//    // Avoid negative lighting values
+//    diffuseTerm = clamp(diffuseTerm, 0.0, 1.0);
+//
+//    float ambientTerm = 0.2;
+//
+//    float lightIntensity = diffuseTerm + ambientTerm;   //Add a small float value to the color multiplier
+//    //to simulate ambient lighting. This ensures that faces that are not
+//    //lit by our point light are not completely black.
+//
+//    // Compute final shaded color
+//    gl_FragColor = vec4(diffuseColor.rgb * lightIntensity, 1.0);
 }
 
 ////precision mediump float;

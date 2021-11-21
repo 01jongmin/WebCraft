@@ -12,7 +12,67 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fe4e2c7b-c995-48eb-b042-1c6eae53f021" name="Default Changelist" comment="" />
+    <list default="true" id="fe4e2c7b-c995-48eb-b042-1c6eae53f021" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shader/minecraft_textures_all.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Texture.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Texture.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/stb_image.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.14.5/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.14.5/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.14.5/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/compiler_depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/compiler_depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/objects1.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/objects1.rsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/Camera.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/Camera.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/Drawable.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/Drawable.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/Entity.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/Entity.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/MyGL.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/MyGL.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/MyGL.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/MyGL.cpp.o.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/Player.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/Player.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/Terrain.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/Terrain.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/chunk.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/chunk.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/chunk.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/chunk.cpp.o.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/main.cpp.o.d" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/main.cpp.o.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/noise.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/WebCraft.dir/src/noise.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/clion-environment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/clion-log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebCraft.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/WebCraft.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build_clean" beforeDir="false" afterPath="$PROJECT_DIR$/build_clean" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shader/lambert.frag.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/shader/lambert.frag.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Camera.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Camera.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Drawable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/Drawable.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyGL.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyGL.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyGL.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyGL.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ShaderProgram.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShaderProgram.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ShaderProgram.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShaderProgram.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chunk.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/chunk.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chunk.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/chunk.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/player.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/terrain.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/terrain.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/terrain.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/terrain.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WebCraft" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WebCraft.data" beforeDir="false" afterPath="$PROJECT_DIR$/web/WebCraft.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WebCraft.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/WebCraft.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WebCraft.wasm" beforeDir="false" afterPath="$PROJECT_DIR$/web/WebCraft.wasm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,19 +83,24 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Default" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectId" id="20hngmSUUJS5weKpC4KVy8BoA4s" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/shader" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/cmake" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -83,10 +148,28 @@
       <workItem from="1636831902032" duration="21802000" />
       <workItem from="1636866491542" duration="7111000" />
       <workItem from="1636909785742" duration="749000" />
+      <workItem from="1637351932037" duration="8282000" />
+      <workItem from="1637369480095" duration="19950000" />
+      <workItem from="1637393015271" duration="26481000" />
+      <workItem from="1637451249563" duration="13559000" />
+      <workItem from="1637521941373" duration="8689000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

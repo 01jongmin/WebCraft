@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = @CMakeFiles/WebCraft.dir/includes_CXX.rsp
 
-CXX_FLAGS =  -s ALLOW_MEMORY_GROWTH=1 -s USE_SDL=2 --preload-file shader -o index.js -std=gnu++14
+CXX_FLAGS =  -s ALLOW_MEMORY_GROWTH=1 -s USE_SDL=2 -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS='["png"]' -pthread -s PTHREAD_POOL_SIZE=20 --preload-file shader -o index.js -std=gnu++14
 

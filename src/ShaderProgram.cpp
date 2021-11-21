@@ -10,7 +10,8 @@
 ShaderProgram::ShaderProgram()
         : vertShader(), fragShader(), prog(),
           attrPos(-1), attrNor(-1), attrCol(-1),
-          unifModel(-1), unifModelInvTr(-1), unifViewProj(-1), unifColor(-1)
+          unifModel(-1), unifModelInvTr(-1), unifViewProj(-1), unifColor(-1),
+          unifTime(-1), unifSampler2D(-1)
 {}
 
 void ShaderProgram::create(const char *vertfile, const char *fragfile)
@@ -42,10 +43,24 @@ void ShaderProgram::create(const char *vertfile, const char *fragfile)
     unifModelInvTr = glGetUniformLocation(prog, "u_ModelInvTr");
     unifViewProj   = glGetUniformLocation(prog, "u_ViewProj");
     unifColor      = glGetUniformLocation(prog, "u_Color");
+    unifTime       = glGetUniformLocation(prog, "u_Time");
+
+    unifSampler2D = glGetUniformLocation(prog, "u_Texture");
+
+    glUseProgram(prog);
 }
 
 void ShaderProgram::useMe() {
     glUseProgram(prog);
+}
+
+void ShaderProgram::setTime(int t) {
+    useMe();
+
+    if(unifTime != -1)
+    {
+        glUniform1i(unifTime, t);
+    }
 }
 
 void ShaderProgram::setModelMatrix(const glm::mat4 &model)
@@ -130,12 +145,16 @@ void ShaderProgram::draw(Drawable &d)
     }
 }
 
-void ShaderProgram::drawInterleaved(Drawable &d)
+void ShaderProgram::drawInterleaved(Drawable &d, bool tvbo)
 {
     useMe();
 
     if(d.elemCount() < 0) {
         throw std::out_of_range("Attempting to draw a drawable with m_count of " + std::to_string(d.elemCount()) + "!");
+    }
+
+    if (unifSampler2D != -1) {
+        glUniform1i(unifSampler2D, 0);
     }
 
     // Each of the following blocks checks that:
@@ -147,15 +166,30 @@ void ShaderProgram::drawInterleaved(Drawable &d)
     // glBindBuffer on the Drawable's VBO for vertex position,
     // meaning that glVertexAttribPointer associates vs_Pos
     // (referred to by attrPos) with that VBO
-    if (attrPos != -1 && d.bindPos()) {
-        glEnableVertexAttribArray(attrPos);
-        glVertexAttribPointer(attrPos, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void*)0);
+//    if (!tvbo) {
+//        if (attrPos != -1 && d.bindPos()) {
+//            glEnableVertexAttribArray(attrPos);
+//            glVertexAttribPointer(attrPos, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) 0);
+//
+//            glEnableVertexAttribArray(attrNor);
+//            glVertexAttribPointer(attrNor, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) sizeof(glm::vec4));
+//
+//            glEnableVertexAttribArray(attrCol);
+//            glVertexAttribPointer(attrCol, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) (2 * sizeof(glm::vec4)));
+//        }
+//    } else {
+        if (attrPos != -1 && d.bindNor()) {
+            glEnableVertexAttribArray(attrPos);
+            glVertexAttribPointer(attrPos, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) 0);
 
-        glEnableVertexAttribArray(attrNor);
-        glVertexAttribPointer(attrNor, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void*) sizeof(glm::vec4));
+            glEnableVertexAttribArray(attrNor);
+            glVertexAttribPointer(attrNor, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) sizeof(glm::vec4));
 
-        glEnableVertexAttribArray(attrCol);
-        glVertexAttribPointer(attrCol, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void*) (2 * sizeof(glm::vec4)));
+            glEnableVertexAttribArray(attrCol);
+            glVertexAttribPointer(attrCol, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) (2 * sizeof(glm::vec4)));
+//        } else {
+//           std::cout << "Bind nor returns false" << std::endl;
+//        }
     }
 
     // Bind the index buffer and then draw shapes from it.
@@ -164,6 +198,7 @@ void ShaderProgram::drawInterleaved(Drawable &d)
     glDrawElements(d.drawMode(), d.elemCount(), GL_UNSIGNED_INT, 0);
 
     if (attrPos != -1) glDisableVertexAttribArray(attrPos);
+    if (attrNor != -1) glDisableVertexAttribArray(attrNor);
 }
 
 char* ShaderProgram::textFileRead(const char* fileName) {

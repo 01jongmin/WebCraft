@@ -183,12 +183,11 @@ CMakeFiles/WebCraft.dir/src/main.cpp.o: \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_system.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_timer.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_version.h \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_opengles2.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/GLES2/gl2.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/GLES2/gl2platform.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/KHR/khrplatform.h \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/GLES2/gl2.h \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/GLES2/gl2ext.h \
   /Users/jongmin/CLionProjects/webassembly_emcc/src/MyGL.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/thread \
   /Users/jongmin/CLionProjects/webassembly_emcc/src/ShaderProgram.h \
   /Users/jongmin/CLionProjects/webassembly_emcc/src/glm_includes.h \
   /Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/glm.hpp \
@@ -346,4 +345,6 @@ CMakeFiles/WebCraft.dir/src/main.cpp.o: \
   /Users/jongmin/CLionProjects/webassembly_emcc/src/noise.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/queue \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/deque \
-  /Users/jongmin/CLionProjects/webassembly_emcc/src/player.h
+  /Users/jongmin/CLionProjects/webassembly_emcc/src/player.h \
+  /Users/jongmin/CLionProjects/webassembly_emcc/src/Texture.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_image.h

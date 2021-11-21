@@ -4,149 +4,175 @@
 	<Project>
 		<Option title="WebCraft"/>
 		<Option makefile_is_custom="1"/>
-		<Option compiler="clang"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\local\;CMake Files\..\..\..\..\usr\local\Cellar\;CMake Files\..\..\..\..\usr\local\Cellar\emscripten\;CMake Files\..\..\..\..\usr\local\Cellar\emscripten\2.0.34\;CMake Files\..\..\..\..\usr\local\Cellar\emscripten\2.0.34\libexec\;CMake Files\..\..\..\..\usr\local\Cellar\emscripten\2.0.34\libexec\cmake\;CMake Files\..\..\..\..\usr\local\Cellar\emscripten\2.0.34\libexec\cmake\Modules\;CMake Files\..\..\..\..\usr\local\Cellar\emscripten\2.0.34\libexec\cmake\Modules\Platform\;CMake Files\lib\;CMake Files\lib\glm\;CMake Files\lib\glm\cmake\;CMake Files\lib\glm\glm\;CMake Files\lib\glm\test\;CMake Files\lib\glm\test\bug\;CMake Files\lib\glm\test\core\;CMake Files\lib\glm\test\gtc\;CMake Files\lib\glm\test\gtx\;"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\local\;CMake Files\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\usr\local\lib\cmake\SDL2\;CMake Files\cmake\;CMake Files\lib\;CMake Files\lib\glm\;CMake Files\lib\glm\cmake\;CMake Files\lib\glm\glm\;CMake Files\lib\glm\test\;CMake Files\lib\glm\test\bug\;CMake Files\lib\glm\test\core\;CMake Files\lib\glm\test\gtc\;CMake Files\lib\glm\test\gtx\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/Users/jongmin/CLionProjects/webassembly_emcc"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="install/local">
 				<Option working_dir="/Users/jongmin/CLionProjects/webassembly_emcc"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 install/local"/>
-					<CompileFile command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
 				<Option working_dir="/Users/jongmin/CLionProjects/webassembly_emcc"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
 				<Option working_dir="/Users/jongmin/CLionProjects/webassembly_emcc"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="install/strip">
 				<Option working_dir="/Users/jongmin/CLionProjects/webassembly_emcc"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 install/strip"/>
-					<CompileFile command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="install">
 				<Option working_dir="/Users/jongmin/CLionProjects/webassembly_emcc"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 install"/>
-					<CompileFile command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="list_install_components">
 				<Option working_dir="/Users/jongmin/CLionProjects/webassembly_emcc"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 list_install_components"/>
-					<CompileFile command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="WebCraft">
-				<Option output="/Users/jongmin/CLionProjects/webassembly_emcc/web/WebCraft.js" prefix_auto="0" extension_auto="0"/>
+				<Option output="/Users/jongmin/CLionProjects/webassembly_emcc/web/WebCraft" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/jongmin/CLionProjects/webassembly_emcc/web"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
-				<Option compiler="clang"/>
+				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/Users/jongmin/CLionProjects/webassembly_emcc/lib"/>
+					<Add directory="/usr/local/Cellar/sdl2/2.0.16/include/SDL2"/>
+					<Add directory="/usr/local/include"/>
 					<Add directory="/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 WebCraft"/>
-					<CompileFile command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 WebCraft"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="WebCraft/fast">
-				<Option output="/Users/jongmin/CLionProjects/webassembly_emcc/web/WebCraft.js" prefix_auto="0" extension_auto="0"/>
+				<Option output="/Users/jongmin/CLionProjects/webassembly_emcc/web/WebCraft" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/jongmin/CLionProjects/webassembly_emcc/web"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
-				<Option compiler="clang"/>
+				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/Users/jongmin/CLionProjects/webassembly_emcc/lib"/>
+					<Add directory="/usr/local/Cellar/sdl2/2.0.16/include/SDL2"/>
+					<Add directory="/usr/local/include"/>
 					<Add directory="/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 WebCraft/fast"/>
-					<CompileFile command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 WebCraft/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="glm_dummy">
-				<Option output="/Users/jongmin/CLionProjects/webassembly_emcc/web/glm_dummy.js" prefix_auto="0" extension_auto="0"/>
+				<Option output="/Users/jongmin/CLionProjects/webassembly_emcc/web/glm_dummy" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/jongmin/CLionProjects/webassembly_emcc/web"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
-				<Option compiler="clang"/>
+				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
 					<Add directory="/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm"/>
 					<Add directory="/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/test/external"/>
 					<Add directory="/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/.."/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/Makefile&quot;  VERBOSE=1 glm_dummy"/>
-					<CompileFile command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/Makefile&quot;  VERBOSE=1 glm_dummy"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="glm_dummy/fast">
-				<Option output="/Users/jongmin/CLionProjects/webassembly_emcc/web/glm_dummy.js" prefix_auto="0" extension_auto="0"/>
+				<Option output="/Users/jongmin/CLionProjects/webassembly_emcc/web/glm_dummy" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/jongmin/CLionProjects/webassembly_emcc/web"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
-				<Option compiler="clang"/>
+				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-D_CRT_SECURE_NO_WARNINGS"/>
 					<Add directory="/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm"/>
 					<Add directory="/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/test/external"/>
 					<Add directory="/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/.."/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/Makefile&quot;  VERBOSE=1 glm_dummy/fast"/>
-					<CompileFile command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/Makefile&quot;  VERBOSE=1 glm_dummy/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/glm/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
@@ -975,6 +1001,12 @@
 		<Unit filename="/Users/jongmin/CLionProjects/webassembly_emcc/src/Terrain.h">
 			<Option target="WebCraft"/>
 		</Unit>
+		<Unit filename="/Users/jongmin/CLionProjects/webassembly_emcc/src/Texture.cpp">
+			<Option target="WebCraft"/>
+		</Unit>
+		<Unit filename="/Users/jongmin/CLionProjects/webassembly_emcc/src/Texture.h">
+			<Option target="WebCraft"/>
+		</Unit>
 		<Unit filename="/Users/jongmin/CLionProjects/webassembly_emcc/src/WorldAxes.cpp">
 			<Option target="WebCraft"/>
 		</Unit>
@@ -1005,11 +1037,14 @@
 		<Unit filename="/Users/jongmin/CLionProjects/webassembly_emcc/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/Users/jongmin/CLionProjects/webassembly_emcc/../../../../usr/local/Cellar/emscripten/2.0.34/libexec/cmake/Modules/CMakeSystemSpecificInformation.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\Cellar\emscripten\2.0.34\libexec\cmake\Modules\"/>
+		<Unit filename="/Users/jongmin/CLionProjects/webassembly_emcc/../../../../usr/local/lib/cmake/SDL2/sdl2-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\SDL2\"/>
 		</Unit>
-		<Unit filename="/Users/jongmin/CLionProjects/webassembly_emcc/../../../../usr/local/Cellar/emscripten/2.0.34/libexec/cmake/Modules/Platform/Emscripten.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\Cellar\emscripten\2.0.34\libexec\cmake\Modules\Platform\"/>
+		<Unit filename="/Users/jongmin/CLionProjects/webassembly_emcc/../../../../usr/local/lib/cmake/SDL2/sdl2-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\SDL2\"/>
+		</Unit>
+		<Unit filename="/Users/jongmin/CLionProjects/webassembly_emcc/cmake/FindOpenGLES2.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
 		</Unit>
 		<Unit filename="/Users/jongmin/CLionProjects/webassembly_emcc/lib/glm/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\lib\glm\"/>

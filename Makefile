@@ -355,6 +355,30 @@ src/Terrain.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/WebCraft.dir/build.make CMakeFiles/WebCraft.dir/src/Terrain.cpp.s
 .PHONY : src/Terrain.cpp.s
 
+src/Texture.o: src/Texture.cpp.o
+.PHONY : src/Texture.o
+
+# target to build an object file
+src/Texture.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WebCraft.dir/build.make CMakeFiles/WebCraft.dir/src/Texture.cpp.o
+.PHONY : src/Texture.cpp.o
+
+src/Texture.i: src/Texture.cpp.i
+.PHONY : src/Texture.i
+
+# target to preprocess a source file
+src/Texture.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WebCraft.dir/build.make CMakeFiles/WebCraft.dir/src/Texture.cpp.i
+.PHONY : src/Texture.cpp.i
+
+src/Texture.s: src/Texture.cpp.s
+.PHONY : src/Texture.s
+
+# target to generate assembly for a file
+src/Texture.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WebCraft.dir/build.make CMakeFiles/WebCraft.dir/src/Texture.cpp.s
+.PHONY : src/Texture.cpp.s
+
 src/WorldAxes.o: src/WorldAxes.cpp.o
 .PHONY : src/WorldAxes.o
 
@@ -486,6 +510,9 @@ help:
 	@echo "... src/Terrain.o"
 	@echo "... src/Terrain.i"
 	@echo "... src/Terrain.s"
+	@echo "... src/Texture.o"
+	@echo "... src/Texture.i"
+	@echo "... src/Texture.s"
 	@echo "... src/WorldAxes.o"
 	@echo "... src/WorldAxes.i"
 	@echo "... src/WorldAxes.s"

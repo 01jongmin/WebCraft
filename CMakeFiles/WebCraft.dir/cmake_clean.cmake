@@ -13,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.o.d"
   "CMakeFiles/WebCraft.dir/src/Terrain.cpp.o"
   "CMakeFiles/WebCraft.dir/src/Terrain.cpp.o.d"
+  "CMakeFiles/WebCraft.dir/src/Texture.cpp.o"
+  "CMakeFiles/WebCraft.dir/src/Texture.cpp.o.d"
   "CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.o"
   "CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.o.d"
   "CMakeFiles/WebCraft.dir/src/chunk.cpp.o"

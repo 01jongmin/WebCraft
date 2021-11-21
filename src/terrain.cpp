@@ -1,7 +1,8 @@
 #include "terrain.h"
 //#include "smartpointerhelp.h"
 //#include <stdexcept>
-//#include <iostream>
+#include <iostream>
+#include "chunk.h"
 //
 Terrain::Terrain()
     : m_chunks(), m_generatedTerrain()
@@ -99,19 +100,20 @@ const uPtr<Chunk>& Terrain::getChunkAt(int x, int z) const {
 
 void Terrain::setBlockAt(int x, int y, int z, BlockType t)
 {
-    if(hasChunkAt(x, z)) {
+    if(hasChunkAt(x, z) && x >= 0 && y >= 0 && z >= 0) {
         uPtr<Chunk> &c = getChunkAt(x, z);
-        glm::vec2 chunkOrigin = glm::vec2(floor(x / 16.f) * 16, floor(z / 16.f) * 16);
-        c->setBlockAt(static_cast<unsigned int>(x - chunkOrigin.x),
-                      static_cast<unsigned int>(y),
-                      static_cast<unsigned int>(z - chunkOrigin.y),
+        glm::ivec2 chunkOrigin = glm::ivec2(floor(x / 16.f) * 16, floor(z / 16.f) * 16);
+//        std::cout << "setBlockAt: " << x - chunkOrigin.x << " " << y << " " << z - chunkOrigin.y << std::endl;
+        c->setBlockAt(x - chunkOrigin.x,
+                      y,
+                      z - chunkOrigin.y,
                       t);
     }
-    else {
-        throw std::out_of_range("Coordinates " + std::to_string(x) +
-                                " " + std::to_string(y) + " " +
-                                std::to_string(z) + " have no Chunk!");
-    }
+//    else {
+//        throw std::out_of_range("Coordinates " + std::to_string(x) +
+//                                " " + std::to_string(y) + " " +
+//                                std::to_string(z) + " have no Chunk!");
+//    }
 }
 
 Chunk* Terrain::instantiateChunkAt(int x, int z) {
@@ -150,15 +152,29 @@ void Terrain::draw(int minX, int maxX, int minZ, int maxZ, ShaderProgram *shader
     for(int x = minX; x < maxX; x += 16) {
         for(int z = minZ; z < maxZ; z += 16) {
             if(!hasChunkAt(x, z)){
+                std::cout << "creating chunk X: " << x << " Z: " << z << std::endl;
                 this->instantiateChunkAt(x, z);
             }
 
             const uPtr<Chunk> &chunk = getChunkAt(x, z);
             shaderProgram->setModelMatrix(glm::translate(glm::mat4(), glm::vec3(x, 0, z)));
             chunk->setVBOdata();
-            shaderProgram->drawInterleaved(*chunk);
+            shaderProgram->drawInterleaved(*chunk, false);
         }
     }
+
+//    for(int x = minX; x < maxX; x += 16) {
+//        for(int z = minZ; z < maxZ; z += 16) {
+//            if(!hasChunkAt(x, z)){
+//                std::cout << "creating chunk X: " << x << " Z: " << z << std::endl;
+//                this->instantiateChunkAt(x, z);
+//            }
+//            const uPtr<Chunk> &chunk = getChunkAt(x, z);
+//            shaderProgram->setModelMatrix(glm::translate(glm::mat4(), glm::vec3(x, 0, z)));
+//            chunk->setTVBOdata();
+//            shaderProgram->drawInterleaved(*chunk, false);
+//        }
+//    }
 }
 //
 int Terrain::grasslandHeighField(int x, int z)
@@ -198,11 +214,6 @@ int Terrain::mountainHeighField(int x, int z)
 
 void Terrain::createBiomes(int x, int z)
 {
-    if(testing.find(toKey(x, z)) != testing.end()){
-        std::cout<<"Duplicate Create!!\n";
-    }
-    testing.insert(toKey(x, z));
-
     glm::vec2 p = glm::vec2(x, z);
     float noise = (glm::simplex(p/1080.f));
     float t = glm::smoothstep(0.15f, 0.85f, 0.5f* (1 + noise));
@@ -251,11 +262,58 @@ void Terrain::createBiomes(int x, int z)
         }
     }
 
+    // TODO: Why is this an error????
     for(i = 255; i >= 128 && i >= y; i--){
         if(this->getBlockAt(x, i, z) == EMPTY && i <= 138)
             setBlockAt(x, i, z, WATER);
     }
 }
+
+//void Terrain::createBiomes(int x, int z)
+//{
+//    glm::vec2 p = glm::vec2(x, z);
+//    float noise = (glm::simplex(p/1080.f));
+//    float t = glm::smoothstep(0.15f, 0.85f, 0.5f* (1 + noise));
+//
+//    float h1 = this->mountainHeighField(x, z);
+//    float h2 = this->grasslandHeighField(x, z);
+//
+//    float height = glm::mix(h1, h2, t);
+//    int y = height, i = 0;
+//
+//    setBlockAt(x, 0, z, BEDROCK);
+//    for(i = 1; i < y && i < 129; i++){
+//        glm::vec3 cavePos = glm::vec3(x / 100.f, i / 20.f, z / 150.f);
+//        bool isEmpty = (glm::perlin(cavePos) - 0.12 > 0);
+//
+//        (isEmpty)?(i < 25)?setBlockAt(x, i, z, LAVA):setBlockAt(x, i, z, EMPTY):setBlockAt(x, i, z, STONE);
+//    }
+//
+//    i = 129;
+//    if(t > 0.75){
+//        // Grassland
+//        for(; i < y; i++){
+//            setBlockAt(x, i, z, DIRT);
+//        }
+//        setBlockAt(x, i, z, GRASS);
+//    }
+//    else{
+//        // Mountain
+//        for(; i < y; i++){
+//            setBlockAt(x, i, z, STONE);
+//        }
+//
+//        if(y > 200)
+//            setBlockAt(x, y, z, SNOW);
+//        else
+//            setBlockAt(x, y, z, STONE);
+//    }
+//
+//    for(i = 138; i >= 128 && i >= y; i--){
+//        if(this->getBlockAt(x, i, z) == EMPTY && i <= 138)
+//            setBlockAt(x, i, z, WATER);
+//    }
+//}
 
 void Terrain::createTerrainZone(int x, int z)
 {
