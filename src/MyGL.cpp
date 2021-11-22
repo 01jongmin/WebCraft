@@ -136,7 +136,7 @@ void MyGL::renderTerrain() {
     int xCurr = 16 * static_cast<int>(glm::floor(pos[0] / 16.f));
     int zCurr = 16 * static_cast<int>(glm::floor(pos[2] / 16.f));
 
-    int d = 2;
+    int d = 10;
 
     blockWorkerMutex.lock();
     vboWorkerMutex.lock();
