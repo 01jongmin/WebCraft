@@ -43,10 +43,9 @@ FrameBuffer::FrameBuffer()
           m_outputTexture(-1), m_depthRenderBuffer(-1)
 {}
 
-void FrameBuffer::setDimensions(unsigned int width, unsigned int height, unsigned int devicePixelRatio) {
+void FrameBuffer::setDimensions(unsigned int width, unsigned int height) {
     m_width = width;
     m_height = height;
-    m_devicePixelRatio = devicePixelRatio;
 }
 
 void FrameBuffer::create() {
@@ -59,19 +58,19 @@ void FrameBuffer::create() {
     // Bind our texture so that all functions that deal with textures will interact with this one
     glBindTexture(GL_TEXTURE_2D, m_outputTexture);
     // Give an empty image to OpenGL ( the last "0" )
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_width * m_devicePixelRatio, m_height * m_devicePixelRatio, 0, GL_RGB, GL_UNSIGNED_BYTE, (void*)0);
-//
-//    // Set the render settings for the texture we've just created.
-//    // Essentially zero filtering on the "texture" so it appears exactly as rendered
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_width, m_height, 0, GL_RGB, GL_UNSIGNED_BYTE, (void*)0);
+
+    // Set the render settings for the texture we've just created.
+    // Essentially zero filtering on the "texture" so it appears exactly as rendered
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-//    // Clamp the colors at the edge of our texture
+    // Clamp the colors at the edge of our texture
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-//
-//    // Initialize our depth buffer
+
+    // Initialize our depth buffer
     glBindRenderbuffer(GL_RENDERBUFFER, m_depthRenderBuffer);
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, m_width * m_devicePixelRatio, m_height * m_devicePixelRatio);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, m_width, m_height);
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, m_depthRenderBuffer);
 
     // Set m_renderedTexture as the color output of our frame buffer
@@ -85,16 +84,12 @@ void FrameBuffer::create() {
 //
     m_created = true;
     if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
-//        m_created = false;
-//        std::cout << "Frame buffer did not initialize correctly..." << std::endl;
-//        std::cout << glGetError() << std::endl;
+        m_created = false;
+        std::cout << "Frame buffer did not initialize correctly..." << std::endl;
         throw std::out_of_range("invalid frame buffer");
     }
 }
 
-
-
-//
 void FrameBuffer::destroy() {
     if(m_created) {
         m_created = false;

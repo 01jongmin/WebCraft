@@ -104,11 +104,11 @@ void Player::deleteBlock(Terrain *terrain) {
     if (gridMarch(m_camera.mcr_position, m_forward * 3.f, *terrain, &distance, &block, &axis)) {
         terrain->setBlockAt(block.x, block.y, block.z, EMPTY);
         Chunk* chunk = terrain->getChunkAt(block.x, block.z).get();
-        chunk->createVBOdata();
+        chunk->needUpdate = true;
         for (int x = -1; x < 2; x++) {
             for (int z = -1; z < 2; z++) {
                 if (terrain->getChunkAt(block.x + x, block.z + z).get() != chunk) {
-                    terrain->getChunkAt(block.x + x, block.z + z).get()->createVBOdata();
+                    terrain->getChunkAt(block.x + x, block.z + z)->needUpdate = true;
                 }
             }
         }
@@ -126,10 +126,8 @@ void Player::addBlock(Terrain *terrain) {
         glm::ivec3 newBlock = block + (int) -glm::sign(m_forward[axis]) * axisVec;
 
         terrain->setBlockAt(newBlock.x, newBlock.y, newBlock.z, STONE);
-        terrain->getChunkAt(newBlock.x, newBlock.z)->createVBOdata();
-//        terrain->getChunkAt(newBlock.x, newBlock.z)->setBlockAt(newBlock.x, newBlock.y, newBlock.z, STONE);
+        terrain->getChunkAt(newBlock.x, newBlock.z)->needUpdate = true;
     }
-
 }
 
 void Player::computePhysics(float dT, const Terrain &terrain) {

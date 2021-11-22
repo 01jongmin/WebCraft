@@ -91,6 +91,7 @@ public:
     glm::vec4 chunkPos;
 
     bool vboSet;
+    bool needUpdate;
     void createVBOdata();
     void setTVBOdata();
     void setVBOdata();

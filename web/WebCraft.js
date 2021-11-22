@@ -257,7 +257,7 @@ Module.expectedDataFileDownloads++;
    "end": 119938
   } ],
   "remote_package_size": 119938,
-  "package_uuid": "4a596dd1-c38b-44ce-84da-675d88e1dc90"
+  "package_uuid": "0d4ba906-a23f-4b4a-b6d5-f293fc8c66e5"
  });
 })();
 
@@ -1696,7 +1696,7 @@ var tempDouble;
 var tempI64;
 
 var ASM_CONSTS = {
- 82588: function($0, $1, $2) {
+ 82620: function($0, $1, $2) {
   var w = $0;
   var h = $1;
   var pixels = $2;
@@ -1767,7 +1767,7 @@ var ASM_CONSTS = {
   SDL2.ctx.putImageData(SDL2.image, 0, 0);
   return 0;
  },
- 84043: function($0, $1, $2, $3, $4) {
+ 84075: function($0, $1, $2, $3, $4) {
   var w = $0;
   var h = $1;
   var hot_x = $2;
@@ -1804,36 +1804,36 @@ var ASM_CONSTS = {
   stringToUTF8(url, urlBuf, url.length + 1);
   return urlBuf;
  },
- 85032: function($0) {
+ 85064: function($0) {
   if (Module["canvas"]) {
    Module["canvas"].style["cursor"] = UTF8ToString($0);
   }
   return 0;
  },
- 85125: function() {
+ 85157: function() {
   if (Module["canvas"]) {
    Module["canvas"].style["cursor"] = "none";
   }
  },
- 85194: function() {
+ 85226: function() {
   return screen.width;
  },
- 85219: function() {
+ 85251: function() {
   return screen.height;
  },
- 85245: function() {
+ 85277: function() {
   return window.innerWidth;
  },
- 85275: function() {
+ 85307: function() {
   return window.innerHeight;
  },
- 85306: function($0) {
+ 85338: function($0) {
   if (typeof setWindowTitle !== "undefined") {
    setWindowTitle(UTF8ToString($0));
   }
   return 0;
  },
- 85401: function() {
+ 85433: function() {
   if (typeof AudioContext !== "undefined") {
    return 1;
   } else if (typeof webkitAudioContext !== "undefined") {
@@ -1841,7 +1841,7 @@ var ASM_CONSTS = {
   }
   return 0;
  },
- 85538: function() {
+ 85570: function() {
   if (typeof navigator.mediaDevices !== "undefined" && typeof navigator.mediaDevices.getUserMedia !== "undefined") {
    return 1;
   } else if (typeof navigator.webkitGetUserMedia !== "undefined") {
@@ -1849,7 +1849,7 @@ var ASM_CONSTS = {
   }
   return 0;
  },
- 85762: function($0) {
+ 85794: function($0) {
   if (typeof Module["SDL2"] === "undefined") {
    Module["SDL2"] = {};
   }
@@ -1871,11 +1871,11 @@ var ASM_CONSTS = {
   }
   return SDL2.audioContext === undefined ? -1 : 0;
  },
- 86255: function() {
+ 86287: function() {
   var SDL2 = Module["SDL2"];
   return SDL2.audioContext.sampleRate;
  },
- 86323: function($0, $1, $2, $3) {
+ 86355: function($0, $1, $2, $3) {
   var SDL2 = Module["SDL2"];
   var have_microphone = function(stream) {
    if (SDL2.capture.silenceTimer !== undefined) {
@@ -1916,7 +1916,7 @@ var ASM_CONSTS = {
    }, have_microphone, no_microphone);
   }
  },
- 87975: function($0, $1, $2, $3) {
+ 88007: function($0, $1, $2, $3) {
   var SDL2 = Module["SDL2"];
   SDL2.audio.scriptProcessorNode = SDL2.audioContext["createScriptProcessor"]($1, 0, $0);
   SDL2.audio.scriptProcessorNode["onaudioprocess"] = function(e) {
@@ -1928,7 +1928,7 @@ var ASM_CONSTS = {
   };
   SDL2.audio.scriptProcessorNode["connect"](SDL2.audioContext["destination"]);
  },
- 88385: function($0, $1) {
+ 88417: function($0, $1) {
   var SDL2 = Module["SDL2"];
   var numChannels = SDL2.capture.currentCaptureBuffer.numberOfChannels;
   for (var c = 0; c < numChannels; ++c) {
@@ -1947,7 +1947,7 @@ var ASM_CONSTS = {
    }
   }
  },
- 88990: function($0, $1) {
+ 89022: function($0, $1) {
   var SDL2 = Module["SDL2"];
   var numChannels = SDL2.audio.currentOutputBuffer["numberOfChannels"];
   for (var c = 0; c < numChannels; ++c) {
@@ -1960,7 +1960,7 @@ var ASM_CONSTS = {
    }
   }
  },
- 89470: function($0) {
+ 89502: function($0) {
   var SDL2 = Module["SDL2"];
   if ($0) {
    if (SDL2.capture.silenceTimer !== undefined) {
@@ -9611,6 +9611,17 @@ function _glCreateShader(shaderType) {
  return id;
 }
 
+function _glDeleteBuffers(n, buffers) {
+ for (var i = 0; i < n; i++) {
+  var id = GROWABLE_HEAP_I32()[buffers + i * 4 >> 2];
+  var buffer = GL.buffers[id];
+  if (!buffer) continue;
+  GLctx.deleteBuffer(buffer);
+  buffer.name = 0;
+  GL.buffers[id] = null;
+ }
+}
+
 function _glDisable(x0) {
  GLctx["disable"](x0);
 }
@@ -10701,6 +10712,7 @@ var asmLibraryArg = {
  "glCompileShader": _glCompileShader,
  "glCreateProgram": _glCreateProgram,
  "glCreateShader": _glCreateShader,
+ "glDeleteBuffers": _glDeleteBuffers,
  "glDisable": _glDisable,
  "glDisableVertexAttribArray": _glDisableVertexAttribArray,
  "glDrawElements": _glDrawElements,
@@ -10751,9 +10763,7 @@ var ___wasm_call_ctors = Module["___wasm_call_ctors"] = createExportWrapper("__w
 
 var _main = Module["_main"] = createExportWrapper("main");
 
-var _setDevicePixelRatio = Module["_setDevicePixelRatio"] = createExportWrapper("setDevicePixelRatio");
-
-var _toggle_background_color = Module["_toggle_background_color"] = createExportWrapper("toggle_background_color");
+var _handle_mouse_move = Module["_handle_mouse_move"] = createExportWrapper("handle_mouse_move");
 
 var _malloc = Module["_malloc"] = createExportWrapper("malloc");
 
@@ -10837,9 +10847,9 @@ var dynCall_iiiiiijj = Module["dynCall_iiiiiijj"] = createExportWrapper("dynCall
 
 var dynCall_viijii = Module["dynCall_viijii"] = createExportWrapper("dynCall_viijii");
 
-var __emscripten_allow_main_runtime_queued_calls = Module["__emscripten_allow_main_runtime_queued_calls"] = 82124;
+var __emscripten_allow_main_runtime_queued_calls = Module["__emscripten_allow_main_runtime_queued_calls"] = 82156;
 
-var __emscripten_main_thread_futex = Module["__emscripten_main_thread_futex"] = 97248;
+var __emscripten_main_thread_futex = Module["__emscripten_main_thread_futex"] = 97264;
 
 function invoke_ii(index, a1) {
  var sp = stackSave();

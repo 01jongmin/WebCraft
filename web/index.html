@@ -38,7 +38,6 @@
       document.addEventListener("mozpointerlockchange", lockChangeAlert, false);
 
       function lockChangeAlert() {
-        _setDevicePixelRatio(window.devicePixelRatio);
         if (
           document.pointerLockElement === canvas ||
           document.mozPointerLockElement === canvas
@@ -57,9 +56,7 @@
       function updatePosition(e) {
         x = e.movementX;
         y = e.movementY;
-        _toggle_background_color(x, y);
-        // console.log(x);
-        // console.log(y);
+        _handle_mouse_move(x, y);
       }
     </script>
   </body>

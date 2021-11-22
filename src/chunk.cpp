@@ -12,7 +12,7 @@ Chunk::Chunk():
         },
         m_bufDataIdx(), m_bufData(), m_bufTransparentDataIdx(), m_bufTransparentData(),
         m_dataIdxGenerated(false), m_dataGenerated(false), m_transparentDataIdxGenerated(false),
-        m_transparentDataGenerated(false)
+        m_transparentDataGenerated(false), needUpdate(false)
         {
     std::fill_n(m_blocks.begin(), 65536, EMPTY);
 }
@@ -92,8 +92,6 @@ bool Chunk::bindTransparentData() {
 }
 
 void Chunk::createVBOdata() {
-    if (vboSet) return;
-
     for (auto& e : m_neighbors) {
         if (e.second == nullptr) {
             return;
@@ -154,7 +152,20 @@ void Chunk::createVBOdata() {
     }
     std::cout << "VData count" << data.size() << std::endl;
     std::cout << "TData count" << t_data.size() << std::endl;
+
     vboSet = true;
+
+    if (needUpdate) {
+        needUpdate = false;
+        if (m_dataGenerated) glDeleteBuffers(1, &m_bufData);
+        if (m_dataIdxGenerated) glDeleteBuffers(1, &m_bufDataIdx);
+        if (m_transparentDataGenerated) glDeleteBuffers(1, &m_bufTransparentData);
+        if (m_transparentDataIdxGenerated) glDeleteBuffers(1, &m_bufTransparentDataIdx);
+        m_dataGenerated = false;
+        m_dataIdxGenerated = false;
+        m_transparentDataGenerated = false;
+        m_transparentDataIdxGenerated = false;
+    }
 }
 
 void Chunk::setVBOdata() {
@@ -167,30 +178,6 @@ void Chunk::setVBOdata() {
         glBindBuffer(GL_ARRAY_BUFFER, m_bufData);
         glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(glm::vec4), data.data(), GL_STATIC_DRAW);
     }
-//
-//    if (!m_posGenerated || !m_idxGenerated) {
-//        m_count = idx.size();
-//        generateIdx();
-//        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_bufIdx);
-//        glBufferData(GL_ELEMENT_ARRAY_BUFFER, idx.size() * sizeof(GLuint), idx.data(), GL_STATIC_DRAW);
-//
-//        generatePos();
-//        glBindBuffer(GL_ARRAY_BUFFER, m_bufPos);
-//        glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(glm::vec4), data.data(), GL_STATIC_DRAW);
-//    }
-
-//    if (!m_posGenerated || !m_idxGenerated) {
-//        m_count = idx.size();
-//
-//        // Create a VBO on our GPU and store its handle in bufIdx
-//        generateIdx();
-//        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_bufIdx);
-//        glBufferData(GL_ELEMENT_ARRAY_BUFFER, idx.size() * sizeof(GLuint), idx.data(), GL_STATIC_DRAW);
-//
-//        generatePos();
-//        glBindBuffer(GL_ARRAY_BUFFER, m_bufPos);
-//        glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(glm::vec4), data.data(), GL_STATIC_DRAW);
-//    }
 }
 
 void Chunk::setTVBOdata() {
@@ -204,16 +191,6 @@ void Chunk::setTVBOdata() {
         glBufferData(GL_ARRAY_BUFFER, t_data.size() * sizeof(glm::vec4), t_data.data(), GL_STATIC_DRAW);
         std::cout << "set TVBO triggered" << std::endl;
     }
-//    if (!m_norGenerated || !m_colGenerated) {
-//        generateCol();
-//        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_bufCol);
-//        glBufferData(GL_ELEMENT_ARRAY_BUFFER, t_idx.size() * sizeof(GLuint), t_idx.data(), GL_STATIC_DRAW);
-//
-//        generateNor();
-//        glBindBuffer(GL_ARRAY_BUFFER, m_bufNor);
-//        glBufferData(GL_ARRAY_BUFFER, t_data.size() * sizeof(glm::vec4), t_data.data(), GL_STATIC_DRAW);
-//        std::cout << "set TVBO triggered" << std::endl;
-//    }
 }
 
 void Chunk::drawFace(
