@@ -29,6 +29,8 @@ public:
     int unifTime;
     int unifSampler2D;
 
+    int frameBufferUnifSampler2D;
+
     int unifSurrounding;
 
 public:
@@ -45,6 +47,7 @@ public:
 //    void setGeometryColor(glm::vec4 color);
     // Draw the given object to our screen using this ShaderProgram's shaders
     void draw(Drawable &d);
+    void draw(Drawable &d, int test);
 
     void drawInterleaved(Drawable &d, bool tvbo, int);
     void drawChunkInterleaved(Chunk &c, bool transparent);

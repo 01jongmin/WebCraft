@@ -11,7 +11,7 @@ ShaderProgram::ShaderProgram()
         : vertShader(), fragShader(), prog(),
           attrPos(-1), attrNor(-1), attrCol(-1),
           unifModel(-1), unifModelInvTr(-1), unifViewProj(-1), unifColor(-1),
-          unifTime(-1), unifSampler2D(-1), unifSurrounding(-1)
+          unifTime(-1), unifSampler2D(-1), unifSurrounding(-1), frameBufferUnifSampler2D(-1)
 {}
 
 void ShaderProgram::create(const char *vertfile, const char *fragfile)
@@ -47,6 +47,8 @@ void ShaderProgram::create(const char *vertfile, const char *fragfile)
     unifSurrounding = glGetUniformLocation(prog, "u_Surrounding");
 
     unifSampler2D = glGetUniformLocation(prog, "u_Texture");
+
+    frameBufferUnifSampler2D = glGetUniformLocation(prog, "u_RenderedTexture");
 
     glUseProgram(prog);
 }
@@ -90,6 +92,7 @@ void ShaderProgram::setViewProjMatrix(const glm::mat4 &vp)
         // Handle to the matrix variable on the GPU
         glUniformMatrix4fv(unifViewProj,1, GL_FALSE,&vp[0][0]);
     }
+
 }
 
 void ShaderProgram::draw(Drawable &d)
@@ -122,6 +125,72 @@ void ShaderProgram::draw(Drawable &d)
     if (attrCol != -1 && d.bindCol()) {
         glEnableVertexAttribArray(attrCol);
         glVertexAttribPointer(attrCol, 4, GL_FLOAT, false, 0, NULL);
+    }
+
+//    if(frameBufferUnifSampler2D != -1) {
+//        glUniform1i(frameBufferUnifSampler2D, /*GL_TEXTURE*/2);
+//    } else {
+//        throw;
+//    }
+
+    // Bind the index buffer and then draw shapes from it.
+    // This invokes the shader program, which accesses the vertex buffers.
+    d.bindIdx();
+    glDrawElements(d.drawMode(), d.elemCount(), GL_UNSIGNED_INT, 0);
+
+    if (attrPos != -1) glDisableVertexAttribArray(attrPos);
+    if (attrNor != -1) glDisableVertexAttribArray(attrNor);
+    if (attrCol != -1) glDisableVertexAttribArray(attrCol);
+
+    GLenum error = glGetError();
+    if (error != GL_NO_ERROR) {
+        std::cerr << "OpenGL error " << error << ": ";
+        const char *e =
+                error == GL_INVALID_OPERATION             ? "GL_INVALID_OPERATION" :
+                error == GL_INVALID_ENUM                  ? "GL_INVALID_ENUM" :
+                error == GL_INVALID_VALUE                 ? "GL_INVALID_VALUE" :
+                error == GL_INVALID_INDEX                 ? "GL_INVALID_INDEX" :
+                error == GL_INVALID_OPERATION             ? "GL_INVALID_OPERATION" : "?";
+        std::cerr << e << std::endl;
+    }
+}
+
+void ShaderProgram::draw(Drawable &d, int test)
+{
+    useMe();
+
+    if(d.elemCount() < 0) {
+        throw std::out_of_range("Attempting to draw a drawable with m_count of " + std::to_string(d.elemCount()) + "!");
+    }
+
+    // Each of the following blocks checks that:
+    //   * This shader has this attribute, and
+    //   * This Drawable has a vertex buffer for this attribute.
+    // If so, it binds the appropriate buffers to each attribute.
+
+    // Remember, by calling bindPos(), we call
+    // glBindBuffer on the Drawable's VBO for vertex position,
+    // meaning that glVertexAttribPointer associates vs_Pos
+    // (referred to by attrPos) with that VBO
+    if (attrPos != -1 && d.bindPos()) {
+        glEnableVertexAttribArray(attrPos);
+        glVertexAttribPointer(attrPos, 4, GL_FLOAT, false, 0, NULL);
+    }
+
+    if (attrNor != -1 && d.bindNor()) {
+        glEnableVertexAttribArray(attrNor);
+        glVertexAttribPointer(attrNor, 4, GL_FLOAT, false, 0, NULL);
+    }
+
+    if (attrCol != -1 && d.bindCol()) {
+        glEnableVertexAttribArray(attrCol);
+        glVertexAttribPointer(attrCol, 4, GL_FLOAT, false, 0, NULL);
+    }
+
+    if(frameBufferUnifSampler2D != -1) {
+        glUniform1i(frameBufferUnifSampler2D, test);
+    } else {
+        throw;
     }
 
     // Bind the index buffer and then draw shapes from it.

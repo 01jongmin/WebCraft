@@ -13,12 +13,49 @@
 #include "Texture.h"
 #include "chunk.h"
 
+void checkGlError2(std::string description){
+    GLenum error = glGetError();
+    while(error != GL_NO_ERROR)
+    {
+        switch(error){
+            case(GL_NO_ERROR):
+
+                break;
+            case(GL_INVALID_ENUM):
+                std::cout << description << ": GL_INVALID_ENUM" << std::endl;
+                break;
+            case(GL_INVALID_VALUE):
+                std::cout << description << ": GL_INVALID_VALUE" << std::endl;
+                break;
+            case(GL_INVALID_OPERATION):
+                std::cout << description << ": GL_INVALID_OPERATION" << std::endl;
+                break;
+            case(GL_INVALID_FRAMEBUFFER_OPERATION):
+                std::cout << description << ": GL_INVALID_FRAMEBUFFER_OPERATION" << std::endl;
+                break;
+            case(GL_OUT_OF_MEMORY):
+                std::cout << description << ": GL_OUT_OF_MEMORY" << std::endl;
+                break;
+            default:
+                std::cout << description << ": Unknown error!" << std::endl;
+
+        }
+        error = glGetError();
+
+    }
+}
+
 int dx = 0;
 int dy = 0;
+float devicePixelRatio = 2.2;
 
 #ifdef __EMSCRIPTEN__
 
 #include <emscripten.h>
+
+extern "C" void EMSCRIPTEN_KEEPALIVE setDevicePixelRatio(float ratio) {
+    devicePixelRatio = ratio;
+}
 
 extern "C" void EMSCRIPTEN_KEEPALIVE toggle_background_color(int x, int y) {
     dx += x;
@@ -71,6 +108,11 @@ void vboWorkerHandler(std::deque<Chunk *> &vboChunkVector,
     }
 }
 
+
+unsigned int fbo;
+unsigned int texture;
+unsigned int rbo;
+
 MyGL::MyGL(SDL_Window *pWindow, std::vector<std::thread> &spawned_threads,
            std::mutex &blockWorkerMutex,
            std::deque<std::pair<int, int>> &blockWorkerCoordVector,
@@ -85,12 +127,42 @@ MyGL::MyGL(SDL_Window *pWindow, std::vector<std::thread> &spawned_threads,
         spawned_threads(spawned_threads), blockWorkerMutex(blockWorkerMutex),
         blockWorkerCoordVector(blockWorkerCoordVector), vboWorkerMutex(vboWorkerMutex),
         vboChunkVector(vboChunkVector), drawChunkMutex(drawChunkMutex), drawChunkVector(drawChunkVector),
-        m_time(0), m_geomQuad() {
+        m_time(0), m_geomQuad(), m_frameBuffer() {
 
     int k = 0;
     this->window = pWindow;
 
     SDL_GetWindowSize(window, &(this->width), &(this->height));
+
+    glGenFramebuffers(1, &fbo);
+    glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+
+
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    std::cout << "TEXTURE" << texture << std::endl;
+    std::cout << width << " " << height << std::endl;
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, (void*) 0);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+    glGenRenderbuffers(1, &rbo);
+    glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, width, height);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, rbo);
+    checkGlError2("Rendering");
+
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texture, 0);
+
+    if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
+        throw;
+    }
+
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_LINE_SMOOTH);
@@ -188,6 +260,12 @@ void MyGL::tick() {
     dy = 0;
     dx = 0;
 
+    glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+//    m_frameBuffer.bindFrameBuffer();
+//     Render on the whole framebuffer, complete from the lower left corner to the upper right
+//    glViewport(0,0,width * devicePixelRatio, height * devicePixelRatio);
+//    glViewport(0,0,width, height);
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     SDL_Event e;
@@ -223,6 +301,7 @@ void MyGL::tick() {
 
     m_progFlat.setViewProjMatrix(m_player.mcr_camera.getViewProj());
     m_progLambert.setViewProjMatrix(m_player.mcr_camera.getViewProj());
+    m_progPostprocess.setViewProjMatrix(m_player.mcr_camera.getViewProj());
 
     renderTerrain();
 
@@ -232,18 +311,32 @@ void MyGL::tick() {
     m_progFlat.draw(m_worldAxes);
     glEnable(GL_DEPTH_TEST);
 
-    m_progPostprocess.setTime(temp);
-    
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+//    glClearColor(1.0f, 0.4f, 1.0f, 1.0f);
+//    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    m_progPostprocess.useMe();
+    glActiveTexture(GL_TEXTURE0 + texture);
+    glBindTexture(GL_TEXTURE_2D, texture);
+
     glm::vec3 pos = m_player.mcr_camera.mcr_position;
 
-    if(inWater || m_terrain.getBlockAt(pos) == WATER)
+    if(m_terrain.getBlockAt(pos) == WATER)
         m_progPostprocess.setSurrounding(1);
     else if(m_terrain.getBlockAt(pos) == LAVA)
         m_progPostprocess.setSurrounding(2);
     else
         m_progPostprocess.setSurrounding(0);
 
-    m_progPostprocess.draw(m_geomQuad);
+    m_progPostprocess.draw(m_geomQuad, texture);
+
+//    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+//    m_progPostprocess.setTime(temp);
+//    m_frameBuffer.bindToTextureSlot(2);
+////
+
+
+//    m_progPostprocess.draw(m_geomQuad);
 }
 
 void MyGL::handleKeyPressUp(SDL_Keycode keyCode) {

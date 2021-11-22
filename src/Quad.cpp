@@ -16,10 +16,10 @@ void Quad::createVBOdata()
                            glm::vec4(1.f, 1.f, 0.99f, 1.f),
                            glm::vec4(-1.f, 1.f, 0.99f, 1.f)};
 
-    glm::vec2 vert_UV[4] {glm::vec2(0.f, 0.f),
-                          glm::vec2(1.f, 0.f),
-                          glm::vec2(1.f, 1.f),
-                          glm::vec2(0.f, 1.f)};
+    glm::vec4 vert_UV[4] {glm::vec4(0.f, 0.f, 0.f, 0.f),
+                          glm::vec4(1.f, 0.f, 0.f, 0.f),
+                          glm::vec4(1.f, 1.f, 0.f, 0.f),
+                          glm::vec4(0.f, 1.f, 0.f, 0.f)};
 
     m_count = 6;
 

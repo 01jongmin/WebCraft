@@ -38,6 +38,7 @@
       document.addEventListener("mozpointerlockchange", lockChangeAlert, false);
 
       function lockChangeAlert() {
+        _setDevicePixelRatio(window.devicePixelRatio);
         if (
           document.pointerLockElement === canvas ||
           document.mozPointerLockElement === canvas

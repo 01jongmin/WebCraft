@@ -14,6 +14,7 @@
 #include "player.h"
 #include "Texture.h"
 #include "Quad.h"
+#include "FrameBuffer.h"
 
 class MyGL {
 
@@ -32,6 +33,8 @@ private:
     ShaderProgram m_progLambert;// A shader program that uses lambertian reflection
     ShaderProgram m_progFlat;// A shader program that uses "flat" reflection (no shadowing at all)
     ShaderProgram m_progPostprocess;
+
+    FrameBuffer m_frameBuffer;
 
     Quad m_geomQuad;
 

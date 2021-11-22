@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/WebCraft.dir/src/Drawable.cpp.o.d"
   "CMakeFiles/WebCraft.dir/src/Entity.cpp.o"
   "CMakeFiles/WebCraft.dir/src/Entity.cpp.o.d"
+  "CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.o"
+  "CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.o.d"
   "CMakeFiles/WebCraft.dir/src/MyGL.cpp.o"
   "CMakeFiles/WebCraft.dir/src/MyGL.cpp.o.d"
   "CMakeFiles/WebCraft.dir/src/Player.cpp.o"

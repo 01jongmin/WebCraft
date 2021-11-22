@@ -259,6 +259,30 @@ src/Entity.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/WebCraft.dir/build.make CMakeFiles/WebCraft.dir/src/Entity.cpp.s
 .PHONY : src/Entity.cpp.s
 
+src/FrameBuffer.o: src/FrameBuffer.cpp.o
+.PHONY : src/FrameBuffer.o
+
+# target to build an object file
+src/FrameBuffer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WebCraft.dir/build.make CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.o
+.PHONY : src/FrameBuffer.cpp.o
+
+src/FrameBuffer.i: src/FrameBuffer.cpp.i
+.PHONY : src/FrameBuffer.i
+
+# target to preprocess a source file
+src/FrameBuffer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WebCraft.dir/build.make CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.i
+.PHONY : src/FrameBuffer.cpp.i
+
+src/FrameBuffer.s: src/FrameBuffer.cpp.s
+.PHONY : src/FrameBuffer.s
+
+# target to generate assembly for a file
+src/FrameBuffer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WebCraft.dir/build.make CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.s
+.PHONY : src/FrameBuffer.cpp.s
+
 src/MyGL.o: src/MyGL.cpp.o
 .PHONY : src/MyGL.o
 
@@ -522,6 +546,9 @@ help:
 	@echo "... src/Entity.o"
 	@echo "... src/Entity.i"
 	@echo "... src/Entity.s"
+	@echo "... src/FrameBuffer.o"
+	@echo "... src/FrameBuffer.i"
+	@echo "... src/FrameBuffer.s"
 	@echo "... src/MyGL.o"
 	@echo "... src/MyGL.i"
 	@echo "... src/MyGL.s"

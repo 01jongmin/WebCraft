@@ -257,7 +257,7 @@ Module.expectedDataFileDownloads++;
    "end": 119938
   } ],
   "remote_package_size": 119938,
-  "package_uuid": "942de5fd-087a-489b-9ec7-26985976d4b6"
+  "package_uuid": "4a596dd1-c38b-44ce-84da-675d88e1dc90"
  });
 })();
 
@@ -1696,7 +1696,7 @@ var tempDouble;
 var tempI64;
 
 var ASM_CONSTS = {
- 82428: function($0, $1, $2) {
+ 82588: function($0, $1, $2) {
   var w = $0;
   var h = $1;
   var pixels = $2;
@@ -1767,7 +1767,7 @@ var ASM_CONSTS = {
   SDL2.ctx.putImageData(SDL2.image, 0, 0);
   return 0;
  },
- 83883: function($0, $1, $2, $3, $4) {
+ 84043: function($0, $1, $2, $3, $4) {
   var w = $0;
   var h = $1;
   var hot_x = $2;
@@ -1804,36 +1804,36 @@ var ASM_CONSTS = {
   stringToUTF8(url, urlBuf, url.length + 1);
   return urlBuf;
  },
- 84872: function($0) {
+ 85032: function($0) {
   if (Module["canvas"]) {
    Module["canvas"].style["cursor"] = UTF8ToString($0);
   }
   return 0;
  },
- 84965: function() {
+ 85125: function() {
   if (Module["canvas"]) {
    Module["canvas"].style["cursor"] = "none";
   }
  },
- 85034: function() {
+ 85194: function() {
   return screen.width;
  },
- 85059: function() {
+ 85219: function() {
   return screen.height;
  },
- 85085: function() {
+ 85245: function() {
   return window.innerWidth;
  },
- 85115: function() {
+ 85275: function() {
   return window.innerHeight;
  },
- 85146: function($0) {
+ 85306: function($0) {
   if (typeof setWindowTitle !== "undefined") {
    setWindowTitle(UTF8ToString($0));
   }
   return 0;
  },
- 85241: function() {
+ 85401: function() {
   if (typeof AudioContext !== "undefined") {
    return 1;
   } else if (typeof webkitAudioContext !== "undefined") {
@@ -1841,7 +1841,7 @@ var ASM_CONSTS = {
   }
   return 0;
  },
- 85378: function() {
+ 85538: function() {
   if (typeof navigator.mediaDevices !== "undefined" && typeof navigator.mediaDevices.getUserMedia !== "undefined") {
    return 1;
   } else if (typeof navigator.webkitGetUserMedia !== "undefined") {
@@ -1849,7 +1849,7 @@ var ASM_CONSTS = {
   }
   return 0;
  },
- 85602: function($0) {
+ 85762: function($0) {
   if (typeof Module["SDL2"] === "undefined") {
    Module["SDL2"] = {};
   }
@@ -1871,11 +1871,11 @@ var ASM_CONSTS = {
   }
   return SDL2.audioContext === undefined ? -1 : 0;
  },
- 86095: function() {
+ 86255: function() {
   var SDL2 = Module["SDL2"];
   return SDL2.audioContext.sampleRate;
  },
- 86163: function($0, $1, $2, $3) {
+ 86323: function($0, $1, $2, $3) {
   var SDL2 = Module["SDL2"];
   var have_microphone = function(stream) {
    if (SDL2.capture.silenceTimer !== undefined) {
@@ -1916,7 +1916,7 @@ var ASM_CONSTS = {
    }, have_microphone, no_microphone);
   }
  },
- 87815: function($0, $1, $2, $3) {
+ 87975: function($0, $1, $2, $3) {
   var SDL2 = Module["SDL2"];
   SDL2.audio.scriptProcessorNode = SDL2.audioContext["createScriptProcessor"]($1, 0, $0);
   SDL2.audio.scriptProcessorNode["onaudioprocess"] = function(e) {
@@ -1928,7 +1928,7 @@ var ASM_CONSTS = {
   };
   SDL2.audio.scriptProcessorNode["connect"](SDL2.audioContext["destination"]);
  },
- 88225: function($0, $1) {
+ 88385: function($0, $1) {
   var SDL2 = Module["SDL2"];
   var numChannels = SDL2.capture.currentCaptureBuffer.numberOfChannels;
   for (var c = 0; c < numChannels; ++c) {
@@ -1947,7 +1947,7 @@ var ASM_CONSTS = {
    }
   }
  },
- 88830: function($0, $1) {
+ 88990: function($0, $1) {
   var SDL2 = Module["SDL2"];
   var numChannels = SDL2.audio.currentOutputBuffer["numberOfChannels"];
   for (var c = 0; c < numChannels; ++c) {
@@ -1960,7 +1960,7 @@ var ASM_CONSTS = {
    }
   }
  },
- 89310: function($0) {
+ 89470: function($0) {
   var SDL2 = Module["SDL2"];
   if ($0) {
    if (SDL2.capture.silenceTimer !== undefined) {
@@ -2438,6 +2438,31 @@ function ___cxa_atexit(a0, a1) {
  return _atexit(a0, a1);
 }
 
+var exceptionCaught = [];
+
+var exceptionLast = 0;
+
+var uncaughtExceptionCount = 0;
+
+function ___cxa_rethrow() {
+ var catchInfo = exceptionCaught.pop();
+ if (!catchInfo) {
+  abort("no exception to throw");
+ }
+ var info = catchInfo.get_exception_info();
+ var ptr = catchInfo.get_base_ptr();
+ if (!info.get_rethrown()) {
+  exceptionCaught.push(catchInfo);
+  info.set_rethrown(true);
+  info.set_caught(false);
+  uncaughtExceptionCount++;
+ } else {
+  catchInfo.free();
+ }
+ exceptionLast = ptr;
+ throw ptr + " - Exception catching is disabled, this exception cannot be caught. Compile with -s NO_DISABLE_EXCEPTION_CATCHING or -s EXCEPTION_CATCHING_ALLOWED=[..] to catch.";
+}
+
 function ExceptionInfo(excPtr) {
  this.excPtr = excPtr;
  this.ptr = excPtr - 16;
@@ -2486,10 +2511,6 @@ function ExceptionInfo(excPtr) {
   return prev === 1;
  };
 }
-
-var exceptionLast = 0;
-
-var uncaughtExceptionCount = 0;
 
 function ___cxa_throw(ptr, type, destructor) {
  var info = new ExceptionInfo(ptr);
@@ -9538,6 +9559,14 @@ function _glBindBuffer(target, buffer) {
  GLctx.bindBuffer(target, GL.buffers[buffer]);
 }
 
+function _glBindFramebuffer(target, framebuffer) {
+ GLctx.bindFramebuffer(target, GL.framebuffers[framebuffer]);
+}
+
+function _glBindRenderbuffer(target, renderbuffer) {
+ GLctx.bindRenderbuffer(target, GL.renderbuffers[renderbuffer]);
+}
+
 function _glBindTexture(target, texture) {
  GLctx.bindTexture(target, GL.textures[texture]);
 }
@@ -9548,6 +9577,10 @@ function _glBlendFunc(x0, x1) {
 
 function _glBufferData(target, size, data, usage) {
  GLctx.bufferData(target, data ? GROWABLE_HEAP_U8().subarray(data, data + size) : size, usage);
+}
+
+function _glCheckFramebufferStatus(x0) {
+ return GLctx["checkFramebufferStatus"](x0);
 }
 
 function _glClear(x0) {
@@ -9598,8 +9631,24 @@ function _glEnableVertexAttribArray(index) {
  GLctx.enableVertexAttribArray(index);
 }
 
+function _glFramebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer) {
+ GLctx.framebufferRenderbuffer(target, attachment, renderbuffertarget, GL.renderbuffers[renderbuffer]);
+}
+
+function _glFramebufferTexture2D(target, attachment, textarget, texture, level) {
+ GLctx.framebufferTexture2D(target, attachment, textarget, GL.textures[texture], level);
+}
+
 function _glGenBuffers(n, buffers) {
  __glGenObject(n, buffers, "createBuffer", GL.buffers);
+}
+
+function _glGenFramebuffers(n, ids) {
+ __glGenObject(n, ids, "createFramebuffer", GL.framebuffers);
+}
+
+function _glGenRenderbuffers(n, renderbuffers) {
+ __glGenObject(n, renderbuffers, "createRenderbuffer", GL.renderbuffers);
 }
 
 function _glGenTextures(n, textures) {
@@ -9700,6 +9749,10 @@ function _glLinkProgram(program) {
  GLctx.linkProgram(program);
  program.uniformLocsById = 0;
  program.uniformSizeAndIdsByName = {};
+}
+
+function _glRenderbufferStorage(x0, x1, x2, x3) {
+ GLctx["renderbufferStorage"](x0, x1, x2, x3);
 }
 
 function _glShaderSource(shader, count, string, length) {
@@ -10383,6 +10436,7 @@ var asmLibraryArg = {
  "__clock_gettime": ___clock_gettime,
  "__cxa_allocate_exception": ___cxa_allocate_exception,
  "__cxa_atexit": ___cxa_atexit,
+ "__cxa_rethrow": ___cxa_rethrow,
  "__cxa_throw": ___cxa_throw,
  "__emscripten_init_main_thread_js": ___emscripten_init_main_thread_js,
  "__pthread_create_js": ___pthread_create_js,
@@ -10636,9 +10690,12 @@ var asmLibraryArg = {
  "glActiveTexture": _glActiveTexture,
  "glAttachShader": _glAttachShader,
  "glBindBuffer": _glBindBuffer,
+ "glBindFramebuffer": _glBindFramebuffer,
+ "glBindRenderbuffer": _glBindRenderbuffer,
  "glBindTexture": _glBindTexture,
  "glBlendFunc": _glBlendFunc,
  "glBufferData": _glBufferData,
+ "glCheckFramebufferStatus": _glCheckFramebufferStatus,
  "glClear": _glClear,
  "glClearColor": _glClearColor,
  "glCompileShader": _glCompileShader,
@@ -10649,7 +10706,11 @@ var asmLibraryArg = {
  "glDrawElements": _glDrawElements,
  "glEnable": _glEnable,
  "glEnableVertexAttribArray": _glEnableVertexAttribArray,
+ "glFramebufferRenderbuffer": _glFramebufferRenderbuffer,
+ "glFramebufferTexture2D": _glFramebufferTexture2D,
  "glGenBuffers": _glGenBuffers,
+ "glGenFramebuffers": _glGenFramebuffers,
+ "glGenRenderbuffers": _glGenRenderbuffers,
  "glGenTextures": _glGenTextures,
  "glGetAttribLocation": _glGetAttribLocation,
  "glGetError": _glGetError,
@@ -10657,6 +10718,7 @@ var asmLibraryArg = {
  "glGetUniformLocation": _glGetUniformLocation,
  "glHint": _glHint,
  "glLinkProgram": _glLinkProgram,
+ "glRenderbufferStorage": _glRenderbufferStorage,
  "glShaderSource": _glShaderSource,
  "glTexImage2D": _glTexImage2D,
  "glTexParameteri": _glTexParameteri,
@@ -10688,6 +10750,8 @@ var asm = createWasm();
 var ___wasm_call_ctors = Module["___wasm_call_ctors"] = createExportWrapper("__wasm_call_ctors");
 
 var _main = Module["_main"] = createExportWrapper("main");
+
+var _setDevicePixelRatio = Module["_setDevicePixelRatio"] = createExportWrapper("setDevicePixelRatio");
 
 var _toggle_background_color = Module["_toggle_background_color"] = createExportWrapper("toggle_background_color");
 
@@ -10773,9 +10837,9 @@ var dynCall_iiiiiijj = Module["dynCall_iiiiiijj"] = createExportWrapper("dynCall
 
 var dynCall_viijii = Module["dynCall_viijii"] = createExportWrapper("dynCall_viijii");
 
-var __emscripten_allow_main_runtime_queued_calls = Module["__emscripten_allow_main_runtime_queued_calls"] = 81964;
+var __emscripten_allow_main_runtime_queued_calls = Module["__emscripten_allow_main_runtime_queued_calls"] = 82124;
 
-var __emscripten_main_thread_futex = Module["__emscripten_main_thread_futex"] = 97072;
+var __emscripten_main_thread_futex = Module["__emscripten_main_thread_futex"] = 97248;
 
 function invoke_ii(index, a1) {
  var sp = stackSave();
