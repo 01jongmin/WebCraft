@@ -30,11 +30,11 @@ void Player::processInputs(InputBundle &inputs) {
     m_acceleration -= m_right * (float) inputs.aPressed;
 
     if (superMode) {
-        m_acceleration += glm::vec3(0, 1, 0) * (float) inputs.ePressed;
-        m_acceleration -= glm::vec3(0, 1, 0) * (float) inputs.qPressed;
+        m_acceleration += glm::vec3(0, 0.7, 0) * (float) inputs.ePressed;
+        m_acceleration -= glm::vec3(0, 0.7, 0) * (float) inputs.qPressed;
     } else {
         if(!inWater)
-            m_acceleration += glm::vec3(0, -2, 0);
+            m_acceleration += glm::vec3(0, -1.7, 0);
         else
             m_acceleration += glm::vec3(0, -0.5, 0);
 

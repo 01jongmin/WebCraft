@@ -78,7 +78,7 @@ MyGL::MyGL(SDL_Window *pWindow, std::vector<std::thread> &spawned_threads,
            std::deque<Chunk *> &drawChunkVector) :
         m_worldAxes(), m_progFlat(), m_terrain(),
         m_progInstanced(), m_progLambert(),
-        m_player(glm::vec3(60.f, 200.f, 80.f), m_terrain),
+        m_player(glm::vec3(60.f, 140.f, 80.f), m_terrain),
         bundle(InputBundle()),
         lastTick(SDL_GetTicks()),
         spawned_threads(spawned_threads), blockWorkerMutex(blockWorkerMutex),
@@ -132,7 +132,7 @@ void MyGL::renderTerrain() {
     int xCurr = 16 * static_cast<int>(glm::floor(pos[0] / 16.f));
     int zCurr = 16 * static_cast<int>(glm::floor(pos[2] / 16.f));
 
-    int d = 2;
+    int d = 5;
 
     blockWorkerMutex.lock();
     vboWorkerMutex.lock();

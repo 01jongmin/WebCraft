@@ -224,32 +224,40 @@ Module.expectedDataFileDownloads++;
    "start": 2993,
    "end": 9141
   }, {
-   "filename": "/shader/shader.vert",
+   "filename": "/shader/posteffect.frag.glsl",
    "start": 9141,
-   "end": 9249
+   "end": 9434
+  }, {
+   "filename": "/shader/shader.vert",
+   "start": 9434,
+   "end": 9542
+  }, {
+   "filename": "/shader/passthrough.vert.glsl",
+   "start": 9542,
+   "end": 9715
   }, {
    "filename": "/shader/instanced.vert.glsl",
-   "start": 9249,
-   "end": 11121
+   "start": 9715,
+   "end": 11587
   }, {
    "filename": "/shader/minecraft_textures_all.png",
-   "start": 11121,
-   "end": 114968
+   "start": 11587,
+   "end": 115434
   }, {
    "filename": "/shader/shader.frag",
-   "start": 114968,
-   "end": 115119
+   "start": 115434,
+   "end": 115585
   }, {
    "filename": "/shader/flat.frag",
-   "start": 115119,
-   "end": 115399
+   "start": 115585,
+   "end": 115865
   }, {
    "filename": "/shader/lambert.frag.glsl",
-   "start": 115399,
-   "end": 119361
+   "start": 115865,
+   "end": 119827
   } ],
-  "remote_package_size": 119361,
-  "package_uuid": "c9412b6e-b0f6-4393-b748-4ce01eab4ac2"
+  "remote_package_size": 119827,
+  "package_uuid": "84c0f74c-f8a0-4600-9aa7-6c5d1a8bd93a"
  });
 })();
 
