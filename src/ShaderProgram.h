@@ -8,6 +8,7 @@
 #include <GLES2/gl2.h>
 #include "glm_includes.h"
 #include "Drawable.h"
+#include "chunk.h"
 
 class ShaderProgram {
 public:
@@ -28,6 +29,8 @@ public:
     int unifTime;
     int unifSampler2D;
 
+    int unifSurrounding;
+
 public:
     ShaderProgram();
     // Sets up the requisite GL data and shaders from the given .glsl files
@@ -44,8 +47,10 @@ public:
     void draw(Drawable &d);
 
     void drawInterleaved(Drawable &d, bool tvbo, int);
+    void drawChunkInterleaved(Chunk &c, bool transparent);
 
     void setTime(int t);
+    void setSurrounding(int s);
 
     void drawInstanced(InstancedDrawable &d);
 

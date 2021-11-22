@@ -94,7 +94,7 @@ bool Drawable::bindNor()
 bool Drawable::bindCol()
 {
     if(m_colGenerated){
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_bufCol);
+        glBindBuffer(GL_ARRAY_BUFFER, m_bufCol);
     }
     return m_colGenerated;
 }

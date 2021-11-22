@@ -330,21 +330,22 @@ CMakeFiles/WebCraft.dir/src/main.cpp.o: \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_opengl_glext.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/vector \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__split_buffer \
-  /Users/jongmin/CLionProjects/webassembly_emcc/src/WorldAxes.h \
-  /Users/jongmin/CLionProjects/webassembly_emcc/src/Camera.h \
-  /Users/jongmin/CLionProjects/webassembly_emcc/src/Entity.h \
-  /Users/jongmin/CLionProjects/webassembly_emcc/src/terrain.h \
-  /Users/jongmin/CLionProjects/webassembly_emcc/src/smartpointerhelp.h \
   /Users/jongmin/CLionProjects/webassembly_emcc/src/chunk.h \
+  /Users/jongmin/CLionProjects/webassembly_emcc/src/smartpointerhelp.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/array \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/unordered_map \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__hash_table \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__node_handle \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/optional \
+  /Users/jongmin/CLionProjects/webassembly_emcc/src/WorldAxes.h \
+  /Users/jongmin/CLionProjects/webassembly_emcc/src/Camera.h \
+  /Users/jongmin/CLionProjects/webassembly_emcc/src/Entity.h \
+  /Users/jongmin/CLionProjects/webassembly_emcc/src/terrain.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/unordered_set \
   /Users/jongmin/CLionProjects/webassembly_emcc/src/noise.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/queue \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/deque \
   /Users/jongmin/CLionProjects/webassembly_emcc/src/player.h \
   /Users/jongmin/CLionProjects/webassembly_emcc/src/Texture.h \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_image.h
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_image.h \
+  /Users/jongmin/CLionProjects/webassembly_emcc/src/Quad.h

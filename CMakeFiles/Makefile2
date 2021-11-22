@@ -199,12 +199,12 @@ lib/glm/test/gtx/clean:
 CMakeFiles/WebCraft.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/WebCraft.dir/build.make CMakeFiles/WebCraft.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/WebCraft.dir/build.make CMakeFiles/WebCraft.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13 "Built target WebCraft"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Built target WebCraft"
 .PHONY : CMakeFiles/WebCraft.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/WebCraft.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles 13
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/WebCraft.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles 0
 .PHONY : CMakeFiles/WebCraft.dir/rule
@@ -225,7 +225,7 @@ CMakeFiles/WebCraft.dir/clean:
 lib/glm/glm/CMakeFiles/glm_dummy.dir/all:
 	$(MAKE) $(MAKESILENT) -f lib/glm/glm/CMakeFiles/glm_dummy.dir/build.make lib/glm/glm/CMakeFiles/glm_dummy.dir/depend
 	$(MAKE) $(MAKESILENT) -f lib/glm/glm/CMakeFiles/glm_dummy.dir/build.make lib/glm/glm/CMakeFiles/glm_dummy.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=14,15,16 "Built target glm_dummy"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=15,16,17 "Built target glm_dummy"
 .PHONY : lib/glm/glm/CMakeFiles/glm_dummy.dir/all
 
 # Build rule for subdir invocation for target.

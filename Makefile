@@ -307,6 +307,30 @@ src/Player.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/WebCraft.dir/build.make CMakeFiles/WebCraft.dir/src/Player.cpp.s
 .PHONY : src/Player.cpp.s
 
+src/Quad.o: src/Quad.cpp.o
+.PHONY : src/Quad.o
+
+# target to build an object file
+src/Quad.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WebCraft.dir/build.make CMakeFiles/WebCraft.dir/src/Quad.cpp.o
+.PHONY : src/Quad.cpp.o
+
+src/Quad.i: src/Quad.cpp.i
+.PHONY : src/Quad.i
+
+# target to preprocess a source file
+src/Quad.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WebCraft.dir/build.make CMakeFiles/WebCraft.dir/src/Quad.cpp.i
+.PHONY : src/Quad.cpp.i
+
+src/Quad.s: src/Quad.cpp.s
+.PHONY : src/Quad.s
+
+# target to generate assembly for a file
+src/Quad.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WebCraft.dir/build.make CMakeFiles/WebCraft.dir/src/Quad.cpp.s
+.PHONY : src/Quad.cpp.s
+
 src/ShaderProgram.o: src/ShaderProgram.cpp.o
 .PHONY : src/ShaderProgram.o
 
@@ -504,6 +528,9 @@ help:
 	@echo "... src/Player.o"
 	@echo "... src/Player.i"
 	@echo "... src/Player.s"
+	@echo "... src/Quad.o"
+	@echo "... src/Quad.i"
+	@echo "... src/Quad.s"
 	@echo "... src/ShaderProgram.o"
 	@echo "... src/ShaderProgram.i"
 	@echo "... src/ShaderProgram.s"

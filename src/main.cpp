@@ -46,8 +46,8 @@ int main(int argc, char **argv)
     );
 
     SDL_GLContext glContext = SDL_GL_CreateContext(window);
-
-//    printf("%s\n", glGetString(GL_VERSION));
+//
+    printf("%s\n", glGetString(GL_VERSION));
 
     std::vector<std::thread> spawned_threads;
 

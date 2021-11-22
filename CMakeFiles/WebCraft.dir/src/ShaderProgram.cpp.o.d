@@ -279,4 +279,11 @@ CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.o: \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/inttypes.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/llvm/lib/clang/14.0.0/include/inttypes.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/inttypes.h \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/vector
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/vector \
+  /Users/jongmin/CLionProjects/webassembly_emcc/src/chunk.h \
+  /Users/jongmin/CLionProjects/webassembly_emcc/src/smartpointerhelp.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/array \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/unordered_map \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__hash_table \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__node_handle \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/optional

@@ -150,21 +150,21 @@ Chunk* Terrain::instantiateChunkAt(int x, int z) {
 // it draws each Chunk with the given ShaderProgram, remembering to set the
 // model matrix to the proper X and Z translation!
 void Terrain::draw(int minX, int maxX, int minZ, int maxZ, ShaderProgram *shaderProgram) {
-    for(int x = minX; x < maxX; x += 16) {
-        for(int z = minZ; z < maxZ; z += 16) {
-            if(!hasChunkAt(x, z)) {
-                std::cout << "creating chunk X: " << x << " Z: " << z << std::endl;
-                this->instantiateChunkAt(x, z);
-            }
-
-            const uPtr<Chunk> &chunk = getChunkAt(x, z);
-            shaderProgram->setModelMatrix(glm::translate(glm::mat4(), glm::vec3(x, 0, z)));
-            chunk->setVBOdata();
-            shaderProgram->drawInterleaved(*chunk, false, 0);
-            chunk->setTVBOdata();
-            shaderProgram->drawInterleaved(*chunk, true, chunk->t_idx.size());
-        }
-    }
+//    for(int x = minX; x < maxX; x += 16) {
+//        for(int z = minZ; z < maxZ; z += 16) {
+//            if(!hasChunkAt(x, z)) {
+//                std::cout << "creating chunk X: " << x << " Z: " << z << std::endl;
+//                this->instantiateChunkAt(x, z);
+//            }
+//
+//            const uPtr<Chunk> &chunk = getChunkAt(x, z);
+//            shaderProgram->setModelMatrix(glm::translate(glm::mat4(), glm::vec3(x, 0, z)));
+//            chunk->setVBOdata();
+//            shaderProgram->drawInterleaved(*chunk, false, 0);
+//            chunk->setTVBOdata();
+//            shaderProgram->drawInterleaved(*chunk, true, chunk->t_idx.size());
+//        }
+//    }
 
 //    for(int x = minX; x < maxX; x += 16) {
 //        for(int z = minZ; z < maxZ; z += 16) {

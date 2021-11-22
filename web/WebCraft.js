@@ -226,38 +226,38 @@ Module.expectedDataFileDownloads++;
   }, {
    "filename": "/shader/posteffect.frag.glsl",
    "start": 9141,
-   "end": 9434
+   "end": 9543
   }, {
    "filename": "/shader/shader.vert",
-   "start": 9434,
-   "end": 9542
+   "start": 9543,
+   "end": 9651
   }, {
    "filename": "/shader/passthrough.vert.glsl",
-   "start": 9542,
-   "end": 9715
+   "start": 9651,
+   "end": 9824
   }, {
    "filename": "/shader/instanced.vert.glsl",
-   "start": 9715,
-   "end": 11587
+   "start": 9824,
+   "end": 11696
   }, {
    "filename": "/shader/minecraft_textures_all.png",
-   "start": 11587,
-   "end": 115434
+   "start": 11696,
+   "end": 115543
   }, {
    "filename": "/shader/shader.frag",
-   "start": 115434,
-   "end": 115585
+   "start": 115543,
+   "end": 115694
   }, {
    "filename": "/shader/flat.frag",
-   "start": 115585,
-   "end": 115865
+   "start": 115694,
+   "end": 115974
   }, {
    "filename": "/shader/lambert.frag.glsl",
-   "start": 115865,
-   "end": 119827
+   "start": 115974,
+   "end": 119938
   } ],
-  "remote_package_size": 119827,
-  "package_uuid": "84c0f74c-f8a0-4600-9aa7-6c5d1a8bd93a"
+  "remote_package_size": 119938,
+  "package_uuid": "942de5fd-087a-489b-9ec7-26985976d4b6"
  });
 })();
 
@@ -1696,7 +1696,7 @@ var tempDouble;
 var tempI64;
 
 var ASM_CONSTS = {
- 82156: function($0, $1, $2) {
+ 82428: function($0, $1, $2) {
   var w = $0;
   var h = $1;
   var pixels = $2;
@@ -1767,7 +1767,7 @@ var ASM_CONSTS = {
   SDL2.ctx.putImageData(SDL2.image, 0, 0);
   return 0;
  },
- 83611: function($0, $1, $2, $3, $4) {
+ 83883: function($0, $1, $2, $3, $4) {
   var w = $0;
   var h = $1;
   var hot_x = $2;
@@ -1804,36 +1804,36 @@ var ASM_CONSTS = {
   stringToUTF8(url, urlBuf, url.length + 1);
   return urlBuf;
  },
- 84600: function($0) {
+ 84872: function($0) {
   if (Module["canvas"]) {
    Module["canvas"].style["cursor"] = UTF8ToString($0);
   }
   return 0;
  },
- 84693: function() {
+ 84965: function() {
   if (Module["canvas"]) {
    Module["canvas"].style["cursor"] = "none";
   }
  },
- 84762: function() {
+ 85034: function() {
   return screen.width;
  },
- 84787: function() {
+ 85059: function() {
   return screen.height;
  },
- 84813: function() {
+ 85085: function() {
   return window.innerWidth;
  },
- 84843: function() {
+ 85115: function() {
   return window.innerHeight;
  },
- 84874: function($0) {
+ 85146: function($0) {
   if (typeof setWindowTitle !== "undefined") {
    setWindowTitle(UTF8ToString($0));
   }
   return 0;
  },
- 84969: function() {
+ 85241: function() {
   if (typeof AudioContext !== "undefined") {
    return 1;
   } else if (typeof webkitAudioContext !== "undefined") {
@@ -1841,7 +1841,7 @@ var ASM_CONSTS = {
   }
   return 0;
  },
- 85106: function() {
+ 85378: function() {
   if (typeof navigator.mediaDevices !== "undefined" && typeof navigator.mediaDevices.getUserMedia !== "undefined") {
    return 1;
   } else if (typeof navigator.webkitGetUserMedia !== "undefined") {
@@ -1849,7 +1849,7 @@ var ASM_CONSTS = {
   }
   return 0;
  },
- 85330: function($0) {
+ 85602: function($0) {
   if (typeof Module["SDL2"] === "undefined") {
    Module["SDL2"] = {};
   }
@@ -1871,11 +1871,11 @@ var ASM_CONSTS = {
   }
   return SDL2.audioContext === undefined ? -1 : 0;
  },
- 85823: function() {
+ 86095: function() {
   var SDL2 = Module["SDL2"];
   return SDL2.audioContext.sampleRate;
  },
- 85891: function($0, $1, $2, $3) {
+ 86163: function($0, $1, $2, $3) {
   var SDL2 = Module["SDL2"];
   var have_microphone = function(stream) {
    if (SDL2.capture.silenceTimer !== undefined) {
@@ -1916,7 +1916,7 @@ var ASM_CONSTS = {
    }, have_microphone, no_microphone);
   }
  },
- 87543: function($0, $1, $2, $3) {
+ 87815: function($0, $1, $2, $3) {
   var SDL2 = Module["SDL2"];
   SDL2.audio.scriptProcessorNode = SDL2.audioContext["createScriptProcessor"]($1, 0, $0);
   SDL2.audio.scriptProcessorNode["onaudioprocess"] = function(e) {
@@ -1928,7 +1928,7 @@ var ASM_CONSTS = {
   };
   SDL2.audio.scriptProcessorNode["connect"](SDL2.audioContext["destination"]);
  },
- 87953: function($0, $1) {
+ 88225: function($0, $1) {
   var SDL2 = Module["SDL2"];
   var numChannels = SDL2.capture.currentCaptureBuffer.numberOfChannels;
   for (var c = 0; c < numChannels; ++c) {
@@ -1947,7 +1947,7 @@ var ASM_CONSTS = {
    }
   }
  },
- 88558: function($0, $1) {
+ 88830: function($0, $1) {
   var SDL2 = Module["SDL2"];
   var numChannels = SDL2.audio.currentOutputBuffer["numberOfChannels"];
   for (var c = 0; c < numChannels; ++c) {
@@ -1960,7 +1960,7 @@ var ASM_CONSTS = {
    }
   }
  },
- 89038: function($0) {
+ 89310: function($0) {
   var SDL2 = Module["SDL2"];
   if ($0) {
    if (SDL2.capture.silenceTimer !== undefined) {
@@ -9578,6 +9578,10 @@ function _glCreateShader(shaderType) {
  return id;
 }
 
+function _glDisable(x0) {
+ GLctx["disable"](x0);
+}
+
 function _glDisableVertexAttribArray(index) {
  GLctx.disableVertexAttribArray(index);
 }
@@ -9604,6 +9608,62 @@ function _glGenTextures(n, textures) {
 
 function _glGetAttribLocation(program, name) {
  return GLctx.getAttribLocation(GL.programs[program], UTF8ToString(name));
+}
+
+function _glGetError() {
+ var error = GLctx.getError() || GL.lastError;
+ GL.lastError = 0;
+ return error;
+}
+
+function _glGetString(name_) {
+ var ret = GL.stringCache[name_];
+ if (!ret) {
+  switch (name_) {
+  case 7939:
+   var exts = GLctx.getSupportedExtensions() || [];
+   exts = exts.concat(exts.map(function(e) {
+    return "GL_" + e;
+   }));
+   ret = stringToNewUTF8(exts.join(" "));
+   break;
+
+  case 7936:
+  case 7937:
+  case 37445:
+  case 37446:
+   var s = GLctx.getParameter(name_);
+   if (!s) {
+    GL.recordError(1280);
+   }
+   ret = s && stringToNewUTF8(s);
+   break;
+
+  case 7938:
+   var glVersion = GLctx.getParameter(7938);
+   {
+    glVersion = "OpenGL ES 2.0 (" + glVersion + ")";
+   }
+   ret = stringToNewUTF8(glVersion);
+   break;
+
+  case 35724:
+   var glslVersion = GLctx.getParameter(35724);
+   var ver_re = /^WebGL GLSL ES ([0-9]\.[0-9][0-9]?)(?:$| .*)/;
+   var ver_num = glslVersion.match(ver_re);
+   if (ver_num !== null) {
+    if (ver_num[1].length == 3) ver_num[1] = ver_num[1] + "0";
+    glslVersion = "OpenGL ES GLSL ES " + ver_num[1] + " (" + glslVersion + ")";
+   }
+   ret = stringToNewUTF8(glslVersion);
+   break;
+
+  default:
+   GL.recordError(1280);
+  }
+  GL.stringCache[name_] = ret;
+ }
+ return ret;
 }
 
 function _glGetUniformLocation(program, name) {
@@ -10584,6 +10644,7 @@ var asmLibraryArg = {
  "glCompileShader": _glCompileShader,
  "glCreateProgram": _glCreateProgram,
  "glCreateShader": _glCreateShader,
+ "glDisable": _glDisable,
  "glDisableVertexAttribArray": _glDisableVertexAttribArray,
  "glDrawElements": _glDrawElements,
  "glEnable": _glEnable,
@@ -10591,6 +10652,8 @@ var asmLibraryArg = {
  "glGenBuffers": _glGenBuffers,
  "glGenTextures": _glGenTextures,
  "glGetAttribLocation": _glGetAttribLocation,
+ "glGetError": _glGetError,
+ "glGetString": _glGetString,
  "glGetUniformLocation": _glGetUniformLocation,
  "glHint": _glHint,
  "glLinkProgram": _glLinkProgram,
@@ -10710,9 +10773,9 @@ var dynCall_iiiiiijj = Module["dynCall_iiiiiijj"] = createExportWrapper("dynCall
 
 var dynCall_viijii = Module["dynCall_viijii"] = createExportWrapper("dynCall_viijii");
 
-var __emscripten_allow_main_runtime_queued_calls = Module["__emscripten_allow_main_runtime_queued_calls"] = 81692;
+var __emscripten_allow_main_runtime_queued_calls = Module["__emscripten_allow_main_runtime_queued_calls"] = 81964;
 
-var __emscripten_main_thread_futex = Module["__emscripten_main_thread_futex"] = 96800;
+var __emscripten_main_thread_futex = Module["__emscripten_main_thread_futex"] = 97072;
 
 function invoke_ii(index, a1) {
  var sp = stackSave();

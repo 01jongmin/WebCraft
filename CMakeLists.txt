@@ -49,7 +49,7 @@ add_executable(WebCraft
         src/chunk.cpp
         src/chunk.h
         src/Texture.cpp src/Texture.h
-        )
+        src/Quad.cpp src/Quad.h)
 
 # glm
 add_subdirectory(lib/glm EXCLUDE_FROM_ALL)

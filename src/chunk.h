@@ -44,7 +44,7 @@ struct EnumHash {
 // to render the world block by block.
 
 // TODO have Chunk inherit from Drawable
-class Chunk : public Drawable {
+class Chunk {
 private:
     // All of the blocks contained within this Chunk
     std::array<BlockType, 65536> m_blocks;
@@ -56,6 +56,31 @@ public:
     std::vector<GLuint> t_idx {};
     Chunk();
 
+    GLuint m_bufDataIdx;
+    GLuint m_bufData;
+    GLuint m_bufTransparentDataIdx;
+    GLuint m_bufTransparentData;
+
+    bool m_dataIdxGenerated;
+    bool m_dataGenerated;
+    bool m_transparentDataIdxGenerated;
+    bool m_transparentDataGenerated;
+
+    void generateDataIdx();
+    void generateData();
+    void generateTransparentDataIdx();
+    void generateTransparentData();
+
+    bool bindDataIdx();
+    bool bindData();
+    bool bindTransparentDataIdx();
+    bool bindTransparentData();
+
+    GLenum drawMode();
+
+    int dataCount();
+    int transparentDataCount();
+
     // This Chunk's four neighbors to the north, south, east, and west
     // The third input to this map just lets us use a Direction as
     // a key for this map.
@@ -65,15 +90,14 @@ public:
     // used to store the location of the chunk
     glm::vec4 chunkPos;
 
+    bool vboSet;
     void createVBOdata();
     void setTVBOdata();
+    void setVBOdata();
 
     BlockType getBlockAt(int x, int y, int z) const;
     void setBlockAt(unsigned int x, unsigned int y, unsigned int z, BlockType t);
     void linkNeighbor(uPtr<Chunk>& neighbor, Direction dir);
-
-    void setVBOdata();
-    bool vboSet;
 
     // gets all the blocks adjacent to the input block
     uPtr<std::unordered_map<Direction, BlockType, EnumHash>> getLocalNeighbors(int x, int y, int z);

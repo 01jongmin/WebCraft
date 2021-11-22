@@ -11,7 +11,7 @@ ShaderProgram::ShaderProgram()
         : vertShader(), fragShader(), prog(),
           attrPos(-1), attrNor(-1), attrCol(-1),
           unifModel(-1), unifModelInvTr(-1), unifViewProj(-1), unifColor(-1),
-          unifTime(-1), unifSampler2D(-1)
+          unifTime(-1), unifSampler2D(-1), unifSurrounding(-1)
 {}
 
 void ShaderProgram::create(const char *vertfile, const char *fragfile)
@@ -44,6 +44,7 @@ void ShaderProgram::create(const char *vertfile, const char *fragfile)
     unifViewProj   = glGetUniformLocation(prog, "u_ViewProj");
     unifColor      = glGetUniformLocation(prog, "u_Color");
     unifTime       = glGetUniformLocation(prog, "u_Time");
+    unifSurrounding = glGetUniformLocation(prog, "u_Surrounding");
 
     unifSampler2D = glGetUniformLocation(prog, "u_Texture");
 
@@ -145,6 +146,59 @@ void ShaderProgram::draw(Drawable &d)
     }
 }
 
+void ShaderProgram::drawChunkInterleaved(Chunk &c, bool transparent) {
+    useMe();
+
+    if (c.transparentDataCount() < 0 || c.dataCount() < 0) {
+        throw std::out_of_range("Attempting to draw a drawable with uninitialized count!");
+    }
+
+    if (unifSampler2D != -1) {
+        glUniform1i(unifSampler2D, 0);
+    }
+
+    if (!transparent) {
+        if (c.bindData()) {
+            glEnableVertexAttribArray(attrPos);
+            glVertexAttribPointer(attrPos, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) 0);
+
+            glEnableVertexAttribArray(attrNor);
+            glVertexAttribPointer(attrNor, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) sizeof(glm::vec4));
+
+            glEnableVertexAttribArray(attrCol);
+            glVertexAttribPointer(attrCol, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) (2 * sizeof(glm::vec4)));
+        } else {
+            std::cout << "ERROR" << std::endl;
+        }
+
+        c.bindDataIdx();
+        glDrawElements(c.drawMode(), c.dataCount(), GL_UNSIGNED_INT, 0);
+    } else {
+        //nor and color
+        //nor was pseudo data
+        //color was idx values
+
+        if (c.bindTransparentData()) {
+            glEnableVertexAttribArray(attrPos);
+            glVertexAttribPointer(attrPos, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) 0);
+
+            glEnableVertexAttribArray(attrNor);
+            glVertexAttribPointer(attrNor, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) sizeof(glm::vec4));
+
+            glEnableVertexAttribArray(attrCol);
+            glVertexAttribPointer(attrCol, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) (2 * sizeof(glm::vec4)));
+        } else {
+            std::cout << "ERROR" << std::endl;
+        }
+
+        c.bindTransparentDataIdx();
+        glDrawElements(c.drawMode(), c.transparentDataCount(), GL_UNSIGNED_INT, 0);
+    }
+
+//    if (attrPos != -1) glDisableVertexAttribArray(attrPos);
+//    if (attrPos != -1) glDisableVertexAttribArray(attrPos);
+}
+
 void ShaderProgram::drawInterleaved(Drawable &d, bool tvbo, int tvbocount = 0)
 {
     useMe();
@@ -205,7 +259,16 @@ void ShaderProgram::drawInterleaved(Drawable &d, bool tvbo, int tvbocount = 0)
     // This invokes the shader program, which accesses the vertex buffers.
 
 
-    if (attrPos != -1) glDisableVertexAttribArray(attrPos);
+//    if (attrPos != -1) glDisableVertexAttribArray(attrPos);
+}
+
+void ShaderProgram::setSurrounding(int s)
+{
+    useMe();
+
+    if (unifSurrounding != -1) {
+        glUniform1i(unifSurrounding, s);
+    }
 }
 
 char* ShaderProgram::textFileRead(const char* fileName) {

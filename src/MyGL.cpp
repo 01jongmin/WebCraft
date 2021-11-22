@@ -37,6 +37,7 @@ void blockWorkerHandler(std::deque<std::pair<int, int>> &blockWorkerCoordVector,
         if (!blockWorkerCoordVector.empty()) {
             auto &s = blockWorkerCoordVector.at(0);
             blockWorkerCoordVector.pop_front();
+
             Chunk *c = m_terrain.instantiateChunkAt(s.first, s.second);
             blockWorkermutex.unlock();
 
@@ -46,7 +47,7 @@ void blockWorkerHandler(std::deque<std::pair<int, int>> &blockWorkerCoordVector,
         } else {
             blockWorkermutex.unlock();
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(3));
+        std::this_thread::sleep_for(std::chrono::milliseconds(16));
     }
 }
 
@@ -66,7 +67,7 @@ void vboWorkerHandler(std::deque<Chunk *> &vboChunkVector,
         } else {
             vboWorkerMutex.unlock();
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(3));
+        std::this_thread::sleep_for(std::chrono::milliseconds(16));
     }
 }
 
@@ -77,14 +78,14 @@ MyGL::MyGL(SDL_Window *pWindow, std::vector<std::thread> &spawned_threads,
            std::mutex &drawChunkMutex,
            std::deque<Chunk *> &drawChunkVector) :
         m_worldAxes(), m_progFlat(), m_terrain(),
-        m_progInstanced(), m_progLambert(),
+        m_progLambert(), m_progPostprocess(),
         m_player(glm::vec3(60.f, 140.f, 80.f), m_terrain),
         bundle(InputBundle()),
         lastTick(SDL_GetTicks()),
         spawned_threads(spawned_threads), blockWorkerMutex(blockWorkerMutex),
         blockWorkerCoordVector(blockWorkerCoordVector), vboWorkerMutex(vboWorkerMutex),
         vboChunkVector(vboChunkVector), drawChunkMutex(drawChunkMutex), drawChunkVector(drawChunkVector),
-        m_time(0) {
+        m_time(0), m_geomQuad() {
 
     int k = 0;
     this->window = pWindow;
@@ -96,13 +97,16 @@ MyGL::MyGL(SDL_Window *pWindow, std::vector<std::thread> &spawned_threads,
     glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     // Set the color with which the screen is filled at the start of each render call.
     glClearColor(0.37f, 0.74f, 1.0f, 1);
 
     m_progFlat.create("../shader/flat.vert", "../shader/flat.frag");
-    m_worldAxes.createVBOdata();
-    // Create and set up the diffuse shader
     m_progLambert.create("../shader/lambert.vert.glsl", "../shader/lambert.frag.glsl");
+    m_progPostprocess.create("../shader/passthrough.vert.glsl", "../shader/posteffect.frag.glsl");
+
+    m_worldAxes.createVBOdata();
+    m_geomQuad.createVBOdata();
 
     mp_texture = std::unique_ptr<Texture>(new Texture());
     mp_texture->create("../shader/minecraft_textures_all.png");
@@ -156,7 +160,7 @@ void MyGL::renderTerrain() {
                                                             glm::vec3(m_terrain.getChunkAt(x, z)->chunkPos.x, 0,
                                                                       m_terrain.getChunkAt(x, z)->chunkPos.z)));
                 m_terrain.getChunkAt(x, z)->setVBOdata();
-                m_progLambert.drawInterleaved(*m_terrain.getChunkAt(x, z), false, 0);
+                m_progLambert.drawChunkInterleaved(*m_terrain.getChunkAt(x, z), false);
                 drawChunkVector.push_back(m_terrain.getChunkAt(x, z).get());
             }
         }
@@ -167,20 +171,13 @@ void MyGL::renderTerrain() {
                                                     glm::vec3(c->chunkPos.x, 0,
                                                               c->chunkPos.z)));
         c->setTVBOdata();
-        m_progLambert.drawInterleaved(*c, true, c->t_idx.size());
+        m_progLambert.drawChunkInterleaved(*c, true);
     }
 
     drawChunkVector.clear();
 
     vboWorkerMutex.unlock();
     blockWorkerMutex.unlock();
-//    m_terrain.draw(-128+pos[0], 128+pos[0], -128+pos[2], 128+pos[2], &m_progInstanced);
-//    m_terrain.draw();
-//    int x = 16 * static_cast<int>(glm::floor(pos[0] / 16.f));
-//    int z = 16 * static_cast<int>(glm::floor(pos[2] / 16.f));
-//    int d = 32;
-//
-//    m_terrain.draw(x-d, x+d, z-d, z+d, &m_progLambert);
 }
 
 void MyGL::tick() {
@@ -218,21 +215,35 @@ void MyGL::tick() {
     lastTick = curr;
 
     mp_texture->bind(0);
-    m_progLambert.setTime(m_time++);
+
+    int temp = m_time++;
+    m_progLambert.setTime(temp);
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     m_progFlat.setViewProjMatrix(m_player.mcr_camera.getViewProj());
     m_progLambert.setViewProjMatrix(m_player.mcr_camera.getViewProj());
-    m_progInstanced.setViewProjMatrix(m_player.mcr_camera.getViewProj());
 
     renderTerrain();
 
-//    glDisable(GL_DEPTH_TEST);
-//    m_progFlat.setModelMatrix(glm::mat4());
-//    m_progFlat.setViewProjMatrix(m_player.mcr_camera.getViewProj());
-//    m_progFlat.draw(m_worldAxes);
-//    glEnable(GL_DEPTH_TEST);
+    glDisable(GL_DEPTH_TEST);
+    m_progFlat.setModelMatrix(glm::mat4());
+    m_progFlat.setViewProjMatrix(m_player.mcr_camera.getViewProj());
+    m_progFlat.draw(m_worldAxes);
+    glEnable(GL_DEPTH_TEST);
+
+    m_progPostprocess.setTime(temp);
+    
+    glm::vec3 pos = m_player.mcr_camera.mcr_position;
+
+    if(inWater || m_terrain.getBlockAt(pos) == WATER)
+        m_progPostprocess.setSurrounding(1);
+    else if(m_terrain.getBlockAt(pos) == LAVA)
+        m_progPostprocess.setSurrounding(2);
+    else
+        m_progPostprocess.setSurrounding(0);
+
+    m_progPostprocess.draw(m_geomQuad);
 }
 
 void MyGL::handleKeyPressUp(SDL_Keycode keyCode) {
@@ -253,11 +264,9 @@ void MyGL::handleKeyPressUp(SDL_Keycode keyCode) {
             bundle.spacePressed = false;
             break;
         case SDLK_e:
-//            m_player.moveUpGlobal(4);
             bundle.ePressed = false;
             break;
         case SDLK_q:
-//            m_player.moveUpGlobal(-4);
             bundle.qPressed = false;
             break;
     }

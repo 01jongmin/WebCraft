@@ -13,7 +13,7 @@
 #include "terrain.h"
 #include "player.h"
 #include "Texture.h"
-
+#include "Quad.h"
 
 class MyGL {
 
@@ -31,7 +31,9 @@ private:
 
     ShaderProgram m_progLambert;// A shader program that uses lambertian reflection
     ShaderProgram m_progFlat;// A shader program that uses "flat" reflection (no shadowing at all)
-    ShaderProgram m_progInstanced;// A shader program that is designed to be compatible with instanced rendering
+    ShaderProgram m_progPostprocess;
+
+    Quad m_geomQuad;
 
     int width;
     int height;

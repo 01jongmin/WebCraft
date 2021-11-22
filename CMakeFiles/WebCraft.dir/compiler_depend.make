@@ -1036,17 +1036,17 @@ CMakeFiles/WebCraft.dir/src/MyGL.cpp.o: src/MyGL.cpp \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/vector \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__bit_reference \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__split_buffer \
-  src/WorldAxes.h \
-  src/Camera.h \
-  src/Entity.h \
-  src/terrain.h \
-  src/smartpointerhelp.h \
   src/chunk.h \
+  src/smartpointerhelp.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/array \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/unordered_map \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__hash_table \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__node_handle \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/optional \
+  src/WorldAxes.h \
+  src/Camera.h \
+  src/Entity.h \
+  src/terrain.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/unordered_set \
   src/noise.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/iostream \
@@ -1089,6 +1089,7 @@ CMakeFiles/WebCraft.dir/src/MyGL.cpp.o: src/MyGL.cpp \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_shape.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_system.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_version.h \
+  src/Quad.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/emscripten.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/emscripten/emscripten.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/emscripten/em_asm.h \
@@ -1389,6 +1390,266 @@ CMakeFiles/WebCraft.dir/src/Player.cpp.o: src/Player.cpp \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/queue \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/deque
 
+CMakeFiles/WebCraft.dir/src/Quad.cpp.o: src/Quad.cpp \
+  src/Quad.h \
+  src/Drawable.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_opengl.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_config.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_platform.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/begin_code.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/close_code.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_config_emscripten.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_opengl_glext.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/stddef.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__config \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/pthread.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/llvm/lib/clang/14.0.0/include/stddef.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/llvm/lib/clang/14.0.0/include/__stddef_max_align_t.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__nullptr \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/inttypes.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/llvm/lib/clang/14.0.0/include/inttypes.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/inttypes.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/features.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/stdint.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/llvm/lib/clang/14.0.0/include/stdint.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/stdint.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/bits/alltypes.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/bits/stdint.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/vector \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/iosfwd \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/compat/wchar.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/wchar.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/wchar.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__bit_reference \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__bits \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__undef_macros \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/algorithm \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/initializer_list \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cstddef \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/version \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/type_traits \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cstring \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/compat/string.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/string.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/string.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/strings.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/utility \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__tuple \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cstdint \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__debug \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/memory \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__availability \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/typeinfo \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/exception \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__memory/base.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cstdlib \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/compat/stdlib.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/stdlib.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/stdlib.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/alloca.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/new \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/limits \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/iterator \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__functional_base \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/tuple \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/stdexcept \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__memory/allocator_traits.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__memory/pointer_traits.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__memory/utilities.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/atomic \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__threading_support \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/chrono \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/ctime \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/compat/time.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/time.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/ratio \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/climits \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/limits.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/llvm/lib/clang/14.0.0/include/limits.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/limits.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/bits/limits.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/errno.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/errno.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/bits/errno.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/wasi/api.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/sched.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/semaphore.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/fcntl.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/bits/fcntl.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/functional \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/bit \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__split_buffer \
+  src/glm_includes.h \
+  lib/glm/glm/glm.hpp \
+  lib/glm/glm/detail/_fixes.hpp \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cmath \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/compat/math.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/math.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/math.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cfloat \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/float.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/llvm/lib/clang/14.0.0/include/float.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/float.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cassert \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/assert.h \
+  lib/glm/glm/fwd.hpp \
+  lib/glm/glm/detail/type_int.hpp \
+  lib/glm/glm/detail/setup.hpp \
+  lib/glm/glm/simd/platform.h \
+  lib/glm/glm/detail/type_float.hpp \
+  lib/glm/glm/detail/type_vec.hpp \
+  lib/glm/glm/detail/precision.hpp \
+  lib/glm/glm/detail/type_mat.hpp \
+  lib/glm/glm/vec2.hpp \
+  lib/glm/glm/detail/type_vec2.hpp \
+  lib/glm/glm/detail/type_vec2.inl \
+  lib/glm/glm/vec3.hpp \
+  lib/glm/glm/detail/type_vec3.hpp \
+  lib/glm/glm/detail/type_vec3.inl \
+  lib/glm/glm/vec4.hpp \
+  lib/glm/glm/detail/type_vec4.hpp \
+  lib/glm/glm/detail/type_vec4.inl \
+  lib/glm/glm/mat2x2.hpp \
+  lib/glm/glm/detail/type_mat2x2.hpp \
+  lib/glm/glm/fwd.hpp \
+  lib/glm/glm/detail/type_mat2x2.inl \
+  lib/glm/glm/detail/func_matrix.hpp \
+  lib/glm/glm/detail/precision.hpp \
+  lib/glm/glm/detail/setup.hpp \
+  lib/glm/glm/detail/type_mat.hpp \
+  lib/glm/glm/vec2.hpp \
+  lib/glm/glm/vec3.hpp \
+  lib/glm/glm/vec4.hpp \
+  lib/glm/glm/mat2x2.hpp \
+  lib/glm/glm/mat2x3.hpp \
+  lib/glm/glm/detail/type_mat2x3.hpp \
+  lib/glm/glm/detail/type_mat2x3.inl \
+  lib/glm/glm/mat2x4.hpp \
+  lib/glm/glm/detail/type_mat2x4.hpp \
+  lib/glm/glm/detail/type_mat2x4.inl \
+  lib/glm/glm/mat3x2.hpp \
+  lib/glm/glm/detail/type_mat3x2.hpp \
+  lib/glm/glm/detail/type_mat3x2.inl \
+  lib/glm/glm/mat3x3.hpp \
+  lib/glm/glm/detail/type_mat3x3.hpp \
+  lib/glm/glm/detail/type_mat3x3.inl \
+  lib/glm/glm/mat3x4.hpp \
+  lib/glm/glm/detail/type_mat3x4.hpp \
+  lib/glm/glm/detail/type_mat3x4.inl \
+  lib/glm/glm/mat4x2.hpp \
+  lib/glm/glm/detail/type_mat4x2.hpp \
+  lib/glm/glm/detail/type_mat4x2.inl \
+  lib/glm/glm/mat4x3.hpp \
+  lib/glm/glm/detail/type_mat4x3.hpp \
+  lib/glm/glm/detail/type_mat4x3.inl \
+  lib/glm/glm/mat4x4.hpp \
+  lib/glm/glm/detail/type_mat4x4.hpp \
+  lib/glm/glm/detail/type_mat4x4.inl \
+  lib/glm/glm/detail/func_matrix.inl \
+  lib/glm/glm/geometric.hpp \
+  lib/glm/glm/detail/func_geometric.hpp \
+  lib/glm/glm/detail/func_geometric.inl \
+  lib/glm/glm/detail/func_exponential.hpp \
+  lib/glm/glm/detail/type_vec1.hpp \
+  lib/glm/glm/detail/type_vec1.inl \
+  lib/glm/glm/detail/func_exponential.inl \
+  lib/glm/glm/detail/func_vector_relational.hpp \
+  lib/glm/glm/detail/func_vector_relational.inl \
+  lib/glm/glm/detail/_vectorize.hpp \
+  lib/glm/glm/detail/func_common.hpp \
+  lib/glm/glm/detail/func_common.inl \
+  lib/glm/glm/mat2x3.hpp \
+  lib/glm/glm/mat2x4.hpp \
+  lib/glm/glm/mat3x2.hpp \
+  lib/glm/glm/mat3x3.hpp \
+  lib/glm/glm/mat3x4.hpp \
+  lib/glm/glm/mat4x2.hpp \
+  lib/glm/glm/mat4x3.hpp \
+  lib/glm/glm/mat4x4.hpp \
+  lib/glm/glm/trigonometric.hpp \
+  lib/glm/glm/detail/func_trigonometric.hpp \
+  lib/glm/glm/detail/func_trigonometric.inl \
+  lib/glm/glm/exponential.hpp \
+  lib/glm/glm/common.hpp \
+  lib/glm/glm/packing.hpp \
+  lib/glm/glm/detail/func_packing.hpp \
+  lib/glm/glm/detail/func_packing.inl \
+  lib/glm/glm/detail/type_half.hpp \
+  lib/glm/glm/detail/type_half.inl \
+  lib/glm/glm/geometric.hpp \
+  lib/glm/glm/matrix.hpp \
+  lib/glm/glm/vector_relational.hpp \
+  lib/glm/glm/integer.hpp \
+  lib/glm/glm/detail/func_integer.hpp \
+  lib/glm/glm/detail/func_integer.inl \
+  lib/glm/glm/gtc/matrix_transform.hpp \
+  lib/glm/glm/mat4x4.hpp \
+  lib/glm/glm/vec2.hpp \
+  lib/glm/glm/vec3.hpp \
+  lib/glm/glm/vec4.hpp \
+  lib/glm/glm/gtc/constants.hpp \
+  lib/glm/glm/detail/setup.hpp \
+  lib/glm/glm/gtc/constants.inl \
+  lib/glm/glm/gtc/matrix_transform.inl \
+  lib/glm/glm/geometric.hpp \
+  lib/glm/glm/trigonometric.hpp \
+  lib/glm/glm/matrix.hpp \
+  lib/glm/glm/gtx/string_cast.hpp \
+  lib/glm/glm/glm.hpp \
+  lib/glm/glm/gtc/type_precision.hpp \
+  lib/glm/glm/gtc/quaternion.hpp \
+  lib/glm/glm/mat3x3.hpp \
+  lib/glm/glm/gtc/quaternion.inl \
+  lib/glm/glm/exponential.hpp \
+  lib/glm/glm/gtc/vec1.hpp \
+  lib/glm/glm/glm.hpp \
+  lib/glm/glm/detail/type_vec1.hpp \
+  lib/glm/glm/gtc/vec1.inl \
+  lib/glm/glm/mat2x2.hpp \
+  lib/glm/glm/mat2x3.hpp \
+  lib/glm/glm/mat2x4.hpp \
+  lib/glm/glm/mat3x2.hpp \
+  lib/glm/glm/mat3x4.hpp \
+  lib/glm/glm/mat4x2.hpp \
+  lib/glm/glm/mat4x3.hpp \
+  lib/glm/glm/gtc/type_precision.inl \
+  lib/glm/glm/gtc/quaternion.hpp \
+  lib/glm/glm/gtx/dual_quaternion.hpp \
+  lib/glm/glm/gtc/constants.hpp \
+  lib/glm/glm/gtx/dual_quaternion.inl \
+  lib/glm/glm/geometric.hpp \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/string \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/string_view \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__string \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cstdio \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/stdio.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/stdio.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cwchar \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cwctype \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cctype \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/compat/ctype.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/ctype.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/ctype.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/compat/wctype.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/wctype.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/wctype.h \
+  lib/glm/glm/gtx/string_cast.inl \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/cstdarg \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/compat/stdarg.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/llvm/lib/clang/14.0.0/include/stdarg.h \
+  lib/glm/glm/gtc/type_ptr.hpp \
+  lib/glm/glm/gtc/type_ptr.inl \
+  lib/glm/glm/gtc/noise.hpp \
+  lib/glm/glm/detail/precision.hpp \
+  lib/glm/glm/detail/_noise.hpp \
+  lib/glm/glm/common.hpp \
+  lib/glm/glm/common.hpp \
+  lib/glm/glm/vector_relational.hpp \
+  lib/glm/glm/gtc/noise.inl \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/GLES2/gl2.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/GLES2/gl2platform.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/KHR/khrplatform.h
+
 CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.o: src/ShaderProgram.cpp \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/fstream \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__config \
@@ -1669,7 +1930,14 @@ CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.o: src/ShaderProgram.cpp \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/inttypes.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/llvm/lib/clang/14.0.0/include/inttypes.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/inttypes.h \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/vector
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/vector \
+  src/chunk.h \
+  src/smartpointerhelp.h \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/array \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/unordered_map \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__hash_table \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__node_handle \
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/optional
 
 CMakeFiles/WebCraft.dir/src/Terrain.cpp.o: src/Terrain.cpp \
   src/terrain.h \
@@ -3007,24 +3275,25 @@ CMakeFiles/WebCraft.dir/src/main.cpp.o: src/main.cpp \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_opengl_glext.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/vector \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__split_buffer \
-  src/WorldAxes.h \
-  src/Camera.h \
-  src/Entity.h \
-  src/terrain.h \
-  src/smartpointerhelp.h \
   src/chunk.h \
+  src/smartpointerhelp.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/array \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/unordered_map \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__hash_table \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__node_handle \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/optional \
+  src/WorldAxes.h \
+  src/Camera.h \
+  src/Entity.h \
+  src/terrain.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/unordered_set \
   src/noise.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/queue \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/deque \
   src/player.h \
   src/Texture.h \
-  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_image.h
+  /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_image.h \
+  src/Quad.h
 
 CMakeFiles/WebCraft.dir/src/noise.cpp.o: src/noise.cpp \
   src/noise.h \
@@ -3306,6 +3575,8 @@ src/Texture.cpp:
 
 src/ShaderProgram.cpp:
 
+src/Quad.cpp:
+
 src/Player.cpp:
 
 /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/emscripten/em_types.h:
@@ -3368,17 +3639,17 @@ src/player.h:
 
 /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/iostream:
 
+src/WorldAxes.h:
+
 /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__node_handle:
 
 /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/unordered_map:
 
 /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/array:
 
-src/chunk.h:
-
 src/smartpointerhelp.h:
 
-src/WorldAxes.h:
+src/chunk.h:
 
 src/main.cpp:
 
@@ -3585,6 +3856,8 @@ lib/glm/glm/gtx/string_cast.hpp:
 /usr/local/Cellar/emscripten/2.0.34/libexec/llvm/lib/clang/14.0.0/include/stdarg.h:
 
 lib/glm/glm/gtc/matrix_transform.inl:
+
+src/Quad.h:
 
 /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__hash_table:
 
