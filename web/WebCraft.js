@@ -249,7 +249,7 @@ Module.expectedDataFileDownloads++;
    "end": 119361
   } ],
   "remote_package_size": 119361,
-  "package_uuid": "0acb25f2-cc52-4b59-8eb9-591d3f51f270"
+  "package_uuid": "c9412b6e-b0f6-4393-b748-4ce01eab4ac2"
  });
 })();
 
@@ -2170,7 +2170,7 @@ var PThread = {
  tlsInitFunctions: [],
  initMainThreadBlock: function() {
   assert(!ENVIRONMENT_IS_PTHREAD);
-  var pthreadPoolSize = 20;
+  var pthreadPoolSize = 8;
   for (var i = 0; i < pthreadPoolSize; ++i) {
    PThread.allocateUnusedWorker();
   }
@@ -9570,10 +9570,6 @@ function _glCreateShader(shaderType) {
  return id;
 }
 
-function _glDisable(x0) {
- GLctx["disable"](x0);
-}
-
 function _glDisableVertexAttribArray(index) {
  GLctx.disableVertexAttribArray(index);
 }
@@ -9600,12 +9596,6 @@ function _glGenTextures(n, textures) {
 
 function _glGetAttribLocation(program, name) {
  return GLctx.getAttribLocation(GL.programs[program], UTF8ToString(name));
-}
-
-function _glGetError() {
- var error = GLctx.getError() || GL.lastError;
- GL.lastError = 0;
- return error;
 }
 
 function _glGetUniformLocation(program, name) {
@@ -10586,7 +10576,6 @@ var asmLibraryArg = {
  "glCompileShader": _glCompileShader,
  "glCreateProgram": _glCreateProgram,
  "glCreateShader": _glCreateShader,
- "glDisable": _glDisable,
  "glDisableVertexAttribArray": _glDisableVertexAttribArray,
  "glDrawElements": _glDrawElements,
  "glEnable": _glEnable,
@@ -10594,7 +10583,6 @@ var asmLibraryArg = {
  "glGenBuffers": _glGenBuffers,
  "glGenTextures": _glGenTextures,
  "glGetAttribLocation": _glGetAttribLocation,
- "glGetError": _glGetError,
  "glGetUniformLocation": _glGetUniformLocation,
  "glHint": _glHint,
  "glLinkProgram": _glLinkProgram,

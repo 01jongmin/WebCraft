@@ -31,23 +31,22 @@ void blockWorkerHandler(std::deque<std::pair<int, int>> &blockWorkerCoordVector,
                         std::mutex &blockWorkermutex,
                         Terrain &m_terrain,
                         std::mutex &vboWorkerMutex,
-                        std::deque<Chunk*> &vboChunkVector) {
+                        std::deque<Chunk *> &vboChunkVector) {
     while (true) {
-//        blockWorkermutex.lock();
-//        if (!blockWorkerCoordVector.empty()) {
-//            auto &s = blockWorkerCoordVector.at(0);
-//            blockWorkerCoordVector.pop_front();
-//
-//
-//            Chunk *c = m_terrain.instantiateChunkAt(s.first, s.second);
-//            blockWorkermutex.unlock();
-//
-//            vboWorkerMutex.lock();
-//            vboChunkVector.push_back(c);
-//            vboWorkerMutex.unlock();
-//        } else {
-//            blockWorkermutex.unlock();
-//        }
+        blockWorkermutex.lock();
+        if (!blockWorkerCoordVector.empty()) {
+            auto &s = blockWorkerCoordVector.at(0);
+            blockWorkerCoordVector.pop_front();
+            Chunk *c = m_terrain.instantiateChunkAt(s.first, s.second);
+            blockWorkermutex.unlock();
+
+            vboWorkerMutex.lock();
+            vboChunkVector.push_back(c);
+            vboWorkerMutex.unlock();
+        } else {
+            blockWorkermutex.unlock();
+        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(3));
     }
 }
 
@@ -56,17 +55,18 @@ void vboWorkerHandler(std::deque<Chunk *> &vboChunkVector,
                       std::mutex &drawChunkMutex,
                       std::deque<Chunk *> &drawChunkVector) {
     while (true) {
-//        vboWorkerMutex.lock();
-//
-//        if (!vboChunkVector.empty()) {
-//            auto &c = vboChunkVector.at(0);
-//            vboChunkVector.pop_front();
-//
-//            c->createVBOdata();
-//            vboWorkerMutex.unlock();
-//        } else {
-//            vboWorkerMutex.unlock();
-//        }
+        vboWorkerMutex.lock();
+
+        if (!vboChunkVector.empty()) {
+            auto &c = vboChunkVector.at(0);
+            vboChunkVector.pop_front();
+
+            c->createVBOdata();
+            vboWorkerMutex.unlock();
+        } else {
+            vboWorkerMutex.unlock();
+        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(3));
     }
 }
 
@@ -108,8 +108,8 @@ MyGL::MyGL(SDL_Window *pWindow, std::vector<std::thread> &spawned_threads,
     mp_texture->create("../shader/minecraft_textures_all.png");
     mp_texture->load(0);
 
-    for (int i = 0; i < 20; i++) {
-        if (i < 15) {
+    for (int i = 0; i < 8; i++) {
+        if (i < 6) {
             spawned_threads.push_back(std::thread(std::ref(blockWorkerHandler),
                                                   std::ref(blockWorkerCoordVector),
                                                   std::ref(blockWorkerMutex),
@@ -129,66 +129,58 @@ MyGL::MyGL(SDL_Window *pWindow, std::vector<std::thread> &spawned_threads,
 void MyGL::renderTerrain() {
     glm::vec3 pos = m_player.mcr_camera.mcr_position;
 
-//    int xCurr = 16 * static_cast<int>(glm::floor(pos[0] / 16.f));
-//    int zCurr = 16 * static_cast<int>(glm::floor(pos[2] / 16.f));
-////
-//    int d = 2;
-//
-//    blockWorkerMutex.lock();
-//    vboWorkerMutex.lock();
-//
-//    bool vectorExhaust = true;
-//    if (!blockWorkerCoordVector.empty() || !vboChunkVector.empty()) vectorExhaust = false;
-//
-//
-//    for (int d1 = -d; d1 <= d; d1++) {
-//        for (int d2 = -d; d2 <= d; d2++) {
-//            int x = xCurr + 16 * d1;
-//            int z = zCurr + 16 * d2;
-//
-//            if (vectorExhaust) {
-//                if (!m_terrain.hasChunkAt(x, z)) {
-//                    std::cout << "Block worker generating" << std::endl;
-//                    blockWorkerCoordVector.push_back(std::pair<int, int>(x, z));
-//                } else {
-//
-//                        if (!m_terrain.getChunkAt(x, z)->vboSet) {
-//                            vboChunkVector.push_back(m_terrain.getChunkAt(x, z).get());
-//                            std::cout << "VBO generating" << std::endl;
-//                        } else {
-//                            std::cout << "DRAWING" << std::endl;
-//                            m_progLambert.setModelMatrix(glm::translate(glm::mat4(),
-//                                                                        glm::vec3(m_terrain.getChunkAt(x, z)->chunkPos.x, 0,
-//                                                                                  m_terrain.getChunkAt(x, z)->chunkPos.z)));
-//                            m_terrain.getChunkAt(x, z)->setVBOdata();
-//                            m_progLambert.drawInterleaved(*m_terrain.getChunkAt(x, z), false);
-//                            m_terrain.getChunkAt(x, z)->setTVBOdata();
-//                            m_progLambert.drawInterleaved(*m_terrain.getChunkAt(x, z), true);
-//                        }
-//                }
-//            } else {
-//                if (m_terrain.hasChunkAt(x, z) && m_terrain.getChunkAt(x, z)->vboSet) {
-//                    m_progLambert.setModelMatrix(glm::translate(glm::mat4(),
-//                                                                glm::vec3(m_terrain.getChunkAt(x, z)->chunkPos.x, 0,
-//                                                                          m_terrain.getChunkAt(x, z)->chunkPos.z)));
-//                    m_terrain.getChunkAt(x, z)->setVBOdata();
-//                    m_progLambert.drawInterleaved(*m_terrain.getChunkAt(x, z), false);
-//                    m_terrain.getChunkAt(x, z)->setTVBOdata();
-//                    m_progLambert.drawInterleaved(*m_terrain.getChunkAt(x, z), true);
-//                }
-//            }
-//        }
-//    }
-//
-//    vboWorkerMutex.unlock();
-//    blockWorkerMutex.unlock();
+    int xCurr = 16 * static_cast<int>(glm::floor(pos[0] / 16.f));
+    int zCurr = 16 * static_cast<int>(glm::floor(pos[2] / 16.f));
+
+    int d = 2;
+
+    blockWorkerMutex.lock();
+    vboWorkerMutex.lock();
+
+    blockWorkerCoordVector.clear();
+    vboChunkVector.clear();
+
+    for (int d1 = -d; d1 <= d; d1++) {
+        for (int d2 = -d; d2 <= d; d2++) {
+            int x = xCurr + 16 * d1;
+            int z = zCurr + 16 * d2;
+
+            if (!m_terrain.hasChunkAt(x, z)) {
+                std::cout << "Block worker generating" << std::endl;
+                blockWorkerCoordVector.push_back(std::pair<int, int>(x, z));
+            } else if (!m_terrain.getChunkAt(x, z)->vboSet && std::abs(d1) <= d - 1 && std::abs(d2) <= d - 1) {
+                vboChunkVector.push_back(m_terrain.getChunkAt(x, z).get());
+                std::cout << "VBO generating" << std::endl;
+            } else if (std::abs(d1) <= d / 2 && std::abs(d2) <= d / 2) {
+                m_progLambert.setModelMatrix(glm::translate(glm::mat4(),
+                                                            glm::vec3(m_terrain.getChunkAt(x, z)->chunkPos.x, 0,
+                                                                      m_terrain.getChunkAt(x, z)->chunkPos.z)));
+                m_terrain.getChunkAt(x, z)->setVBOdata();
+                m_progLambert.drawInterleaved(*m_terrain.getChunkAt(x, z), false, 0);
+                drawChunkVector.push_back(m_terrain.getChunkAt(x, z).get());
+            }
+        }
+    }
+
+    for (auto c : drawChunkVector) {
+        m_progLambert.setModelMatrix(glm::translate(glm::mat4(),
+                                                    glm::vec3(c->chunkPos.x, 0,
+                                                              c->chunkPos.z)));
+        c->setTVBOdata();
+        m_progLambert.drawInterleaved(*c, true, c->t_idx.size());
+    }
+
+    drawChunkVector.clear();
+
+    vboWorkerMutex.unlock();
+    blockWorkerMutex.unlock();
 //    m_terrain.draw(-128+pos[0], 128+pos[0], -128+pos[2], 128+pos[2], &m_progInstanced);
 //    m_terrain.draw();
-    int x = 16 * static_cast<int>(glm::floor(pos[0] / 16.f));
-    int z = 16 * static_cast<int>(glm::floor(pos[2] / 16.f));
-    int d = 32;
-
-    m_terrain.draw(x-d, x+d*2, z-d, z+d*2, &m_progLambert);
+//    int x = 16 * static_cast<int>(glm::floor(pos[0] / 16.f));
+//    int z = 16 * static_cast<int>(glm::floor(pos[2] / 16.f));
+//    int d = 32;
+//
+//    m_terrain.draw(x-d, x+d, z-d, z+d, &m_progLambert);
 }
 
 void MyGL::tick() {
@@ -236,11 +228,11 @@ void MyGL::tick() {
 
     renderTerrain();
 
-    glDisable(GL_DEPTH_TEST);
-    m_progFlat.setModelMatrix(glm::mat4());
-    m_progFlat.setViewProjMatrix(m_player.mcr_camera.getViewProj());
-    m_progFlat.draw(m_worldAxes);
-    glEnable(GL_DEPTH_TEST);
+//    glDisable(GL_DEPTH_TEST);
+//    m_progFlat.setModelMatrix(glm::mat4());
+//    m_progFlat.setViewProjMatrix(m_player.mcr_camera.getViewProj());
+//    m_progFlat.draw(m_worldAxes);
+//    glEnable(GL_DEPTH_TEST);
 }
 
 void MyGL::handleKeyPressUp(SDL_Keycode keyCode) {
@@ -261,12 +253,12 @@ void MyGL::handleKeyPressUp(SDL_Keycode keyCode) {
             bundle.spacePressed = false;
             break;
         case SDLK_e:
-            m_player.moveUpGlobal(4);
-//            bundle.ePressed = false;
+//            m_player.moveUpGlobal(4);
+            bundle.ePressed = false;
             break;
         case SDLK_q:
-            m_player.moveUpGlobal(-4);
-//            bundle.qPressed = false;
+//            m_player.moveUpGlobal(-4);
+            bundle.qPressed = false;
             break;
     }
 }
@@ -298,7 +290,7 @@ void MyGL::handleKeyPressDown(SDL_Keycode keyCode) {
             bundle.qPressed = true;
             break;
         case SDLK_f:
-            m_player.superMode = !m_player.superMode;
+            m_player.toggleSuper();
             break;
         case SDLK_LEFT:
             m_player.rotateOnUpGlobal(amount);

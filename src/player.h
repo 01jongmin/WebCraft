@@ -12,6 +12,7 @@ private:
     void computePhysics(float dT, const Terrain &terrain);
 
     bool isStanding;
+    bool inWater;
     float rightLocalRotation;
 
 public:
@@ -27,6 +28,8 @@ public:
 
     void tick(float dT, InputBundle &input) override;
     void processInputs(InputBundle &inputs);
+
+    void toggleSuper();
 
     // Player overrides all of Entity's movement
     // functions so that it transforms its camera

@@ -61,9 +61,10 @@ BlockType Terrain::getBlockAt(int x, int y, int z) const
                              static_cast<unsigned int>(z - chunkOrigin.y));
     }
     else {
-        throw std::out_of_range("Coordinates " + std::to_string(x) +
-                                " " + std::to_string(y) + " " +
-                                std::to_string(z) + " have no Chunk!");
+        return EMPTY;
+//        throw std::out_of_range("Coordinates " + std::to_string(x) +
+//                                " " + std::to_string(y) + " " +
+//                                std::to_string(z) + " have no Chunk!");
     }
 }
 
@@ -140,7 +141,7 @@ Chunk* Terrain::instantiateChunkAt(int x, int z) {
     }
 
     this->createTerrainZone(x, z);
-    m_chunks[toKey(x, z)]->createVBOdata();
+//    m_chunks[toKey(x, z)]->createVBOdata();
 
     return cPtr;
 }
@@ -151,7 +152,7 @@ Chunk* Terrain::instantiateChunkAt(int x, int z) {
 void Terrain::draw(int minX, int maxX, int minZ, int maxZ, ShaderProgram *shaderProgram) {
     for(int x = minX; x < maxX; x += 16) {
         for(int z = minZ; z < maxZ; z += 16) {
-            if(!hasChunkAt(x, z)){
+            if(!hasChunkAt(x, z)) {
                 std::cout << "creating chunk X: " << x << " Z: " << z << std::endl;
                 this->instantiateChunkAt(x, z);
             }
@@ -159,20 +160,23 @@ void Terrain::draw(int minX, int maxX, int minZ, int maxZ, ShaderProgram *shader
             const uPtr<Chunk> &chunk = getChunkAt(x, z);
             shaderProgram->setModelMatrix(glm::translate(glm::mat4(), glm::vec3(x, 0, z)));
             chunk->setVBOdata();
-            shaderProgram->drawInterleaved(*chunk, false);
+            shaderProgram->drawInterleaved(*chunk, false, 0);
+            chunk->setTVBOdata();
+            shaderProgram->drawInterleaved(*chunk, true, chunk->t_idx.size());
         }
     }
 
 //    for(int x = minX; x < maxX; x += 16) {
 //        for(int z = minZ; z < maxZ; z += 16) {
-//            if(!hasChunkAt(x, z)){
+//            if(!hasChunkAt(x, z)) {
 //                std::cout << "creating chunk X: " << x << " Z: " << z << std::endl;
 //                this->instantiateChunkAt(x, z);
 //            }
+//
 //            const uPtr<Chunk> &chunk = getChunkAt(x, z);
 //            shaderProgram->setModelMatrix(glm::translate(glm::mat4(), glm::vec3(x, 0, z)));
 //            chunk->setTVBOdata();
-//            shaderProgram->drawInterleaved(*chunk, false);
+//            shaderProgram->drawInterleaved(*chunk, true, chunk->t_idx.size());
 //        }
 //    }
 }

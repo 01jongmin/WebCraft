@@ -6822,7 +6822,7 @@ static stbi_uc *stbi__gif_load_next(stbi__context *s, stbi__gif *g, int *comp, i
             // if this was the first frame,
             pcount = g->w * g->h;
             if (first_frame && (g->bgindex > 0)) {
-               // if first frame, any pixel not drawn to gets the background color
+               // if first frame, any pixel not drawdrawn to gets the background color
                for (pi = 0; pi < pcount; ++pi) {
                   if (g->history[pi] == 0) {
                      g->pal[g->bgindex][3] = 255; // just in case it was made transparent, undo that; It will be reset next frame if need be;

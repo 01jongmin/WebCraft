@@ -6,7 +6,7 @@ Player::Player(glm::vec3 pos, const Terrain &terrain)
     : Entity(pos), m_velocity(0,0,0), m_acceleration(0,0,0),
       m_camera(pos + glm::vec3(0, 1.5f, 0)), mcr_terrain(terrain),
       mcr_camera(m_camera), isStanding(false), superMode(true),
-      rightLocalRotation(0)
+      rightLocalRotation(0), inWater(false)
 {}
 
 Player::~Player()
@@ -30,12 +30,16 @@ void Player::processInputs(InputBundle &inputs) {
     m_acceleration -= m_right * (float) inputs.aPressed;
 
     if (superMode) {
-        m_acceleration += m_up * (float) inputs.ePressed;
-        m_acceleration -= m_up * (float) inputs.qPressed;
+        m_acceleration += glm::vec3(0, 1, 0) * (float) inputs.ePressed;
+        m_acceleration -= glm::vec3(0, 1, 0) * (float) inputs.qPressed;
     } else {
-        m_acceleration += glm::vec3(0, -1, 0);
+        if(!inWater)
+            m_acceleration += glm::vec3(0, -2, 0);
+        else
+            m_acceleration += glm::vec3(0, -0.5, 0);
 
-        if (isStanding && inputs.spacePressed) m_velocity += glm::vec3(0, 2, 0);
+        if (inWater && inputs.spacePressed) m_velocity[1] = 0.8;
+        else if (isStanding && inputs.spacePressed) m_velocity[1] = 2.5;
     }
 }
 
@@ -82,7 +86,7 @@ bool gridMarch(glm::vec3 rayOrigin, glm::vec3 rayDirection, const Terrain &terra
         // If currCell contains something other than EMPTY, return
         BlockType cellType = terrain.getBlockAt(currCell.x, currCell.y, currCell.z);
 
-        if(cellType != EMPTY) {
+        if(cellType != EMPTY && cellType != WATER && cellType != LAVA) {
             *out_blockHit = currCell;
             *out_dist = glm::min(maxLen, curr_t);
             return true;
@@ -133,6 +137,13 @@ void Player::computePhysics(float dT, const Terrain &terrain) {
     std::cout << glm::to_string(m_camera.mcr_position) << std::endl;
     m_velocity *= glm::vec3(0.65, 0.99, 0.65);
 
+    if(terrain.getBlockAt(this->mcr_position) == WATER || terrain.getBlockAt(this->mcr_position) == LAVA){
+        m_velocity *= 0.5;
+        inWater = true;
+    } else {
+        inWater = false;
+    }
+
     m_velocity += m_acceleration * dT;
 
     if (superMode) {
@@ -157,7 +168,7 @@ void Player::computePhysics(float dT, const Terrain &terrain) {
                     if (gridMarch(cornerLoc, segmentedVelocity, terrain, &distance, &out_block, &axis)) {
                         ray[axis] = glm::sign(ray[axis]) * glm::min((std::abs(distance) - 0.01f), std::abs(ray[axis]));
 
-                        if (std::abs(ray[axis]) < 0.05) {
+                        if (std::abs(ray[axis]) < 0.01) {
                             m_velocity[axis] = 0;
                             ray[axis] = 0;
                         }
@@ -235,4 +246,9 @@ void Player::rotateOnRightGlobal(float degrees) {
 void Player::rotateOnUpGlobal(float degrees) {
     Entity::rotateOnUpGlobal(degrees);
     m_camera.rotateOnUpGlobal(degrees);
+}
+
+void Player::toggleSuper() {
+    superMode = !superMode;
+    m_velocity[1] = 0;
 }

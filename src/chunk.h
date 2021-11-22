@@ -13,7 +13,7 @@
 // block types, but in the scope of this project we'll never get anywhere near that many.
 enum BlockType : unsigned char
 {
-    EMPTY, GRASS, DIRT, STONE, WATER, SNOW, BEDROCK, LAVA, SAND
+    EMPTY, GRASS, DIRT, STONE, WATER, SNOW, BEDROCK, LAVA, SAND, UNDEFINED
 };
 
 enum Corner : unsigned char
@@ -53,6 +53,7 @@ private:
     std::vector<GLuint> idx {};
 
 public:
+    std::vector<GLuint> t_idx {};
     Chunk();
 
     // This Chunk's four neighbors to the north, south, east, and west

@@ -145,7 +145,7 @@ void ShaderProgram::draw(Drawable &d)
     }
 }
 
-void ShaderProgram::drawInterleaved(Drawable &d, bool tvbo)
+void ShaderProgram::drawInterleaved(Drawable &d, bool tvbo, int tvbocount = 0)
 {
     useMe();
 
@@ -166,19 +166,8 @@ void ShaderProgram::drawInterleaved(Drawable &d, bool tvbo)
     // glBindBuffer on the Drawable's VBO for vertex position,
     // meaning that glVertexAttribPointer associates vs_Pos
     // (referred to by attrPos) with that VBO
-//    if (!tvbo) {
-//        if (attrPos != -1 && d.bindPos()) {
-//            glEnableVertexAttribArray(attrPos);
-//            glVertexAttribPointer(attrPos, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) 0);
-//
-//            glEnableVertexAttribArray(attrNor);
-//            glVertexAttribPointer(attrNor, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) sizeof(glm::vec4));
-//
-//            glEnableVertexAttribArray(attrCol);
-//            glVertexAttribPointer(attrCol, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) (2 * sizeof(glm::vec4)));
-//        }
-//    } else {
-        if (attrPos != -1 && d.bindNor()) {
+    if (!tvbo) {
+        if (attrPos != -1 && d.bindPos()) {
             glEnableVertexAttribArray(attrPos);
             glVertexAttribPointer(attrPos, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) 0);
 
@@ -187,18 +176,36 @@ void ShaderProgram::drawInterleaved(Drawable &d, bool tvbo)
 
             glEnableVertexAttribArray(attrCol);
             glVertexAttribPointer(attrCol, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) (2 * sizeof(glm::vec4)));
-//        } else {
-//           std::cout << "Bind nor returns false" << std::endl;
-//        }
+        } else {
+            std::cout << "ERROR" << std::endl;
+        }
+
+        d.bindIdx();
+        glDrawElements(d.drawMode(), d.elemCount(), GL_UNSIGNED_INT, 0);
+    } else {
+        if (attrNor != -1 && d.bindNor()) {
+            glEnableVertexAttribArray(attrPos);
+            glVertexAttribPointer(attrPos, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) 0);
+
+            glEnableVertexAttribArray(attrNor);
+            glVertexAttribPointer(attrNor, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) sizeof(glm::vec4));
+
+            glEnableVertexAttribArray(attrCol);
+            glVertexAttribPointer(attrCol, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) (2 * sizeof(glm::vec4)));
+        } else {
+            std::cout << "ERROR" << std::endl;
+        }
+
+        d.bindCol();
+        glDrawElements(d.drawMode(), tvbocount, GL_UNSIGNED_INT, 0);
     }
+
 
     // Bind the index buffer and then draw shapes from it.
     // This invokes the shader program, which accesses the vertex buffers.
-    d.bindIdx();
-    glDrawElements(d.drawMode(), d.elemCount(), GL_UNSIGNED_INT, 0);
+
 
     if (attrPos != -1) glDisableVertexAttribArray(attrPos);
-    if (attrNor != -1) glDisableVertexAttribArray(attrNor);
 }
 
 char* ShaderProgram::textFileRead(const char* fileName) {

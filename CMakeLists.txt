@@ -11,7 +11,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/web)
 if( ${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
     Message( STATUS "EMCC ENABLED")
 #    -s PTHREAD_POOL_SIZE=4
-    set(USE_FLAGS "-s ALLOW_MEMORY_GROWTH=1 -s USE_SDL=2 -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS='[\"png\"]' -pthread -s PTHREAD_POOL_SIZE=20 --preload-file shader -o index.js")
+    set(USE_FLAGS "-s ALLOW_MEMORY_GROWTH=1 -s USE_SDL=2 -s USE_SDL_IMAGE=2 -s SDL2_IMAGE_FORMATS='[\"png\"]' -pthread -s PTHREAD_POOL_SIZE=8 --preload-file shader -o index.js")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${USE_FLAGS}")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${USE_FLAGS}")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${USE_FLAGS}")

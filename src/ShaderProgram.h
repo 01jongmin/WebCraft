@@ -43,7 +43,7 @@ public:
     // Draw the given object to our screen using this ShaderProgram's shaders
     void draw(Drawable &d);
 
-    void drawInterleaved(Drawable &d, bool tvbo);
+    void drawInterleaved(Drawable &d, bool tvbo, int);
 
     void setTime(int t);
 
