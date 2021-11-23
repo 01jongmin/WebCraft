@@ -343,6 +343,7 @@ CMakeFiles/WebCraft.dir/src/MyGL.cpp.o: \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/SDL2/SDL_version.h \
   /Users/jongmin/CLionProjects/webassembly_emcc/src/Quad.h \
   /Users/jongmin/CLionProjects/webassembly_emcc/src/FrameBuffer.h \
+  /Users/jongmin/CLionProjects/webassembly_emcc/src/Reticle.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/emscripten.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/emscripten/emscripten.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/emscripten/em_asm.h \

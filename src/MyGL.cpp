@@ -75,14 +75,14 @@ MyGL::MyGL(SDL_Window *pWindow, std::vector<std::thread> &spawned_threads,
            std::mutex &drawChunkMutex,
            std::deque<Chunk *> &drawChunkVector) :
         m_worldAxes(), m_progFlat(), m_terrain(),
-        m_progLambert(), m_progPostprocess(),
-        m_player(glm::vec3(60.f, 140.f, 80.f), m_terrain),
+        m_progLambert(), m_progPostprocess(), m_progStaticFlat(),
+        m_player(glm::vec3(993.f, 152.f, 949.f), m_terrain),
         bundle(InputBundle()),
         lastTick(SDL_GetTicks()),
         spawned_threads(spawned_threads), blockWorkerMutex(blockWorkerMutex),
         blockWorkerCoordVector(blockWorkerCoordVector), vboWorkerMutex(vboWorkerMutex),
         vboChunkVector(vboChunkVector), drawChunkMutex(drawChunkMutex), drawChunkVector(drawChunkVector),
-        m_time(0), m_geomQuad(), m_frameBuffer() {
+        m_time(0), m_geomQuad(), m_frameBuffer(), m_reticle() {
 
     int k = 0;
     this->window = pWindow;
@@ -103,9 +103,11 @@ MyGL::MyGL(SDL_Window *pWindow, std::vector<std::thread> &spawned_threads,
     m_progFlat.create("../shader/flat.vert", "../shader/flat.frag");
     m_progLambert.create("../shader/lambert.vert.glsl", "../shader/lambert.frag.glsl");
     m_progPostprocess.create("../shader/passthrough.vert.glsl", "../shader/posteffect.frag.glsl");
+    m_progStaticFlat.create("../shader/staticFlat.vert.glsl", "../shader/staticFlat.frag.glsl");
 
     m_worldAxes.createVBOdata();
     m_geomQuad.createVBOdata();
+    m_reticle.createVBOdata();
 
     mp_texture = std::unique_ptr<Texture>(new Texture());
     mp_texture->create("../shader/minecraft_textures_all.png");
@@ -135,7 +137,7 @@ void MyGL::renderTerrain() {
     int xCurr = 16 * static_cast<int>(glm::floor(pos[0] / 16.f));
     int zCurr = 16 * static_cast<int>(glm::floor(pos[2] / 16.f));
 
-    int d = 15;
+    int d = 20;
 
     blockWorkerMutex.lock();
     vboWorkerMutex.lock();
@@ -227,7 +229,7 @@ void MyGL::tick() {
     }
 
     int curr = SDL_GetTicks();
-    m_player.tick((curr - lastTick) / 100.0, bundle);
+    m_player.tick((curr - lastTick) / 120.0, bundle);
     lastTick = curr;
 
     mp_texture->bind(0);
@@ -247,6 +249,10 @@ void MyGL::tick() {
     m_progFlat.setModelMatrix(glm::mat4());
     m_progFlat.setViewProjMatrix(m_player.mcr_camera.getViewProj());
     m_progFlat.draw(m_worldAxes);
+
+    glLineWidth(10.f);
+    m_progStaticFlat.draw(m_reticle);
+
     glEnable(GL_DEPTH_TEST);
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);

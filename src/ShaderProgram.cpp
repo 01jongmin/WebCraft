@@ -127,12 +127,6 @@ void ShaderProgram::draw(Drawable &d)
         glVertexAttribPointer(attrCol, 4, GL_FLOAT, false, 0, NULL);
     }
 
-//    if(frameBufferUnifSampler2D != -1) {
-//        glUniform1i(frameBufferUnifSampler2D, /*GL_TEXTURE*/2);
-//    } else {
-//        throw;
-//    }
-
     // Bind the index buffer and then draw shapes from it.
     // This invokes the shader program, which accesses the vertex buffers.
     d.bindIdx();

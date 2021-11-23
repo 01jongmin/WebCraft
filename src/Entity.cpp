@@ -9,7 +9,7 @@ Entity::Entity()
 {}
 
 Entity::Entity(glm::vec3 pos)
-        : m_forward(0,0,-1), m_right(1,0,0), m_up(0,1,0), m_position(pos), mcr_position(m_position)
+        : m_forward(-1,0,0), m_right(0,0,-1), m_up(0,1,0), m_position(pos), mcr_position(m_position)
 {}
 
 Entity::Entity(const Entity &e)

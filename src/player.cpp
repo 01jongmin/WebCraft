@@ -34,12 +34,12 @@ void Player::processInputs(InputBundle &inputs) {
         m_acceleration -= glm::vec3(0, 0.7, 0) * (float) inputs.qPressed;
     } else {
         if(!inWater)
-            m_acceleration += glm::vec3(0, -1.7, 0);
+            m_acceleration += glm::vec3(0, -1.0, 0);
         else
             m_acceleration += glm::vec3(0, -0.5, 0);
 
-        if (inWater && inputs.spacePressed) m_velocity[1] = 0.8;
-        else if (isStanding && inputs.spacePressed) m_velocity[1] = 2.5;
+        if (inWater && inputs.spacePressed) m_velocity[1] = 0.6;
+        else if (isStanding && inputs.spacePressed) m_velocity[1] = 2.0;
     }
 }
 
@@ -145,7 +145,7 @@ void Player::computePhysics(float dT, const Terrain &terrain) {
     if (superMode) {
         moveAlongVector(m_velocity * dT);
     } else {
-        float delta[4][2] = {{0.5, 0.5}, {-0.5, 0.5}, {-0.5, -0.5}, {0.5, -0.5}};
+        float delta[4][2] = {{0.45, 0.45}, {-0.45, 0.45}, {-0.45, -0.45}, {0.45, -0.45}};
         glm::vec3 ray = m_velocity * dT;
 
         for (int axis = 0; axis < 3; axis++) {

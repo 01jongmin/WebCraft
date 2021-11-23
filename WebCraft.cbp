@@ -975,6 +975,12 @@
 		<Unit filename="/Users/jongmin/CLionProjects/webassembly_emcc/src/Quad.h">
 			<Option target="WebCraft"/>
 		</Unit>
+		<Unit filename="/Users/jongmin/CLionProjects/webassembly_emcc/src/Reticle.cpp">
+			<Option target="WebCraft"/>
+		</Unit>
+		<Unit filename="/Users/jongmin/CLionProjects/webassembly_emcc/src/Reticle.h">
+			<Option target="WebCraft"/>
+		</Unit>
 		<Unit filename="/Users/jongmin/CLionProjects/webassembly_emcc/src/ShaderProgram.cpp">
 			<Option target="WebCraft"/>
 		</Unit>

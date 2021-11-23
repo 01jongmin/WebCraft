@@ -355,6 +355,30 @@ src/Quad.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/WebCraft.dir/build.make CMakeFiles/WebCraft.dir/src/Quad.cpp.s
 .PHONY : src/Quad.cpp.s
 
+src/Reticle.o: src/Reticle.cpp.o
+.PHONY : src/Reticle.o
+
+# target to build an object file
+src/Reticle.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WebCraft.dir/build.make CMakeFiles/WebCraft.dir/src/Reticle.cpp.o
+.PHONY : src/Reticle.cpp.o
+
+src/Reticle.i: src/Reticle.cpp.i
+.PHONY : src/Reticle.i
+
+# target to preprocess a source file
+src/Reticle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WebCraft.dir/build.make CMakeFiles/WebCraft.dir/src/Reticle.cpp.i
+.PHONY : src/Reticle.cpp.i
+
+src/Reticle.s: src/Reticle.cpp.s
+.PHONY : src/Reticle.s
+
+# target to generate assembly for a file
+src/Reticle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WebCraft.dir/build.make CMakeFiles/WebCraft.dir/src/Reticle.cpp.s
+.PHONY : src/Reticle.cpp.s
+
 src/ShaderProgram.o: src/ShaderProgram.cpp.o
 .PHONY : src/ShaderProgram.o
 
@@ -558,6 +582,9 @@ help:
 	@echo "... src/Quad.o"
 	@echo "... src/Quad.i"
 	@echo "... src/Quad.s"
+	@echo "... src/Reticle.o"
+	@echo "... src/Reticle.i"
+	@echo "... src/Reticle.s"
 	@echo "... src/ShaderProgram.o"
 	@echo "... src/ShaderProgram.i"
 	@echo "... src/ShaderProgram.s"
