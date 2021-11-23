@@ -93,8 +93,6 @@ bool Chunk::bindTransparentData() {
 }
 
 void Chunk::createVBOdata() {
-    int curr = SDL_GetTicks();
-
     for (auto& e : m_neighbors) {
         if (e.second == nullptr) {
             return;

@@ -135,7 +135,7 @@ void MyGL::renderTerrain() {
     int xCurr = 16 * static_cast<int>(glm::floor(pos[0] / 16.f));
     int zCurr = 16 * static_cast<int>(glm::floor(pos[2] / 16.f));
 
-    int d = 10;
+    int d = 15;
 
     blockWorkerMutex.lock();
     vboWorkerMutex.lock();
@@ -160,7 +160,7 @@ void MyGL::renderTerrain() {
                 m_terrain.getChunkAt(x, z)->setVBOdata();
                 m_progLambert.drawChunkInterleaved(*m_terrain.getChunkAt(x, z), false);
                 drawChunkVector.push_back(m_terrain.getChunkAt(x, z).get());
-            } else if (std::abs(d1) <= d / 2 && std::abs(d2) <= d / 2) {
+            } else if (std::abs(d1) <= d - 3 && std::abs(d2) <= d - 3) {
                 m_progLambert.setModelMatrix(glm::translate(glm::mat4(),
                                                             glm::vec3(m_terrain.getChunkAt(x, z)->chunkPos.x, 0,
                                                                       m_terrain.getChunkAt(x, z)->chunkPos.z)));
