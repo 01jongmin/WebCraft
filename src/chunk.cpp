@@ -101,12 +101,6 @@ void Chunk::createVBOdata() {
         }
     }
 
-    std::vector<glm::vec4> pos {};
-    std::vector<glm::vec4> nor {};
-    std::vector<glm::vec4> uv {};
-    std::vector<glm::vec4> t_pos {}; // transparent versions
-    std::vector<glm::vec4> t_nor {};
-    std::vector<glm::vec4> t_uv {};
     data.clear();
     idx.clear();
     t_data.clear();
@@ -116,22 +110,19 @@ void Chunk::createVBOdata() {
         for (int y = 0; y < 256; y++) {
             for (int z = 0; z < 16; z++) {
                 if (getBlockAt(x, y, z) != EMPTY) {
-                    uPtr<std::unordered_map<Direction, BlockType, EnumHash>> localNeighbors = getLocalNeighbors(x, y, z);
+                    uPtr<std::unordered_map<Direction, BlockType, EnumHash>> localNeighbors = getLocalNeighbors(x, y,
+                                                                                                                z);
                     for (auto neighbors : *localNeighbors.get()) {
                         if (neighbors.second == EMPTY ||
                             (neighbors.second == WATER && getBlockAt(x, y, z) != WATER)) {
                             if (getBlockAt(x, y, z) == WATER) {
                                 drawFace(neighbors.first,
-                                         &t_pos,
-                                         &t_nor,
-                                         &t_uv,
+                                         &t_data,
                                          &t_idx,
                                          glm::vec4(x, y, z, 0), getBlockAt(x, y, z));
                             } else {
                                 drawFace(neighbors.first,
-                                         &pos,
-                                         &nor,
-                                         &uv,
+                                         &data,
                                          &idx,
                                          glm::vec4(x, y, z, 0), getBlockAt(x, y, z));
                             }
@@ -140,18 +131,6 @@ void Chunk::createVBOdata() {
                 }
             }
         }
-    }
-
-    for (int i = 0; i < (int) pos.size(); i++) {
-        data.push_back(pos[i]);
-        data.push_back(nor[i]);
-        data.push_back(uv[i]);
-    }
-
-    for (int i = 0; i < (int) t_pos.size(); i++) {
-        t_data.push_back(t_pos[i]);
-        t_data.push_back(t_nor[i]);
-        t_data.push_back(t_uv[i]);
     }
 
     vboSet = true;
@@ -195,75 +174,121 @@ void Chunk::setTVBOdata() {
 
 void Chunk::drawFace(
         Direction direction,
-        std::vector<glm::vec4>* pos,
-        std::vector<glm::vec4>* nor,
-        std::vector<glm::vec4>* uv,
+        std::vector<glm::vec4>* data,
         std::vector<GLuint>* idx,
         glm::vec4 blockPos,
         BlockType blockType) {
 
-    int originalPosSize = pos->size();
+    int originalPosSize = data->size() / 3;
 
     switch(direction) {
         case(XPOS):
-            pos->push_back(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f) + blockPos);
-            pos->push_back(glm::vec4(1.0f, 0.0f, 1.0f, 1.0f) + blockPos);
-            pos->push_back(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f) + blockPos);
-            pos->push_back(glm::vec4(1.0f, 1.0f, 0.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(1, 0, 0, 0));
+            data->push_back(getUVCoord(blockType, BR, direction == YPOS, direction == YNEG));
 
-            for(int i = 0; i < 4; i ++) {
-                nor->push_back(glm::vec4(1, 0, 0, 0));
-            }
+            data->push_back(glm::vec4(1.0f, 0.0f, 1.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(1, 0, 0, 0));
+            data->push_back(getUVCoord(blockType, BL, direction == YPOS, direction == YNEG));
+
+            data->push_back(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(1, 0, 0, 0));
+            data->push_back(getUVCoord(blockType, TR, direction == YPOS, direction == YNEG));
+
+            data->push_back(glm::vec4(1.0f, 1.0f, 0.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(1, 0, 0, 0));
+            data->push_back(getUVCoord(blockType, TL, direction == YPOS, direction == YNEG));
+
             break;
         case(XNEG):
-            pos->push_back(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f) + blockPos);
-            pos->push_back(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f) + blockPos);
-            pos->push_back(glm::vec4(0.0f, 1.0f, 1.0f, 1.0f) + blockPos);
-            pos->push_back(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(-1, 0, 0, 0));
+            data->push_back(getUVCoord(blockType, BR, direction == YPOS, direction == YNEG));
 
-            for(int i = 0; i < 4; i ++) {
-                nor->push_back(glm::vec4(-1, 0, 0, 0));
-            }
+            data->push_back(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(-1, 0, 0, 0));
+            data->push_back(getUVCoord(blockType, BL, direction == YPOS, direction == YNEG));
+
+            data->push_back(glm::vec4(0.0f, 1.0f, 1.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(-1, 0, 0, 0));
+            data->push_back(getUVCoord(blockType, TR, direction == YPOS, direction == YNEG));
+
+            data->push_back(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(-1, 0, 0, 0));
+            data->push_back(getUVCoord(blockType, TL, direction == YPOS, direction == YNEG));
+
             break;
         case(YPOS):
-            pos->push_back(glm::vec4(1.0f, 1.0f, 0.0f, 1.0f) + blockPos);
-            pos->push_back(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f) + blockPos);
-            pos->push_back(glm::vec4(0.0f, 1.0f, 1.0f, 1.0f) + blockPos);
-            pos->push_back(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(1.0f, 1.0f, 0.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(0, 1, 0, 0));
+            data->push_back(getUVCoord(blockType, BR, direction == YPOS, direction == YNEG));
 
-            for(int i = 0; i < 4; i ++) {
-                nor->push_back(glm::vec4(0, 1, 0, 0));
-            }
+            data->push_back(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(0, 1, 0, 0));
+            data->push_back(getUVCoord(blockType, BL, direction == YPOS, direction == YNEG));
+
+            data->push_back(glm::vec4(0.0f, 1.0f, 1.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(0, 1, 0, 0));
+            data->push_back(getUVCoord(blockType, TR, direction == YPOS, direction == YNEG));
+
+            data->push_back(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(0, 1, 0, 0));
+            data->push_back(getUVCoord(blockType, TL, direction == YPOS, direction == YNEG));
+
             break;
         case(YNEG):
-            pos->push_back(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f) + blockPos);
-            pos->push_back(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f) + blockPos);
-            pos->push_back(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f) + blockPos);
-            pos->push_back(glm::vec4(1.0f, 0.0f, 1.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(0, -1, 0, 0));
+            data->push_back(getUVCoord(blockType, BR, direction == YPOS, direction == YNEG));
 
-            for(int i = 0; i < 4; i ++) {
-                nor->push_back(glm::vec4(0, -1, 0, 0));
-            }
+            data->push_back(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(0, -1, 0, 0));
+            data->push_back(getUVCoord(blockType, BL, direction == YPOS, direction == YNEG));
+
+            data->push_back(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(0, -1, 0, 0));
+            data->push_back(getUVCoord(blockType, TR, direction == YPOS, direction == YNEG));
+
+            data->push_back(glm::vec4(1.0f, 0.0f, 1.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(0, -1, 0, 0));
+            data->push_back(getUVCoord(blockType, TL, direction == YPOS, direction == YNEG));
+
             break;
         case(ZPOS):
-            pos->push_back(glm::vec4(1.0f, 0.0f, 1.0f, 1.0f) + blockPos);
-            pos->push_back(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f) + blockPos);
-            pos->push_back(glm::vec4(0.0f, 1.0f, 1.0f, 1.0f) + blockPos);
-            pos->push_back(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(1.0f, 0.0f, 1.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(0, 0, 1, 0));
+            data->push_back(getUVCoord(blockType, BR, direction == YPOS, direction == YNEG));
 
-            for(int i = 0; i < 4; i ++) {
-                nor->push_back(glm::vec4(0, 0, 1, 0));
-            }
+            data->push_back(glm::vec4(0.0f, 0.0f, 1.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(0, 0, 1, 0));
+            data->push_back(getUVCoord(blockType, BL, direction == YPOS, direction == YNEG));
+
+            data->push_back(glm::vec4(0.0f, 1.0f, 1.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(0, 0, 1, 0));
+            data->push_back(getUVCoord(blockType, TR, direction == YPOS, direction == YNEG));
+
+            data->push_back(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(0, 0, 1, 0));
+            data->push_back(getUVCoord(blockType, TL, direction == YPOS, direction == YNEG));
+
             break;
         case(ZNEG):
-            pos->push_back(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f) + blockPos);
-            pos->push_back(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f) + blockPos);
-            pos->push_back(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f) + blockPos);
-            pos->push_back(glm::vec4(1.0f, 1.0f, 0.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(1.0f, 0.0f, 0.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(0, 0, -1, 0));
+            data->push_back(getUVCoord(blockType, BR, direction == YPOS, direction == YNEG));
 
-            for(int i = 0; i < 4; i ++) {
-                nor->push_back(glm::vec4(0, 0, -1, 0));
-            }
+            data->push_back(glm::vec4(0.0f, 0.0f, 0.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(0, 0, -1, 0));
+            data->push_back(getUVCoord(blockType, BL, direction == YPOS, direction == YNEG));
+
+            data->push_back(glm::vec4(0.0f, 1.0f, 0.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(0, 0, -1, 0));
+            data->push_back(getUVCoord(blockType, TR, direction == YPOS, direction == YNEG));
+
+            data->push_back(glm::vec4(1.0f, 1.0f, 0.0f, 1.0f) + blockPos);
+            data->push_back(glm::vec4(0, 0, -1, 0));
+            data->push_back(getUVCoord(blockType, TL, direction == YPOS, direction == YNEG));
+
             break;
     }
 
@@ -274,12 +299,6 @@ void Chunk::drawFace(
     idx->push_back(0 + originalPosSize);
     idx->push_back(2 + originalPosSize);
     idx->push_back(3 + originalPosSize);
-
-    // fill color
-    uv->push_back(getUVCoord(blockType, BR, direction == YPOS, direction == YNEG));
-    uv->push_back(getUVCoord(blockType, BL, direction == YPOS, direction == YNEG));
-    uv->push_back(getUVCoord(blockType, TR, direction == YPOS, direction == YNEG));
-    uv->push_back(getUVCoord(blockType, TL, direction == YPOS, direction == YNEG));
 }
 
 glm::vec4 Chunk::getUVCoord(BlockType blockType, Corner corner, bool isTop, bool isBottom) {

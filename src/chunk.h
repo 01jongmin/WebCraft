@@ -106,9 +106,7 @@ public:
     // draws a face
     void drawFace(
             Direction direction,
-            std::vector<glm::vec4>* pos,
-            std::vector<glm::vec4>* nor,
-            std::vector<glm::vec4>* col,
+            std::vector<glm::vec4>* data,
             std::vector<GLuint>* idx,
             glm::vec4 blockPos,
             BlockType blockType);
