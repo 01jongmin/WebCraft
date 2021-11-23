@@ -1,8 +1,8 @@
 #include "terrain.h"
-//#include "smartpointerhelp.h"
-//#include <stdexcept>
 #include <iostream>
 #include "chunk.h"
+#include <SDL2/SDL.h>
+#include <random>
 //
 Terrain::Terrain()
     : m_chunks(), m_generatedTerrain()
@@ -12,8 +12,8 @@ Terrain::Terrain()
 ////    m_geomCube.destroyVBOdata();
 //}
 //
-//// Combine two 32-bit ints into one 64-bit int
-//// where the upper 32 bits are X and the lower 32 bits are Z
+// Combine two 32-bit ints into one 64-bit int
+// where the upper 32 bits are X and the lower 32 bits are Z
 int64_t toKey(int x, int z) {
     int64_t xz = 0xffffffffffffffff;
     int64_t x64 = x;
@@ -103,21 +103,16 @@ void Terrain::setBlockAt(int x, int y, int z, BlockType t)
 {
     if(hasChunkAt(x, z) && x >= 0 && y >= 0 && z >= 0) {
         uPtr<Chunk> &c = getChunkAt(x, z);
-        glm::ivec2 chunkOrigin = glm::ivec2(floor(x / 16.f) * 16, floor(z / 16.f) * 16);
-//        std::cout << "setBlockAt: " << x - chunkOrigin.x << " " << y << " " << z - chunkOrigin.y << std::endl;
-        c->setBlockAt(x - chunkOrigin.x,
+
+        c->setBlockAt(x - c->chunkPos.x,
                       y,
-                      z - chunkOrigin.y,
+                      z - c->chunkPos.z,
                       t);
     }
-//    else {
-//        throw std::out_of_range("Coordinates " + std::to_string(x) +
-//                                " " + std::to_string(y) + " " +
-//                                std::to_string(z) + " have no Chunk!");
-//    }
 }
 
 Chunk* Terrain::instantiateChunkAt(int x, int z) {
+    int curr = SDL_GetTicks();
     uPtr<Chunk> chunk = mkU<Chunk>();
     Chunk *cPtr = chunk.get();
     cPtr->chunkPos = glm::vec4(x, 0, z, 1);
@@ -141,7 +136,6 @@ Chunk* Terrain::instantiateChunkAt(int x, int z) {
     }
 
     this->createTerrainZone(x, z);
-//    m_chunks[toKey(x, z)]->createVBOdata();
 
     return cPtr;
 }
@@ -180,7 +174,7 @@ void Terrain::draw(int minX, int maxX, int minZ, int maxZ, ShaderProgram *shader
 //        }
 //    }
 }
-//
+
 int Terrain::grasslandHeighField(int x, int z)
 {
     glm::vec2 p = glm::vec2(x, z);
@@ -216,63 +210,6 @@ int Terrain::mountainHeighField(int x, int z)
     return (fy > 200)?std::max(fx, fy): fy;
 }
 
-void Terrain::createBiomes(int x, int z)
-{
-    glm::vec2 p = glm::vec2(x, z);
-    float noise = (glm::simplex(p/1080.f));
-    float t = glm::smoothstep(0.15f, 0.85f, 0.5f* (1 + noise));
-
-    float h1 = this->mountainHeighField(x, z);
-    float h2 = this->grasslandHeighField(x, z);
-
-    float height = glm::mix(h1, h2, t);
-    int y = height, i = 0;
-
-    // To Zohar:
-    // When you finish Efficient Terrain Rendering
-    // Make "lowCompute = false" to test the actual circumstance
-    bool lowCompute = true;
-
-
-    for(i = 0; i < y && i < 129; i++){
-        if(!lowCompute){
-            setBlockAt(x, i, z, STONE);
-        }
-    }
-
-    if(i > 128){
-        if(t > 0.75){
-            // Grassland
-            if(lowCompute && i < y - 5)
-                i = y - 5;
-            for(; i < y; i++){
-                setBlockAt(x, i, z, DIRT);
-            }
-            setBlockAt(x, i, z, GRASS);
-        }
-        else{
-            // Mountain
-            if(lowCompute && i < y - 5)
-                i = y - 5;
-
-            for(; i < y; i++){
-                setBlockAt(x, i, z, STONE);
-            }
-
-            if(y > 200)
-                setBlockAt(x, y, z, SNOW);
-            else
-                setBlockAt(x, y, z, STONE);
-        }
-    }
-
-    // TODO: Why is this an error????
-    for(i = 255; i >= 128 && i >= y; i--){
-        if(this->getBlockAt(x, i, z) == EMPTY && i <= 138)
-            setBlockAt(x, i, z, WATER);
-    }
-}
-//
 //void Terrain::createBiomes(int x, int z)
 //{
 //    glm::vec2 p = glm::vec2(x, z);
@@ -285,79 +222,122 @@ void Terrain::createBiomes(int x, int z)
 //    float height = glm::mix(h1, h2, t);
 //    int y = height, i = 0;
 //
-//    setBlockAt(x, 0, z, BEDROCK);
-//    for(i = 1; i < y && i < 129; i++){
-//        glm::vec3 cavePos = glm::vec3(x / 100.f, i / 20.f, z / 150.f);
-//        bool isEmpty = (glm::perlin(cavePos) - 0.12 > 0);
+//    // To Zohar:
+//    // When you finish Efficient Terrain Rendering
+//    // Make "lowCompute = false" to test the actual circumstance
+//    bool lowCompute = true;
 //
-//        (isEmpty)?(i < 25)?setBlockAt(x, i, z, LAVA):setBlockAt(x, i, z, EMPTY):setBlockAt(x, i, z, STONE);
-//    }
 //
-//    i = 129;
-//    if(t > 0.75){
-//        // Grassland
-//        for(; i < y; i++){
-//            setBlockAt(x, i, z, DIRT);
-//        }
-//        setBlockAt(x, i, z, GRASS);
-//    }
-//    else{
-//        // Mountain
-//        for(; i < y; i++){
+//    for(i = 0; i < y && i < 129; i++){
+//        if(!lowCompute){
 //            setBlockAt(x, i, z, STONE);
 //        }
-//
-//        if(y > 200)
-//            setBlockAt(x, y, z, SNOW);
-//        else
-//            setBlockAt(x, y, z, STONE);
 //    }
 //
-//    for(i = 138; i >= 128 && i >= y; i--){
+//    if(i > 128){
+//        if(t > 0.75){
+//            // Grassland
+//            if(lowCompute && i < y - 5)
+//                i = y - 5;
+//            for(; i < y; i++){
+//                setBlockAt(x, i, z, DIRT);
+//            }
+//            setBlockAt(x, i, z, GRASS);
+//        }
+//        else{
+//            // Mountain
+//            if(lowCompute && i < y - 5)
+//                i = y - 5;
+//
+//            for(; i < y; i++){
+//                setBlockAt(x, i, z, STONE);
+//            }
+//
+//            if(y > 200)
+//                setBlockAt(x, y, z, SNOW);
+//            else
+//                setBlockAt(x, y, z, STONE);
+//        }
+//    }
+//
+//    for(i = 255; i >= 128 && i >= y; i--){
 //        if(this->getBlockAt(x, i, z) == EMPTY && i <= 138)
 //            setBlockAt(x, i, z, WATER);
 //    }
 //}
+//
+void Terrain::createBiomes(int x, int z)
+{
+    float r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+
+    glm::vec2 p = glm::vec2(x, z);
+    float noise = (glm::simplex(p/1080.f));
+    float t = glm::smoothstep(0.15f, 0.85f, 0.5f* (1 + noise));
+
+    float h1 = this->mountainHeighField(x, z);
+    float h2 = this->grasslandHeighField(x, z);
+
+    float height = glm::mix(h1, h2, t);
+
+//    std::cout << "x: " << x << "    z: " << z << "    height: " << height << std::endl;
+//    std::cout << "biome " << r << "  step 1 " << SDL_GetTicks() << std::endl;
+
+    int y = height, i = 0;
+
+    setBlockAt(x, 0, z, BEDROCK);
+    for(i = 1; i < y && i < 129; i++){
+        glm::vec3 cavePos = glm::vec3(x / 100.f, i / 20.f, z / 150.f);
+        bool isEmpty = (glm::perlin(cavePos) - 0.12 > 0);
+
+        (isEmpty)?(i < 25)?setBlockAt(x, i, z, LAVA):setBlockAt(x, i, z, EMPTY):setBlockAt(x, i, z, STONE);
+    }
+
+//    std::cout << "biome " << r << "  step 2 " << SDL_GetTicks() << std::endl;
+
+    i = 129;
+    if(t > 0.75){
+        // Grassland
+        for(; i < y; i++){
+            setBlockAt(x, i, z, DIRT);
+        }
+        setBlockAt(x, i, z, GRASS);
+    }
+    else{
+        // Mountain
+        for(; i < y; i++){
+            setBlockAt(x, i, z, STONE);
+        }
+
+        if(y > 200)
+            setBlockAt(x, y, z, SNOW);
+        else
+            setBlockAt(x, y, z, STONE);
+    }
+
+//    std::cout << "biome " << r << "  step 3 " << SDL_GetTicks() << std::endl;
+
+    for(i = 138; i >= 128 && i >= y; i--){
+        if(this->getBlockAt(x, i, z) == EMPTY && i <= 138)
+            setBlockAt(x, i, z, WATER);
+    }
+
+//    std::cout << "biome " << r << "  step 4 " << SDL_GetTicks() << std::endl;
+}
 
 void Terrain::createTerrainZone(int x, int z)
 {
+    float r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+//    std::cout << "terrain " << r << "  start " << SDL_GetTicks() << std::endl;
     x = 16 * static_cast<int>(glm::floor(x / 16.f));
     z = 16 * static_cast<int>(glm::floor(z / 16.f));
 
     for(int i = x; i < x + 16; i++){
         for(int j = z; j < z + 16; j++){
+//            std::cout << "terrain " << r << "  start " << SDL_GetTicks() << std::endl;
             this->createBiomes(i, j);
+//            std::cout << "terrain " << r << "  end " << SDL_GetTicks() << std::endl;
         }
     }
-}
 
-void Terrain::CreateTestScene()
-{
-}
-
-void Terrain::loadNewChunks(glm::vec3 playerPos) {
-    Chunk* currentChunk = getChunkAt(playerPos.x, playerPos.z).get();
-    if (currentChunk == nullptr) {
-        return;
-    }
-    for (auto neighbor : currentChunk->m_neighbors) {
-        if (neighbor.second == nullptr)        {
-            switch(neighbor.first) {
-            case XPOS:
-                instantiateChunkAt(currentChunk->chunkPos.x + 16, currentChunk->chunkPos.z);
-                break;
-            case XNEG:
-                instantiateChunkAt(currentChunk->chunkPos.x - 16, currentChunk->chunkPos.z);
-                break;
-            case ZPOS:
-                instantiateChunkAt(currentChunk->chunkPos.x, currentChunk->chunkPos.z + 16);
-                break;
-            case ZNEG:
-                instantiateChunkAt(currentChunk->chunkPos.x, currentChunk->chunkPos.z - 16);
-                break;
-            default:
-                return;
-            }
-        }
-    }
+//    std::cout << "terrain " << r << "  end " << SDL_GetTicks() << std::endl;
 }

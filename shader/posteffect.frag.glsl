@@ -13,7 +13,7 @@ void main()
         color.b += 0.3;
     }
     else if(u_Surrounding == 2){
-        color.r += 0.3;
+        color = vec4(1.0, 0.0, 0.0, 1.0);
     }
 
     gl_FragColor = color;

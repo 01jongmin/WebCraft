@@ -131,8 +131,6 @@ void Player::addBlock(Terrain *terrain) {
 }
 
 void Player::computePhysics(float dT, const Terrain &terrain) {
-    std::cout << "dT: " << dT << " Velocity: " << glm::to_string(m_velocity) << " Acceleration: " << glm::to_string(m_acceleration) << std::endl;
-    std::cout << glm::to_string(m_camera.mcr_position) << std::endl;
     m_velocity *= glm::vec3(0.65, 0.99, 0.65);
 
     if(terrain.getBlockAt(this->mcr_position) == WATER || terrain.getBlockAt(this->mcr_position) == LAVA){

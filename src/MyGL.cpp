@@ -35,7 +35,6 @@ void blockWorkerHandler(std::deque<std::pair<int, int>> &blockWorkerCoordVector,
         if (!blockWorkerCoordVector.empty()) {
             auto &s = blockWorkerCoordVector.at(0);
             blockWorkerCoordVector.pop_front();
-
             Chunk *c = m_terrain.instantiateChunkAt(s.first, s.second);
             blockWorkermutex.unlock();
 
@@ -45,7 +44,7 @@ void blockWorkerHandler(std::deque<std::pair<int, int>> &blockWorkerCoordVector,
         } else {
             blockWorkermutex.unlock();
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::this_thread::sleep_for(std::chrono::milliseconds(16));
     }
 }
 
@@ -65,7 +64,7 @@ void vboWorkerHandler(std::deque<Chunk *> &vboChunkVector,
         } else {
             vboWorkerMutex.unlock();
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::this_thread::sleep_for(std::chrono::milliseconds(16));
     }
 }
 
@@ -140,7 +139,6 @@ void MyGL::renderTerrain() {
 
     blockWorkerMutex.lock();
     vboWorkerMutex.lock();
-
     blockWorkerCoordVector.clear();
     vboChunkVector.clear();
 
@@ -150,13 +148,12 @@ void MyGL::renderTerrain() {
             int z = zCurr + 16 * d2;
 
             if (!m_terrain.hasChunkAt(x, z)) {
-                std::cout << "Block worker generating" << std::endl;
                 blockWorkerCoordVector.push_back(std::pair<int, int>(x, z));
             } else if (!m_terrain.getChunkAt(x, z)->vboSet && std::abs(d1) <= d - 1 && std::abs(d2) <= d - 1) {
                 vboChunkVector.push_back(m_terrain.getChunkAt(x, z).get());
-                std::cout << "VBO generating" << std::endl;
             } else if (m_terrain.getChunkAt(x, z)->needUpdate && std::abs(d1) <= d - 1 && std::abs(d2) <= d - 1) {
                 vboChunkVector.push_back(m_terrain.getChunkAt(x, z).get());
+                drawChunkVector.push_back(m_terrain.getChunkAt(x, z).get());
                 m_progLambert.setModelMatrix(glm::translate(glm::mat4(),
                                                             glm::vec3(m_terrain.getChunkAt(x, z)->chunkPos.x, 0,
                                                                       m_terrain.getChunkAt(x, z)->chunkPos.z)));
@@ -207,15 +204,12 @@ void MyGL::tick() {
             case SDL_MOUSEBUTTONDOWN:
                 switch(e.button.button) {
                     case SDL_BUTTON_LEFT:
-                        std::cout << "BUTTON PRESSED!" << std::endl;
                         m_player.deleteBlock(&m_terrain);
                         break;
                     case SDL_BUTTON_RIGHT:
-                        std::cout << "BUTTON PRESSED!" << std::endl;
                         m_player.addBlock(&m_terrain);
                         break;
                     default:
-                        std::cout << "BUTTON PRESSED???" << std::endl;
                         break;
                 }
                 break;
@@ -233,7 +227,6 @@ void MyGL::tick() {
     }
 
     int curr = SDL_GetTicks();
-    std::cout << curr - lastTick << std::endl;
     m_player.tick((curr - lastTick) / 100.0, bundle);
     lastTick = curr;
 

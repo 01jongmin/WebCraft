@@ -56,7 +56,7 @@ int main(int argc, char **argv)
 
     std::mutex vboWorkerMutex;
     std::deque<Chunk*> vboChunkVectorArray;
-
+//
     std::mutex drawChunkMutex;
     std::deque<Chunk*> drawChunkVector;
 

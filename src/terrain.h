@@ -88,10 +88,4 @@ public:
     void createBiomes(int x, int z);
 
     void createTerrainZone(int x, int z);
-
-    // Initializes the Chunks that store the 64 x 256 x 64 block scene you
-    // see when the base code is run.
-    void CreateTestScene();
-
-    void loadNewChunks(glm::vec3 playerPos);
 };

@@ -61,6 +61,8 @@ private:
     std::mutex& drawChunkMutex;
     std::deque<Chunk*>& drawChunkVector;
 
+    std::unordered_set<int64_t> keyMap;
+
     void renderTerrain();
 
     void handleKeyPressDown(SDL_Keycode);

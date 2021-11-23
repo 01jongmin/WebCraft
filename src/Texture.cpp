@@ -71,8 +71,6 @@ void Texture::create(const char *texturePath)
                      (char *) formattedSurf->pixels);
 
         m_textureImage = formattedSurf;
-    } else {
-        std::cout << "Couldn't load image" << std::endl;
     }
 
 

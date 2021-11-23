@@ -1,6 +1,7 @@
 #include "chunk.h"
 #include "GLES2/gl2.h"
 #include <iostream>
+#include <SDL2/SDL.h>
 
 Chunk::Chunk():
         m_blocks(),
@@ -92,6 +93,8 @@ bool Chunk::bindTransparentData() {
 }
 
 void Chunk::createVBOdata() {
+    int curr = SDL_GetTicks();
+
     for (auto& e : m_neighbors) {
         if (e.second == nullptr) {
             return;
@@ -150,8 +153,6 @@ void Chunk::createVBOdata() {
         t_data.push_back(t_nor[i]);
         t_data.push_back(t_uv[i]);
     }
-    std::cout << "VData count" << data.size() << std::endl;
-    std::cout << "TData count" << t_data.size() << std::endl;
 
     vboSet = true;
 
@@ -189,7 +190,6 @@ void Chunk::setTVBOdata() {
         generateTransparentData();
         glBindBuffer(GL_ARRAY_BUFFER, m_bufTransparentData);
         glBufferData(GL_ARRAY_BUFFER, t_data.size() * sizeof(glm::vec4), t_data.data(), GL_STATIC_DRAW);
-        std::cout << "set TVBO triggered" << std::endl;
     }
 }
 
