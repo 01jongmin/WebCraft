@@ -1,6 +1,6 @@
 CMakeFiles/WebCraft.dir/src/Texture.cpp.o: \
-  /Users/jongmin/CLionProjects/webassembly_emcc/src/Texture.cpp \
-  /Users/jongmin/CLionProjects/webassembly_emcc/src/Texture.h \
+  /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Texture.cpp \
+  /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Texture.h \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/memory \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/c++/v1/__config \
   /usr/local/Cellar/emscripten/2.0.34/libexec/cache/sysroot/include/pthread.h \

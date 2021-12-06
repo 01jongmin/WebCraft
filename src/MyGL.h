@@ -33,16 +33,24 @@ private:
 
     ShaderProgram m_progLambert;// A shader program that uses lambertian reflection
     ShaderProgram m_progFlat;// A shader program that uses "flat" reflection (no shadowing at all)
-    ShaderProgram m_progStaticFlat;
+    ShaderProgram m_progShadow;// A shader program that uses shadows
     ShaderProgram m_progPostprocess;
+    ShaderProgram m_progDepth;
+    ShaderProgram m_progStaticFlat;
+    ShaderProgram m_progSkybox;
 
     FrameBuffer m_frameBuffer;
+    FrameBuffer m_depthFrameBuffer;
 
     Quad m_geomQuad;
     Reticle m_reticle;
 
     int width;
     int height;
+
+    const float PI = 3.14159265359;
+    const float TWO_PI = 6.28318530718;
+    const float dayCycle = 1200.0;
 
     Terrain m_terrain; // All of the Chunks that currently comprise the world.
     Player m_player; // The entity controlled by the user. Contains a camera to display what it sees as well.
@@ -66,10 +74,15 @@ private:
 
     std::unordered_set<int64_t> keyMap;
 
-    void renderTerrain();
+    void renderTerrain(int time);
 
     void handleKeyPressDown(SDL_Keycode);
     void handleKeyPressUp(SDL_Keycode);
+
+    glm::mat4 generateDepthMVP(int d, int time);
+
+    glm::vec3 dayTime(float time);
+    float modTime(float x);
 };
 
 

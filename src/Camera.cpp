@@ -33,7 +33,7 @@ void Camera::setWidthHeight(unsigned int w, unsigned int h) {
 
 
 void Camera::tick(float dT, InputBundle &input) {
-    // Do nothing
+
 }
 
 glm::mat4 Camera::getViewProj() const {

@@ -46,8 +46,7 @@ int main(int argc, char **argv)
     );
 
     SDL_GLContext glContext = SDL_GL_CreateContext(window);
-//
-    printf("%s\n", glGetString(GL_VERSION));
+
 
     std::vector<std::thread> spawned_threads;
 
@@ -56,7 +55,7 @@ int main(int argc, char **argv)
 
     std::mutex vboWorkerMutex;
     std::deque<Chunk*> vboChunkVectorArray;
-//
+
     std::mutex drawChunkMutex;
     std::deque<Chunk*> drawChunkVector;
 

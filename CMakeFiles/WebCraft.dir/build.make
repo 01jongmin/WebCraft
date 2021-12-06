@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/jongmin/CLionProjects/webassembly_emcc
+CMAKE_SOURCE_DIR = /Users/jongmin/Documents/University/Junior/cis460/webcraft
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/jongmin/CLionProjects/webassembly_emcc
+CMAKE_BINARY_DIR = /Users/jongmin/Documents/University/Junior/cis460/webcraft
 
 # Include any dependencies generated for this target.
 include CMakeFiles/WebCraft.dir/depend.make
@@ -73,226 +73,226 @@ CMakeFiles/WebCraft.dir/src/main.cpp.o: CMakeFiles/WebCraft.dir/flags.make
 CMakeFiles/WebCraft.dir/src/main.cpp.o: CMakeFiles/WebCraft.dir/includes_CXX.rsp
 CMakeFiles/WebCraft.dir/src/main.cpp.o: src/main.cpp
 CMakeFiles/WebCraft.dir/src/main.cpp.o: CMakeFiles/WebCraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/WebCraft.dir/src/main.cpp.o"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/main.cpp.o -MF CMakeFiles/WebCraft.dir/src/main.cpp.o.d -o CMakeFiles/WebCraft.dir/src/main.cpp.o -c /Users/jongmin/CLionProjects/webassembly_emcc/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/Documents/University/Junior/cis460/webcraft/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/WebCraft.dir/src/main.cpp.o"
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/main.cpp.o -MF CMakeFiles/WebCraft.dir/src/main.cpp.o.d -o CMakeFiles/WebCraft.dir/src/main.cpp.o -c /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/main.cpp
 
 CMakeFiles/WebCraft.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WebCraft.dir/src/main.cpp.i"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/CLionProjects/webassembly_emcc/src/main.cpp > CMakeFiles/WebCraft.dir/src/main.cpp.i
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/main.cpp > CMakeFiles/WebCraft.dir/src/main.cpp.i
 
 CMakeFiles/WebCraft.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WebCraft.dir/src/main.cpp.s"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/CLionProjects/webassembly_emcc/src/main.cpp -o CMakeFiles/WebCraft.dir/src/main.cpp.s
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/main.cpp -o CMakeFiles/WebCraft.dir/src/main.cpp.s
 
 CMakeFiles/WebCraft.dir/src/MyGL.cpp.o: CMakeFiles/WebCraft.dir/flags.make
 CMakeFiles/WebCraft.dir/src/MyGL.cpp.o: CMakeFiles/WebCraft.dir/includes_CXX.rsp
 CMakeFiles/WebCraft.dir/src/MyGL.cpp.o: src/MyGL.cpp
 CMakeFiles/WebCraft.dir/src/MyGL.cpp.o: CMakeFiles/WebCraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/WebCraft.dir/src/MyGL.cpp.o"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/MyGL.cpp.o -MF CMakeFiles/WebCraft.dir/src/MyGL.cpp.o.d -o CMakeFiles/WebCraft.dir/src/MyGL.cpp.o -c /Users/jongmin/CLionProjects/webassembly_emcc/src/MyGL.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/Documents/University/Junior/cis460/webcraft/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/WebCraft.dir/src/MyGL.cpp.o"
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/MyGL.cpp.o -MF CMakeFiles/WebCraft.dir/src/MyGL.cpp.o.d -o CMakeFiles/WebCraft.dir/src/MyGL.cpp.o -c /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/MyGL.cpp
 
 CMakeFiles/WebCraft.dir/src/MyGL.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WebCraft.dir/src/MyGL.cpp.i"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/CLionProjects/webassembly_emcc/src/MyGL.cpp > CMakeFiles/WebCraft.dir/src/MyGL.cpp.i
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/MyGL.cpp > CMakeFiles/WebCraft.dir/src/MyGL.cpp.i
 
 CMakeFiles/WebCraft.dir/src/MyGL.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WebCraft.dir/src/MyGL.cpp.s"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/CLionProjects/webassembly_emcc/src/MyGL.cpp -o CMakeFiles/WebCraft.dir/src/MyGL.cpp.s
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/MyGL.cpp -o CMakeFiles/WebCraft.dir/src/MyGL.cpp.s
 
 CMakeFiles/WebCraft.dir/src/Drawable.cpp.o: CMakeFiles/WebCraft.dir/flags.make
 CMakeFiles/WebCraft.dir/src/Drawable.cpp.o: CMakeFiles/WebCraft.dir/includes_CXX.rsp
 CMakeFiles/WebCraft.dir/src/Drawable.cpp.o: src/Drawable.cpp
 CMakeFiles/WebCraft.dir/src/Drawable.cpp.o: CMakeFiles/WebCraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/WebCraft.dir/src/Drawable.cpp.o"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/Drawable.cpp.o -MF CMakeFiles/WebCraft.dir/src/Drawable.cpp.o.d -o CMakeFiles/WebCraft.dir/src/Drawable.cpp.o -c /Users/jongmin/CLionProjects/webassembly_emcc/src/Drawable.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/Documents/University/Junior/cis460/webcraft/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/WebCraft.dir/src/Drawable.cpp.o"
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/Drawable.cpp.o -MF CMakeFiles/WebCraft.dir/src/Drawable.cpp.o.d -o CMakeFiles/WebCraft.dir/src/Drawable.cpp.o -c /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Drawable.cpp
 
 CMakeFiles/WebCraft.dir/src/Drawable.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WebCraft.dir/src/Drawable.cpp.i"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/CLionProjects/webassembly_emcc/src/Drawable.cpp > CMakeFiles/WebCraft.dir/src/Drawable.cpp.i
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Drawable.cpp > CMakeFiles/WebCraft.dir/src/Drawable.cpp.i
 
 CMakeFiles/WebCraft.dir/src/Drawable.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WebCraft.dir/src/Drawable.cpp.s"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/CLionProjects/webassembly_emcc/src/Drawable.cpp -o CMakeFiles/WebCraft.dir/src/Drawable.cpp.s
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Drawable.cpp -o CMakeFiles/WebCraft.dir/src/Drawable.cpp.s
 
 CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.o: CMakeFiles/WebCraft.dir/flags.make
 CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.o: CMakeFiles/WebCraft.dir/includes_CXX.rsp
 CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.o: src/ShaderProgram.cpp
 CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.o: CMakeFiles/WebCraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.o"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.o -MF CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.o.d -o CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.o -c /Users/jongmin/CLionProjects/webassembly_emcc/src/ShaderProgram.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/Documents/University/Junior/cis460/webcraft/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.o"
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.o -MF CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.o.d -o CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.o -c /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/ShaderProgram.cpp
 
 CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.i"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/CLionProjects/webassembly_emcc/src/ShaderProgram.cpp > CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.i
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/ShaderProgram.cpp > CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.i
 
 CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.s"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/CLionProjects/webassembly_emcc/src/ShaderProgram.cpp -o CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.s
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/ShaderProgram.cpp -o CMakeFiles/WebCraft.dir/src/ShaderProgram.cpp.s
 
 CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.o: CMakeFiles/WebCraft.dir/flags.make
 CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.o: CMakeFiles/WebCraft.dir/includes_CXX.rsp
 CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.o: src/WorldAxes.cpp
 CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.o: CMakeFiles/WebCraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.o"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.o -MF CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.o.d -o CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.o -c /Users/jongmin/CLionProjects/webassembly_emcc/src/WorldAxes.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/Documents/University/Junior/cis460/webcraft/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.o"
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.o -MF CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.o.d -o CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.o -c /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/WorldAxes.cpp
 
 CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.i"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/CLionProjects/webassembly_emcc/src/WorldAxes.cpp > CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.i
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/WorldAxes.cpp > CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.i
 
 CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.s"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/CLionProjects/webassembly_emcc/src/WorldAxes.cpp -o CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.s
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/WorldAxes.cpp -o CMakeFiles/WebCraft.dir/src/WorldAxes.cpp.s
 
 CMakeFiles/WebCraft.dir/src/Entity.cpp.o: CMakeFiles/WebCraft.dir/flags.make
 CMakeFiles/WebCraft.dir/src/Entity.cpp.o: CMakeFiles/WebCraft.dir/includes_CXX.rsp
 CMakeFiles/WebCraft.dir/src/Entity.cpp.o: src/Entity.cpp
 CMakeFiles/WebCraft.dir/src/Entity.cpp.o: CMakeFiles/WebCraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/WebCraft.dir/src/Entity.cpp.o"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/Entity.cpp.o -MF CMakeFiles/WebCraft.dir/src/Entity.cpp.o.d -o CMakeFiles/WebCraft.dir/src/Entity.cpp.o -c /Users/jongmin/CLionProjects/webassembly_emcc/src/Entity.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/Documents/University/Junior/cis460/webcraft/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/WebCraft.dir/src/Entity.cpp.o"
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/Entity.cpp.o -MF CMakeFiles/WebCraft.dir/src/Entity.cpp.o.d -o CMakeFiles/WebCraft.dir/src/Entity.cpp.o -c /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Entity.cpp
 
 CMakeFiles/WebCraft.dir/src/Entity.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WebCraft.dir/src/Entity.cpp.i"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/CLionProjects/webassembly_emcc/src/Entity.cpp > CMakeFiles/WebCraft.dir/src/Entity.cpp.i
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Entity.cpp > CMakeFiles/WebCraft.dir/src/Entity.cpp.i
 
 CMakeFiles/WebCraft.dir/src/Entity.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WebCraft.dir/src/Entity.cpp.s"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/CLionProjects/webassembly_emcc/src/Entity.cpp -o CMakeFiles/WebCraft.dir/src/Entity.cpp.s
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Entity.cpp -o CMakeFiles/WebCraft.dir/src/Entity.cpp.s
 
 CMakeFiles/WebCraft.dir/src/Camera.cpp.o: CMakeFiles/WebCraft.dir/flags.make
 CMakeFiles/WebCraft.dir/src/Camera.cpp.o: CMakeFiles/WebCraft.dir/includes_CXX.rsp
 CMakeFiles/WebCraft.dir/src/Camera.cpp.o: src/Camera.cpp
 CMakeFiles/WebCraft.dir/src/Camera.cpp.o: CMakeFiles/WebCraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/WebCraft.dir/src/Camera.cpp.o"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/Camera.cpp.o -MF CMakeFiles/WebCraft.dir/src/Camera.cpp.o.d -o CMakeFiles/WebCraft.dir/src/Camera.cpp.o -c /Users/jongmin/CLionProjects/webassembly_emcc/src/Camera.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/Documents/University/Junior/cis460/webcraft/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/WebCraft.dir/src/Camera.cpp.o"
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/Camera.cpp.o -MF CMakeFiles/WebCraft.dir/src/Camera.cpp.o.d -o CMakeFiles/WebCraft.dir/src/Camera.cpp.o -c /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Camera.cpp
 
 CMakeFiles/WebCraft.dir/src/Camera.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WebCraft.dir/src/Camera.cpp.i"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/CLionProjects/webassembly_emcc/src/Camera.cpp > CMakeFiles/WebCraft.dir/src/Camera.cpp.i
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Camera.cpp > CMakeFiles/WebCraft.dir/src/Camera.cpp.i
 
 CMakeFiles/WebCraft.dir/src/Camera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WebCraft.dir/src/Camera.cpp.s"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/CLionProjects/webassembly_emcc/src/Camera.cpp -o CMakeFiles/WebCraft.dir/src/Camera.cpp.s
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Camera.cpp -o CMakeFiles/WebCraft.dir/src/Camera.cpp.s
 
 CMakeFiles/WebCraft.dir/src/Player.cpp.o: CMakeFiles/WebCraft.dir/flags.make
 CMakeFiles/WebCraft.dir/src/Player.cpp.o: CMakeFiles/WebCraft.dir/includes_CXX.rsp
 CMakeFiles/WebCraft.dir/src/Player.cpp.o: src/Player.cpp
 CMakeFiles/WebCraft.dir/src/Player.cpp.o: CMakeFiles/WebCraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/WebCraft.dir/src/Player.cpp.o"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/Player.cpp.o -MF CMakeFiles/WebCraft.dir/src/Player.cpp.o.d -o CMakeFiles/WebCraft.dir/src/Player.cpp.o -c /Users/jongmin/CLionProjects/webassembly_emcc/src/Player.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/Documents/University/Junior/cis460/webcraft/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/WebCraft.dir/src/Player.cpp.o"
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/Player.cpp.o -MF CMakeFiles/WebCraft.dir/src/Player.cpp.o.d -o CMakeFiles/WebCraft.dir/src/Player.cpp.o -c /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Player.cpp
 
 CMakeFiles/WebCraft.dir/src/Player.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WebCraft.dir/src/Player.cpp.i"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/CLionProjects/webassembly_emcc/src/Player.cpp > CMakeFiles/WebCraft.dir/src/Player.cpp.i
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Player.cpp > CMakeFiles/WebCraft.dir/src/Player.cpp.i
 
 CMakeFiles/WebCraft.dir/src/Player.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WebCraft.dir/src/Player.cpp.s"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/CLionProjects/webassembly_emcc/src/Player.cpp -o CMakeFiles/WebCraft.dir/src/Player.cpp.s
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Player.cpp -o CMakeFiles/WebCraft.dir/src/Player.cpp.s
 
 CMakeFiles/WebCraft.dir/src/Terrain.cpp.o: CMakeFiles/WebCraft.dir/flags.make
 CMakeFiles/WebCraft.dir/src/Terrain.cpp.o: CMakeFiles/WebCraft.dir/includes_CXX.rsp
 CMakeFiles/WebCraft.dir/src/Terrain.cpp.o: src/Terrain.cpp
 CMakeFiles/WebCraft.dir/src/Terrain.cpp.o: CMakeFiles/WebCraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/WebCraft.dir/src/Terrain.cpp.o"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/Terrain.cpp.o -MF CMakeFiles/WebCraft.dir/src/Terrain.cpp.o.d -o CMakeFiles/WebCraft.dir/src/Terrain.cpp.o -c /Users/jongmin/CLionProjects/webassembly_emcc/src/Terrain.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/Documents/University/Junior/cis460/webcraft/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/WebCraft.dir/src/Terrain.cpp.o"
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/Terrain.cpp.o -MF CMakeFiles/WebCraft.dir/src/Terrain.cpp.o.d -o CMakeFiles/WebCraft.dir/src/Terrain.cpp.o -c /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Terrain.cpp
 
 CMakeFiles/WebCraft.dir/src/Terrain.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WebCraft.dir/src/Terrain.cpp.i"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/CLionProjects/webassembly_emcc/src/Terrain.cpp > CMakeFiles/WebCraft.dir/src/Terrain.cpp.i
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Terrain.cpp > CMakeFiles/WebCraft.dir/src/Terrain.cpp.i
 
 CMakeFiles/WebCraft.dir/src/Terrain.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WebCraft.dir/src/Terrain.cpp.s"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/CLionProjects/webassembly_emcc/src/Terrain.cpp -o CMakeFiles/WebCraft.dir/src/Terrain.cpp.s
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Terrain.cpp -o CMakeFiles/WebCraft.dir/src/Terrain.cpp.s
 
 CMakeFiles/WebCraft.dir/src/noise.cpp.o: CMakeFiles/WebCraft.dir/flags.make
 CMakeFiles/WebCraft.dir/src/noise.cpp.o: CMakeFiles/WebCraft.dir/includes_CXX.rsp
 CMakeFiles/WebCraft.dir/src/noise.cpp.o: src/noise.cpp
 CMakeFiles/WebCraft.dir/src/noise.cpp.o: CMakeFiles/WebCraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/WebCraft.dir/src/noise.cpp.o"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/noise.cpp.o -MF CMakeFiles/WebCraft.dir/src/noise.cpp.o.d -o CMakeFiles/WebCraft.dir/src/noise.cpp.o -c /Users/jongmin/CLionProjects/webassembly_emcc/src/noise.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/Documents/University/Junior/cis460/webcraft/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/WebCraft.dir/src/noise.cpp.o"
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/noise.cpp.o -MF CMakeFiles/WebCraft.dir/src/noise.cpp.o.d -o CMakeFiles/WebCraft.dir/src/noise.cpp.o -c /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/noise.cpp
 
 CMakeFiles/WebCraft.dir/src/noise.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WebCraft.dir/src/noise.cpp.i"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/CLionProjects/webassembly_emcc/src/noise.cpp > CMakeFiles/WebCraft.dir/src/noise.cpp.i
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/noise.cpp > CMakeFiles/WebCraft.dir/src/noise.cpp.i
 
 CMakeFiles/WebCraft.dir/src/noise.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WebCraft.dir/src/noise.cpp.s"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/CLionProjects/webassembly_emcc/src/noise.cpp -o CMakeFiles/WebCraft.dir/src/noise.cpp.s
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/noise.cpp -o CMakeFiles/WebCraft.dir/src/noise.cpp.s
 
 CMakeFiles/WebCraft.dir/src/chunk.cpp.o: CMakeFiles/WebCraft.dir/flags.make
 CMakeFiles/WebCraft.dir/src/chunk.cpp.o: CMakeFiles/WebCraft.dir/includes_CXX.rsp
 CMakeFiles/WebCraft.dir/src/chunk.cpp.o: src/chunk.cpp
 CMakeFiles/WebCraft.dir/src/chunk.cpp.o: CMakeFiles/WebCraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/WebCraft.dir/src/chunk.cpp.o"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/chunk.cpp.o -MF CMakeFiles/WebCraft.dir/src/chunk.cpp.o.d -o CMakeFiles/WebCraft.dir/src/chunk.cpp.o -c /Users/jongmin/CLionProjects/webassembly_emcc/src/chunk.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/Documents/University/Junior/cis460/webcraft/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/WebCraft.dir/src/chunk.cpp.o"
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/chunk.cpp.o -MF CMakeFiles/WebCraft.dir/src/chunk.cpp.o.d -o CMakeFiles/WebCraft.dir/src/chunk.cpp.o -c /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/chunk.cpp
 
 CMakeFiles/WebCraft.dir/src/chunk.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WebCraft.dir/src/chunk.cpp.i"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/CLionProjects/webassembly_emcc/src/chunk.cpp > CMakeFiles/WebCraft.dir/src/chunk.cpp.i
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/chunk.cpp > CMakeFiles/WebCraft.dir/src/chunk.cpp.i
 
 CMakeFiles/WebCraft.dir/src/chunk.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WebCraft.dir/src/chunk.cpp.s"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/CLionProjects/webassembly_emcc/src/chunk.cpp -o CMakeFiles/WebCraft.dir/src/chunk.cpp.s
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/chunk.cpp -o CMakeFiles/WebCraft.dir/src/chunk.cpp.s
 
 CMakeFiles/WebCraft.dir/src/Texture.cpp.o: CMakeFiles/WebCraft.dir/flags.make
 CMakeFiles/WebCraft.dir/src/Texture.cpp.o: CMakeFiles/WebCraft.dir/includes_CXX.rsp
 CMakeFiles/WebCraft.dir/src/Texture.cpp.o: src/Texture.cpp
 CMakeFiles/WebCraft.dir/src/Texture.cpp.o: CMakeFiles/WebCraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/WebCraft.dir/src/Texture.cpp.o"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/Texture.cpp.o -MF CMakeFiles/WebCraft.dir/src/Texture.cpp.o.d -o CMakeFiles/WebCraft.dir/src/Texture.cpp.o -c /Users/jongmin/CLionProjects/webassembly_emcc/src/Texture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/Documents/University/Junior/cis460/webcraft/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/WebCraft.dir/src/Texture.cpp.o"
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/Texture.cpp.o -MF CMakeFiles/WebCraft.dir/src/Texture.cpp.o.d -o CMakeFiles/WebCraft.dir/src/Texture.cpp.o -c /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Texture.cpp
 
 CMakeFiles/WebCraft.dir/src/Texture.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WebCraft.dir/src/Texture.cpp.i"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/CLionProjects/webassembly_emcc/src/Texture.cpp > CMakeFiles/WebCraft.dir/src/Texture.cpp.i
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Texture.cpp > CMakeFiles/WebCraft.dir/src/Texture.cpp.i
 
 CMakeFiles/WebCraft.dir/src/Texture.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WebCraft.dir/src/Texture.cpp.s"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/CLionProjects/webassembly_emcc/src/Texture.cpp -o CMakeFiles/WebCraft.dir/src/Texture.cpp.s
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Texture.cpp -o CMakeFiles/WebCraft.dir/src/Texture.cpp.s
 
 CMakeFiles/WebCraft.dir/src/Quad.cpp.o: CMakeFiles/WebCraft.dir/flags.make
 CMakeFiles/WebCraft.dir/src/Quad.cpp.o: CMakeFiles/WebCraft.dir/includes_CXX.rsp
 CMakeFiles/WebCraft.dir/src/Quad.cpp.o: src/Quad.cpp
 CMakeFiles/WebCraft.dir/src/Quad.cpp.o: CMakeFiles/WebCraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/WebCraft.dir/src/Quad.cpp.o"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/Quad.cpp.o -MF CMakeFiles/WebCraft.dir/src/Quad.cpp.o.d -o CMakeFiles/WebCraft.dir/src/Quad.cpp.o -c /Users/jongmin/CLionProjects/webassembly_emcc/src/Quad.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/Documents/University/Junior/cis460/webcraft/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/WebCraft.dir/src/Quad.cpp.o"
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/Quad.cpp.o -MF CMakeFiles/WebCraft.dir/src/Quad.cpp.o.d -o CMakeFiles/WebCraft.dir/src/Quad.cpp.o -c /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Quad.cpp
 
 CMakeFiles/WebCraft.dir/src/Quad.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WebCraft.dir/src/Quad.cpp.i"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/CLionProjects/webassembly_emcc/src/Quad.cpp > CMakeFiles/WebCraft.dir/src/Quad.cpp.i
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Quad.cpp > CMakeFiles/WebCraft.dir/src/Quad.cpp.i
 
 CMakeFiles/WebCraft.dir/src/Quad.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WebCraft.dir/src/Quad.cpp.s"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/CLionProjects/webassembly_emcc/src/Quad.cpp -o CMakeFiles/WebCraft.dir/src/Quad.cpp.s
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Quad.cpp -o CMakeFiles/WebCraft.dir/src/Quad.cpp.s
 
 CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.o: CMakeFiles/WebCraft.dir/flags.make
 CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.o: CMakeFiles/WebCraft.dir/includes_CXX.rsp
 CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.o: src/FrameBuffer.cpp
 CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.o: CMakeFiles/WebCraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.o"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.o -MF CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.o.d -o CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.o -c /Users/jongmin/CLionProjects/webassembly_emcc/src/FrameBuffer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/Documents/University/Junior/cis460/webcraft/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.o"
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.o -MF CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.o.d -o CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.o -c /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/FrameBuffer.cpp
 
 CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.i"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/CLionProjects/webassembly_emcc/src/FrameBuffer.cpp > CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.i
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/FrameBuffer.cpp > CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.i
 
 CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.s"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/CLionProjects/webassembly_emcc/src/FrameBuffer.cpp -o CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.s
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/FrameBuffer.cpp -o CMakeFiles/WebCraft.dir/src/FrameBuffer.cpp.s
 
 CMakeFiles/WebCraft.dir/src/Reticle.cpp.o: CMakeFiles/WebCraft.dir/flags.make
 CMakeFiles/WebCraft.dir/src/Reticle.cpp.o: CMakeFiles/WebCraft.dir/includes_CXX.rsp
 CMakeFiles/WebCraft.dir/src/Reticle.cpp.o: src/Reticle.cpp
 CMakeFiles/WebCraft.dir/src/Reticle.cpp.o: CMakeFiles/WebCraft.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/WebCraft.dir/src/Reticle.cpp.o"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/Reticle.cpp.o -MF CMakeFiles/WebCraft.dir/src/Reticle.cpp.o.d -o CMakeFiles/WebCraft.dir/src/Reticle.cpp.o -c /Users/jongmin/CLionProjects/webassembly_emcc/src/Reticle.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jongmin/Documents/University/Junior/cis460/webcraft/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/WebCraft.dir/src/Reticle.cpp.o"
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/WebCraft.dir/src/Reticle.cpp.o -MF CMakeFiles/WebCraft.dir/src/Reticle.cpp.o.d -o CMakeFiles/WebCraft.dir/src/Reticle.cpp.o -c /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Reticle.cpp
 
 CMakeFiles/WebCraft.dir/src/Reticle.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/WebCraft.dir/src/Reticle.cpp.i"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/CLionProjects/webassembly_emcc/src/Reticle.cpp > CMakeFiles/WebCraft.dir/src/Reticle.cpp.i
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Reticle.cpp > CMakeFiles/WebCraft.dir/src/Reticle.cpp.i
 
 CMakeFiles/WebCraft.dir/src/Reticle.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/WebCraft.dir/src/Reticle.cpp.s"
-	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/CLionProjects/webassembly_emcc/src/Reticle.cpp -o CMakeFiles/WebCraft.dir/src/Reticle.cpp.s
+	/usr/local/Cellar/emscripten/2.0.34/libexec/em++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jongmin/Documents/University/Junior/cis460/webcraft/src/Reticle.cpp -o CMakeFiles/WebCraft.dir/src/Reticle.cpp.s
 
 # Object files for target WebCraft
 WebCraft_OBJECTS = \
@@ -333,7 +333,7 @@ web/WebCraft.js: CMakeFiles/WebCraft.dir/src/Reticle.cpp.o
 web/WebCraft.js: CMakeFiles/WebCraft.dir/build.make
 web/WebCraft.js: CMakeFiles/WebCraft.dir/objects1.rsp
 web/WebCraft.js: CMakeFiles/WebCraft.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable web/WebCraft.js"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jongmin/Documents/University/Junior/cis460/webcraft/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable web/WebCraft.js"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/WebCraft.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -345,6 +345,6 @@ CMakeFiles/WebCraft.dir/clean:
 .PHONY : CMakeFiles/WebCraft.dir/clean
 
 CMakeFiles/WebCraft.dir/depend:
-	cd /Users/jongmin/CLionProjects/webassembly_emcc && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/jongmin/CLionProjects/webassembly_emcc /Users/jongmin/CLionProjects/webassembly_emcc /Users/jongmin/CLionProjects/webassembly_emcc /Users/jongmin/CLionProjects/webassembly_emcc /Users/jongmin/CLionProjects/webassembly_emcc/CMakeFiles/WebCraft.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/jongmin/Documents/University/Junior/cis460/webcraft && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/jongmin/Documents/University/Junior/cis460/webcraft /Users/jongmin/Documents/University/Junior/cis460/webcraft /Users/jongmin/Documents/University/Junior/cis460/webcraft /Users/jongmin/Documents/University/Junior/cis460/webcraft /Users/jongmin/Documents/University/Junior/cis460/webcraft/CMakeFiles/WebCraft.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/WebCraft.dir/depend
 

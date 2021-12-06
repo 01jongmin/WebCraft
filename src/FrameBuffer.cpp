@@ -58,7 +58,7 @@ void FrameBuffer::create() {
     // Bind our texture so that all functions that deal with textures will interact with this one
     glBindTexture(GL_TEXTURE_2D, m_outputTexture);
     // Give an empty image to OpenGL ( the last "0" )
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_width, m_height, 0, GL_RGB, GL_UNSIGNED_BYTE, (void*)0);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_width, m_height, 0, GL_RGB, GL_FLOAT, (void*)0);
 
     // Set the render settings for the texture we've just created.
     // Essentially zero filtering on the "texture" so it appears exactly as rendered
@@ -79,8 +79,10 @@ void FrameBuffer::create() {
 
     // Sets the color output of the fragment shader to be stored in GL_COLOR_ATTACHMENT0,
     // which we previously set to m_renderedTexture
-//    GLenum drawBuffers[1] = {GL_COLOR_ATTACHMENT0};
-//    glDrawBuffers(1, drawBuffers); // "1" is the size of drawBuffers
+    // if (!drawBuff) {
+    //     GLenum drawBuffers[1] = {GL_NONE};
+    //     glDrawBuffers(1, drawBuffers); // "1" is the size of drawBuffers
+    // }
 //
     m_created = true;
     if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {

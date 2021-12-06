@@ -73,7 +73,6 @@ void Texture::create(const char *texturePath)
         m_textureImage = formattedSurf;
     }
 
-
     glGenTextures(1, &m_textureHandle);
 }
 

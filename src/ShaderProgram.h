@@ -23,11 +23,20 @@ public:
 
     int unifModel; // A handle for the "uniform" mat4 representing model matrix in the vertex shader
     int unifModelInvTr; // A handle for the "uniform" mat4 representing inverse transpose of the model matrix in the vertex shader
+    int unifDepthMVP;  // A handle for the depth mvp
     int unifViewProj; // A handle for the "uniform" mat4 representing combined projection and view matrices in the vertex shader
     int unifColor; // A handle for the "uniform" vec4 representing color of geometry in the vertex shader
 
+    int unifEye;
+
     int unifTime;
     int unifSampler2D;
+
+    int unifSunset;
+    int unifSunrise;
+    int unifNightSky;
+    int unifBlueSky;
+    int unifDusk;
 
     int frameBufferUnifSampler2D;
 
@@ -41,8 +50,12 @@ public:
     void useMe();
     // Pass the given model matrix to this shader on the GPU
     void setModelMatrix(const glm::mat4 &model);
+    // Pass the given depth mvp matrix to this shader on the GPU
+    void setDepthMVP(const glm::mat4&depthMVP);
     // Pass the given Projection * View matrix to this shader on the GPU
     void setViewProjMatrix(const glm::mat4 &vp);
+
+    
     // Pass the given color to this shader on the GPU
 //    void setGeometryColor(glm::vec4 color);
     // Draw the given object to our screen using this ShaderProgram's shaders
@@ -50,10 +63,13 @@ public:
     void draw(Drawable &d, int test);
 
     void drawInterleaved(Drawable &d, bool tvbo, int);
-    void drawChunkInterleaved(Chunk &c, bool transparent);
+    void drawChunkInterleaved(Chunk &c, bool transparent, int textureSlot);
 
     void setTime(int t);
     void setSurrounding(int s);
+    void setPalette(glm::vec3 sunset[], glm::vec3 sunrise[], glm::vec3 nightSky[], glm::vec3 blueSky[], glm::vec3 dusk[]);
+
+    void setEye(glm::vec3 eye);
 
     void drawInstanced(InstancedDrawable &d);
 

@@ -101,6 +101,7 @@ void Chunk::createVBOdata() {
 
     data.clear();
     idx.clear();
+
     t_data.clear();
     t_idx.clear();
 
@@ -354,7 +355,6 @@ glm::vec4 Chunk::getUVCoord(BlockType blockType, Corner corner, bool isTop, bool
     }
 
     blockCoord /= 16.f;
-
     return blockCoord;
 }
 
@@ -374,7 +374,8 @@ BlockType Chunk::getBlockAt(int x, int y, int z) const {
         } else {
             // if we don't have a neighbor then we can assume it's full as we don't care if
             // the edges of the world are filled in or not
-            return GRASS;
+            // return GRASS;
+            return EMPTY;
         }
     }
 }

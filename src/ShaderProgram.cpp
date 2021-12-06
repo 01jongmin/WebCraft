@@ -10,7 +10,8 @@
 ShaderProgram::ShaderProgram()
         : vertShader(), fragShader(), prog(),
           attrPos(-1), attrNor(-1), attrCol(-1),
-          unifModel(-1), unifModelInvTr(-1), unifViewProj(-1), unifColor(-1),
+          unifModel(-1), unifModelInvTr(-1), unifViewProj(-1), unifColor(-1), unifEye(-1),
+          unifSunset(-1), unifSunrise(-1), unifNightSky(-1), unifBlueSky(-1), unifDusk(-1),
           unifTime(-1), unifSampler2D(-1), unifSurrounding(-1), frameBufferUnifSampler2D(-1)
 {}
 
@@ -36,19 +37,33 @@ void ShaderProgram::create(const char *vertfile, const char *fragfile)
     attrPos = glGetAttribLocation(prog, "vs_Pos");
     attrNor = glGetAttribLocation(prog, "vs_Nor");
     attrCol = glGetAttribLocation(prog, "vs_Col");
+
     if(attrCol == -1) attrCol = glGetAttribLocation(prog, "vs_ColInstanced");
     attrPosOffset = glGetAttribLocation(prog, "vs_OffsetInstanced");
 
     unifModel      = glGetUniformLocation(prog, "u_Model");
     unifModelInvTr = glGetUniformLocation(prog, "u_ModelInvTr");
+    unifDepthMVP   = glGetUniformLocation(prog, "u_DepthMVP");
     unifViewProj   = glGetUniformLocation(prog, "u_ViewProj");
     unifColor      = glGetUniformLocation(prog, "u_Color");
     unifTime       = glGetUniformLocation(prog, "u_Time");
     unifSurrounding = glGetUniformLocation(prog, "u_Surrounding");
 
+    unifEye = glGetUniformLocation(prog, "u_Eye");
+
     unifSampler2D = glGetUniformLocation(prog, "u_Texture");
 
+    // palette - OpenGL ES 2.0 doesn't enable const arrays in glsl files
+    unifSunset = glGetUniformLocation(prog, "sunset");
+    unifSunrise = glGetUniformLocation(prog, "sunrise");
+    unifNightSky = glGetUniformLocation(prog, "nightSky");
+    unifBlueSky = glGetUniformLocation(prog, "blueSky");
+    unifDusk = glGetUniformLocation(prog, "dusk");
+
     frameBufferUnifSampler2D = glGetUniformLocation(prog, "u_RenderedTexture");
+
+
+
 
     glUseProgram(prog);
 }
@@ -57,12 +72,38 @@ void ShaderProgram::useMe() {
     glUseProgram(prog);
 }
 
+void ShaderProgram::setEye(glm::vec3 p) {
+    useMe();
+
+    if(unifEye != -1){
+        glUniform3f(unifEye, p.x, p.y, p.z);
+    }
+}
+
 void ShaderProgram::setTime(int t) {
     useMe();
 
     if(unifTime != -1)
     {
         glUniform1i(unifTime, t);
+    }
+}
+
+void ShaderProgram::setPalette(glm::vec3 sunset[], glm::vec3 sunrise[], glm::vec3 nightSky[], glm::vec3 blueSky[], glm::vec3 dusk[]) {
+    useMe();
+
+    if(unifSunset != -1 && unifSunrise != -1 && unifNightSky != -1 && unifBlueSky != -1) {
+        glUniform3fv(unifSunset, 5, &sunset[0][0]);
+        glUniform3fv(unifSunrise, 5, &sunrise[0][0]);
+        glUniform3fv(unifNightSky, 5, &nightSky[0][0]);
+        glUniform3fv(unifBlueSky, 5, &blueSky[0][0]);
+//        glUniform3fv(unifDusk, 5, &dusk[0][0]);
+    } else {
+        std::cout << unifSunset << std::endl;
+        std::cout << unifSunrise << std::endl;
+        std::cout << unifNightSky << std::endl;
+        std::cout << unifBlueSky << std::endl;
+//        std::cout << unifDusk << std::endl;
     }
 }
 
@@ -79,6 +120,18 @@ void ShaderProgram::setModelMatrix(const glm::mat4 &model)
         // Pass a 4x4 matrix into a uniform variable in our shader
         // Handle to the matrix variable on the GPU
         glUniformMatrix4fv(unifModelInvTr, 1, GL_FALSE, &modelinvtr[0][0]);
+    }
+}
+
+void ShaderProgram::setDepthMVP(const glm::mat4&depthMVP)
+{
+    useMe();
+    // Compute the MVP matrix from the light's point of view
+
+    // glm::mat4 depthMVP = glm::mat4(1.0);
+
+    if (unifDepthMVP != -1) {
+        glUniformMatrix4fv(unifDepthMVP, 1, GL_FALSE, &depthMVP[0][0]);
     }
 }
 
@@ -130,6 +183,7 @@ void ShaderProgram::draw(Drawable &d)
     // Bind the index buffer and then draw shapes from it.
     // This invokes the shader program, which accesses the vertex buffers.
     d.bindIdx();
+
     glDrawElements(d.drawMode(), d.elemCount(), GL_UNSIGNED_INT, 0);
 
     if (attrPos != -1) glDisableVertexAttribArray(attrPos);
@@ -190,6 +244,7 @@ void ShaderProgram::draw(Drawable &d, int test)
     // Bind the index buffer and then draw shapes from it.
     // This invokes the shader program, which accesses the vertex buffers.
     d.bindIdx();
+
     glDrawElements(d.drawMode(), d.elemCount(), GL_UNSIGNED_INT, 0);
 
     if (attrPos != -1) glDisableVertexAttribArray(attrPos);
@@ -197,6 +252,7 @@ void ShaderProgram::draw(Drawable &d, int test)
     if (attrCol != -1) glDisableVertexAttribArray(attrCol);
 
     GLenum error = glGetError();
+
     if (error != GL_NO_ERROR) {
         std::cerr << "OpenGL error " << error << ": ";
         const char *e =
@@ -209,7 +265,7 @@ void ShaderProgram::draw(Drawable &d, int test)
     }
 }
 
-void ShaderProgram::drawChunkInterleaved(Chunk &c, bool transparent) {
+void ShaderProgram::drawChunkInterleaved(Chunk &c, bool transparent, int textureSlot) {
     useMe();
 
     if (c.transparentDataCount() < 0 || c.dataCount() < 0) {
@@ -220,21 +276,32 @@ void ShaderProgram::drawChunkInterleaved(Chunk &c, bool transparent) {
         glUniform1i(unifSampler2D, 0);
     }
 
+    if(frameBufferUnifSampler2D != -1) {
+        glUniform1i(frameBufferUnifSampler2D, textureSlot);
+    }
+
     if (!transparent) {
+        // printf("we should be here\n");
         if (c.bindData()) {
+            // printf("doing pos\n");
             glEnableVertexAttribArray(attrPos);
             glVertexAttribPointer(attrPos, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) 0);
 
+            // printf("doing nor\n");
             glEnableVertexAttribArray(attrNor);
             glVertexAttribPointer(attrNor, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) sizeof(glm::vec4));
 
+            // printf("doing col\n");
             glEnableVertexAttribArray(attrCol);
             glVertexAttribPointer(attrCol, 4, GL_FLOAT, false, 3 * sizeof(glm::vec4), (void *) (2 * sizeof(glm::vec4)));
+
+            // printf("doing all\n");
         } else {
             std::cout << "ERROR" << std::endl;
         }
 
         c.bindDataIdx();
+
         glDrawElements(c.drawMode(), c.dataCount(), GL_UNSIGNED_INT, 0);
     } else {
         //nor and color

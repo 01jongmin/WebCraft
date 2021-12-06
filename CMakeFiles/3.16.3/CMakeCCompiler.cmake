@@ -1,4 +1,4 @@
-set(CMAKE_C_COMPILER "/usr/local/Cellar/emscripten/2.0.34/libexec/emcc")
+set(CMAKE_C_COMPILER "/mnt/c/Users/injap/Downloads/emsdk/upstream/emscripten/emcc")
 set(CMAKE_C_COMPILER_ARG1 "")
 set(CMAKE_C_COMPILER_ID "Clang")
 set(CMAKE_C_COMPILER_VERSION "14.0.0")
@@ -12,14 +12,15 @@ set(CMAKE_C11_COMPILE_FEATURES "c_std_11;c_static_assert")
 
 set(CMAKE_C_PLATFORM_ID "emscripten")
 set(CMAKE_C_SIMULATE_ID "")
+set(CMAKE_C_COMPILER_FRONTEND_VARIANT "GNU")
 set(CMAKE_C_SIMULATE_VERSION "")
 
 
 
-set(CMAKE_AR "/usr/local/Cellar/emscripten/2.0.34/libexec/emar")
-set(CMAKE_C_COMPILER_AR "/usr/local/Cellar/emscripten/2.0.34/libexec/emar")
-set(CMAKE_RANLIB "/usr/local/Cellar/emscripten/2.0.34/libexec/emranlib")
-set(CMAKE_C_COMPILER_RANLIB "/usr/local/Cellar/emscripten/2.0.34/libexec/emranlib")
+set(CMAKE_AR "/mnt/c/Users/injap/Downloads/emsdk/upstream/emscripten/emar")
+set(CMAKE_C_COMPILER_AR "/mnt/c/Users/injap/Downloads/emsdk/upstream/emscripten/emar")
+set(CMAKE_RANLIB "/mnt/c/Users/injap/Downloads/emsdk/upstream/emscripten/emranlib")
+set(CMAKE_C_COMPILER_RANLIB "/mnt/c/Users/injap/Downloads/emsdk/upstream/emscripten/emranlib")
 set(CMAKE_LINKER "/usr/bin/ld")
 set(CMAKE_MT "")
 set(CMAKE_COMPILER_IS_GNUCC )
