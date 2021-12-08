@@ -7,12 +7,23 @@
 
   <body>
     <div style="text-align: center;">
-      <!-- Create the canvas that the C++ code will draw into -->
+      <h1>WebCraft: Mini Minecraft on the web</h1>
+
       <canvas
         id="canvas"
+        width="1280"
+        height="720"
         allow="cross-origin-isolated"
         oncontextmenu="event.preventDefault()"
       ></canvas>
+
+      <p>
+        Click on the canvas to enter pointer lock. Initial load times can take
+        around 5-10 seconds
+      </p>
+
+      <p>Press F to toggle Flight Mode, WASD to move around, space to jump</p>
+      <p>While in flight mode, press Q/E to move Up/Down</p>
     </div>
 
     <!-- Allow the C++ to access the canvas element -->
