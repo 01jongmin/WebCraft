@@ -37,7 +37,7 @@ int main(int argc, char **argv)
     SDL_Window *window;
 
     window = SDL_CreateWindow(
-            "An SDL2 window",                  // window title
+            "WebCraft",                  // window title
             SDL_WINDOWPOS_CENTERED,           // initial x position
             SDL_WINDOWPOS_CENTERED,           // initial y position
             1280,                               // width, in pixels
